@@ -1,0 +1,170 @@
+.sort-btn{
+	background: #f3f3f3;
+	padding: 20px;
+	margin:50px 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.sort-btn dt{
+	font-weight: bold;
+	margin:0 0 10px 0;
+}
+
+.sort-btn dd{
+	margin:0 0 10px 0;
+}
+
+.sort-btn ul{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.sort-btn li{
+	margin:0 10px;
+    list-style:none;
+}
+
+.sort-btn ul li{
+	position: relative;
+	cursor: pointer;
+	padding:0 0 0 30px;
+	margin:0 10px 0 0;
+}
+
+/*横幅が810px以下になった際の指定*/
+@media only screen and (max-width: 810px) {
+.sort-btn li{
+	width:100%;
+	margin:0;
+}
+	
+.sort-btn ul li{
+	width:auto;
+}
+	
+}
+
+/*チェックマークの設定*/
+.sort-btn ul li::before{
+	content:'';
+	position: absolute;
+	left:0;
+	width:20px;
+	height:20px;
+	border:2px solid #ccc;
+}
+
+.sort-btn ul li.active::after{/*現在地＝activeというクラス名がついたらチェックマークを出現*/
+	content:'';
+	position: absolute;
+	left:5px;	
+	top:0;
+    /*チェックマークの色や形*/
+	border-left:2px solid #333;
+	border-bottom:2px solid #333;
+	width:16px;
+	height:9px;
+	transform:rotate(-45deg);
+}
+
+
+
+/*＝＝＝Muuriのレイアウトのための調整 */
+.grid {
+  position: relative;/*並び替えの基準点を指定*/
+}
+
+/*各画像の横幅などの設定*/
+.item {
+  display: block;
+  position: absolute;
+  width: 20%;/*横並びで5つ表示*/
+  padding:0 10px 10px 10px;/*画像に余白をつける*/
+  z-index: 1;
+  list-style:none;
+}
+
+/*内側のボックスの高さが崩れないように維持*/
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+.grid img{
+	width:100%;
+	height: 100%;
+	object-fit: cover;
+	vertical-align: bottom;/*画像の下にできる余白を削除*/
+	
+}
+
+/*横幅が768px以下になった際の指定*/
+@media only screen and (max-width: 768px) {
+.item {
+  width: 49.5%;/*横並びで2つ表示*/
+  padding: 0 5px 10px 5px;
+}
+}
+
+
+/*＝＝＝fancyboxサムネイル背景と画像選択時の枠線の指定*/
+.fancybox-thumbs {
+    background: transparent!important;
+}
+
+.fancybox-thumbs__list a:before {
+    border: 6px solid #FA999B;
+}
+
+.item.muuri-item-dragging {
+  z-index: 3;
+}
+
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: none;
+  overflow: scroll;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  /*text-align: center; /* 画像を中央に配置 */
+}
+
+.modal-content img {
+    margin: auto;
+    display: block;
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.destroy{
+  margin-left: auto;
+
+}
