@@ -34,7 +34,7 @@
         {{ __('画像一覧ページ') }}
       </h2>
     </x-slot>
-    
+    {{$team->team_name}}
     <ul class="sort-btn"> 
       <li>
         <dl>  <!--description list 説明リスト-->

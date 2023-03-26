@@ -93,7 +93,12 @@ class PhotoController extends Controller
         // }
         //データ更新処理
         $result = Photo::find($id)->update($request->all());
-        return redirect()->route('photo.index');
+        $user = User::find(Auth::id());
+        $team = Team::find($user->team_id);
+        // return redirect()->route('photo.index');
+        
+        return view('photo.index', compact('$team', '$user'));
+        
     }
     
 }

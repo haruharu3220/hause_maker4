@@ -35,7 +35,8 @@ class TeamController extends Controller
         $user = User::find(Auth::id());
         $user->team_id = $team->id;
         $user->save();
-
-        return redirect()->route('dashboard', $user);
+        
+        dd($team,$user);
+        return view('dashboard', compact('$team', '$user'));
     }
 }
