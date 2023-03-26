@@ -11,22 +11,22 @@
 
         <!-- familyName -->
         <div>
-            <x-input-label for="familyName" :value="__('FamilyName')" />
+            <x-input-label for="familyName" :value="__('家族名')" />
+            <p>家族名を入力してください。</p>
             <x-text-input id="familyName" class="block mt-1 w-full" type="text" name="familyName" :value="old('familyName')" required autofocus autocomplete="familyName" />
             <x-input-error :messages="$errors->get('familyName')" class="mt-2" />
         </div>
 
-        <!-- familyName -->
+        <!-- familyID -->
         <div class="mt-4">
-            <x-input-label for="familyID" :value="__('familyName')" />
+            <x-input-label for="familyID" :value="__('familyID')" />
+            <p>家族IDを決めてください。このIDを共有すると他のユーザを家族に登録することができます。</p>
             <x-text-input id="familyID" class="block mt-1 w-full" type="text" name="familyID" :value="old('familyID')" required autocomplete="familyID" />
             <x-input-error :messages="$errors->get('familyID')" class="mt-2" />
         </div>
 
+
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
 
             <x-primary-button class="ml-4">
                 {{ __('登録') }}
