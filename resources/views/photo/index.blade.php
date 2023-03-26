@@ -47,24 +47,24 @@
       </li>
       <li>
         <dl>
-          <dt>Color</dt>
+          <dt>設備・部屋</dt>
           <dd>
             <ul>
-              <li class="color01">Color1</li>
-              <li class="color02">Color2</li>
-              <li class="color03">Color3</li> 
+              <li class="color01">キッチン1</li>
+              <li class="color02">リビング</li>
+              <li class="color03">和室</li> 
             </ul>
           </dd>
         </dl>
       </li>
       <li>
         <dl>
-          <dt>Category</dt>
+          <dt>順位</dt>
           <dd>
             <ul>
-              <li class="cat01">カテゴリ1</li>
-              <li class="cat02">カテゴリ2</li>
-              <li class="cat03">カテゴリ3</li> 
+              <li class="cat01">第１候補</li>
+              <li class="cat02">第２候補</li>
+              <li class="cat03">第３候補</li> 
             </ul>
           </dd>
         </dl>
