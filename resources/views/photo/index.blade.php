@@ -31,10 +31,9 @@
 
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('画像一覧ページ') }}
+       {{$team->team_name}}の{{ __('画像一覧ページ') }}
       </h2>
     </x-slot>
-    {{$team->team_name}}
     <ul class="sort-btn"> 
       <li>
         <dl>  <!--description list 説明リスト-->

@@ -6,6 +6,7 @@
         </h2>
     </x-slot>
 
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <form method="POST" action="{{ route('team.create') }}">
         @csrf
 
@@ -33,5 +34,6 @@
             </x-primary-button>
         </div>
     </form>
+</div>
     
 </x-app-layout>
