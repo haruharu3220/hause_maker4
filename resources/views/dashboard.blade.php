@@ -13,8 +13,13 @@
                 <p>名前：{{$user->name}}</p>
                 <p>家：{{$team->team_name}}</p>
             </div>
-            
-            
+        
+        <h2>タグ一覧</h2>    
+        <ul class="grid">
+            @foreach ($tags as $tag)
+                <li>{{$tag->name}}</li>
+            @endforeach
+        </ul>
             
         </div>
     </div>

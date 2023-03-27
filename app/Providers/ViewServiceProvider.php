@@ -9,7 +9,7 @@ use Auth;
 use Validator;
 use App\Models\User;
 use App\Models\Team;
-
+use App\Models\Tag;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -34,8 +34,10 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['photo.index', 'photo.create', 'photo.edit','tag.index','dashboard'], function ($view) {
             if (auth()->check()) {
                 $user = User::find(Auth::id());
-                $team = Team::find($user->team_id); 
-                $view->with(['user' => $user, 'team' => $team]);
+                $team = Team::find($user->team_id);
+                $tags = Tag::where('team_id', $team->id)->orderBy('updated_at', 'asc')->get();
+                // dd($user,$team,$tags);
+                $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
             }
         });
     }
