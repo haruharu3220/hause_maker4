@@ -12,8 +12,8 @@
                 <h1>私の情報</h1>
                 <p>名前：{{$user->name}}</p>
                 <p>家：{{$team->team_name}}</p>
-            
             </div>
+            
             
             
         </div>

@@ -9,16 +9,22 @@
             {{ __('マイページ') }}
           </x-nav-link>
         </div>
-        <!-- 🔽 一覧ページへのリンクを追加 -->
+        <!-- 一覧ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
             {{ __('一覧') }}
           </x-nav-link>
         </div>
-        <!-- 🔽 作成ページへのリンクを追加 -->
+        <!-- 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('photo.create')" :active="request()->routeIs('photo.create')">
             {{ __('画像投稿') }}
+          </x-nav-link>
+        </div>
+        <!-- タグページへのリンクを追加 -->
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('tag.index')" :active="request()->routeIs('tag.create')">
+            {{ __('タグ設定') }}
           </x-nav-link>
         </div>
 
