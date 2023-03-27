@@ -121,7 +121,7 @@
   <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
   <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
   <script src="{{ asset('js/test.js') }}"></script>
 
     

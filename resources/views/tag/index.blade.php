@@ -35,10 +35,27 @@
       </h2>
     </x-slot>
 
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        <form method="POST" action="{{ route('tag.store') }}">
+            @csrf
+            <div>
+                <x-input-label for="tagName" :value="__('タグ名')" />
+                <p>新しいタグを追加してください。</p>
+                <x-text-input id="tagName" class="block mt-1 w-full" type="text" name="tagName" :value="old('tagName')" required autofocus autocomplete="tagName" />
+                <x-input-error :messages="$errors->get('tagName')" class="mt-2" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <x-primary-button class="ml-4">
+                    {{ __('登録') }}
+                </x-primary-button>
+            </div>
+        </form>
+    </div>
   
   <ul class="grid">
     @foreach ($tags as $tag)
-        {{$tag->name}}
+        <li>{{$tag->name}}</li>
 
     @endforeach
   </ul>
@@ -63,6 +80,3 @@
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
     <script src="{{ asset('js/test.js') }}"></script>
-
-    
-
