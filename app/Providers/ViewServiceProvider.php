@@ -31,7 +31,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         //ビューコンポーザーを登録したい画面を以下に記入
-        View::composer(['photo.index', 'photo.create', 'photo.edit','dashboard'], function ($view) {
+        View::composer(['photo.index', 'photo.create', 'photo.edit','tag.index','dashboard'], function ($view) {
             if (auth()->check()) {
                 $user = User::find(Auth::id());
                 $team = Team::find($user->team_id); 

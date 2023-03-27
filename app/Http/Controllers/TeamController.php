@@ -36,7 +36,7 @@ class TeamController extends Controller
         $user->team_id = $team->id;
         $user->save();
         
-        dd($team,$user);
-        return view('dashboard', compact('$team', '$user'));
+        // dd($team,$user);
+        return view('dashboard');
     }
 }

@@ -11,10 +11,11 @@ class TagController extends Controller
 {
     //
     public function index(){
-        $name = Auth::user()->team_id;
-        // dd($name);
-        // $tag = 
-        return response()->view('tag.index');
+        $team = Auth::user()->team_id;
+        $tags = Tag::where('team_id', $team)->orderBy('updated_at', 'desc')->get();
+        
+        return response()->view('tag.index', compact('tags'));
+
     }
     
 }
