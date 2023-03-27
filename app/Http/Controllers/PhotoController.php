@@ -13,7 +13,9 @@ class PhotoController extends Controller
     
     //index
     public function index(){
-        $photos = Photo::getAllOrderByUpdated_at();
+        // $photos = Photo::getAllOrderByUpdated_at();
+        $photos = Photo::getByTeamIdOrderByUpdated_at(Auth::user()->team_id);
+        
         return response()->view('photo.index',compact('photos'));
     }
     
@@ -53,6 +55,7 @@ class PhotoController extends Controller
         // $result = Photo::create($data);
 
         $photo -> user_id = Auth::user() -> id;
+        $photo -> team_id = Auth::user() -> team_id;
         $photo-> save();
     
         //tagの登録はまだ
