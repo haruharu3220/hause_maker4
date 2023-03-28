@@ -4,23 +4,28 @@
             {{ __('マイページ') }}
         </h2>
     </x-slot>
-
+    @if($team!="")
     <p>{{$team->team_name}}</p>
+    @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <h1>私の情報</h1>
                 <p>名前：{{$user->name}}</p>
+                @if($team!="")
                 <p>家：{{$team->team_name}}</p>
+                @endif
             </div>
         
+        @if($tags!="")
         <h2>タグ一覧</h2>    
         <ul class="grid">
             @foreach ($tags as $tag)
                 <li>{{$tag->name}}</li>
             @endforeach
         </ul>
-            
+        @endif
+    
         </div>
     </div>
 </x-app-layout>

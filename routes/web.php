@@ -34,7 +34,9 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth')->group(function () {	
-    Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');	
+    Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');
+    Route::get('/team/option', [TeamController::class, 'option'])->name('team.option');
+    
     Route::post('/team/create', [TeamController::class, 'register'])->name('team.create');	
 });
 

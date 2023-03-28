@@ -12,7 +12,9 @@ class RouteServiceProvider extends ServiceProvider
 {
 
     public const TEAM_CREATE = '/team/create';
+    public const TEAM_OPTION = '/team/option';
     public const HOME = '/dashboard';
+    
     
     
 

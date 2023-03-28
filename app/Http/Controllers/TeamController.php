@@ -20,6 +20,10 @@ class TeamController extends Controller
         return view('team.team');
     }
     
+    public function option(){
+        return view('team.option');
+    }
+    
     public function register(Request $request){
     
         $request->validate([
