@@ -24,6 +24,21 @@ class TeamController extends Controller
         return view('team.option');
     }
     
+    public function join(){
+        return view('team.join');
+    }
+    
+    public function store(Request $request){
+        // dd($request->team_id);
+        $user = User::find(Auth::id());
+        $team = Team::where('original_id',$request->team_id)->first();
+        // dd($team->id);
+        $user->team_id = $team->id;
+        // dd($team,$user->team_id);
+        $user->save();
+        return redirect()->route('dashboard');
+    }
+    
     public function register(Request $request){
     
         $request->validate([

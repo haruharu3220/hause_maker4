@@ -16,6 +16,11 @@
                 <p>家：{{$team->team_name}}</p>
                 @else
                 <p>家：家族設定していません。</p>
+                <a href="/team/join">
+                    <x-secondary-button class="ml-3">
+                    {{ __('家族に参加') }}
+                    </x-secondary-button>
+                </a>                
                 <a href="/team/create">
                     <x-secondary-button class="ml-3">
                     {{ __('家族ID作成') }}
