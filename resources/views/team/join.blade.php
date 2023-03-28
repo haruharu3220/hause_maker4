@@ -19,7 +19,7 @@
                 {{ __('ログイン') }}
             </x-primary-button>
             
-            <a href="/">
+            <a href="/team/option">
                 <x-secondary-button class="ml-3">
                 {{ __('戻る') }}
                 </x-secondary-button>

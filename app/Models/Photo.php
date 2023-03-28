@@ -30,7 +30,8 @@ class Photo extends Model
     
     public static function getByTeamIdOrderByUpdated_at($team_id)
     {
-        return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->get();
+        // return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->get();
+        return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->paginate(25);
     }
   
 }

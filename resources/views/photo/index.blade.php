@@ -102,7 +102,7 @@
       </li>
     @endforeach
   </ul>
-  
+  {{$photos->links()}}
 <!-- モーダルウィンドウ -->
 <div class="modal-wrapper">
   <div id="modal">
