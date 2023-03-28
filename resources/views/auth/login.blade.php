@@ -40,8 +40,14 @@
             @endif
 
             <x-primary-button class="ml-3">
-                {{ __('Log in') }}
+                {{ __('ログイン') }}
             </x-primary-button>
+            
+            <a href="/">
+                <x-secondary-button class="ml-3">
+                {{ __('戻る') }}
+                </x-secondary-button>
+            </a>
         </div>
     </form>
 </x-guest-layout>
