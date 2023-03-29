@@ -9,7 +9,6 @@ use App\Models\Photo;
 use App\Models\Type;
 
 
-
 class PhotoController extends Controller
 {
     
@@ -51,7 +50,6 @@ class PhotoController extends Controller
             $photo -> image = $name;
         }
         
-        // dd($name);
         // 編集 フォームから送信されてきたデータとユーザIDをマージし，DBにinsertする
         $data = $request->merge(['user_id' => Auth::user()->id])->all();
         // $result = Photo::create($data);
@@ -61,9 +59,11 @@ class PhotoController extends Controller
         
         // dd($request->type);
         $photo -> type_id = $request->type;
-        $photo-> save();
+        $photo -> save();
     
-        //tagの登録はまだ
+        //photoに紐づくtagを中間テーブルに登録
+        $photo -> tags()->attach($request->tags);
+        
         // dd($request);
         // photo.index」にリクエスト送信（一覧ページに移動）
         return redirect()->route('photo.index');

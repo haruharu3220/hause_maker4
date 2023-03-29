@@ -26,4 +26,10 @@ class Tag extends Model
         return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->get();
     }
     
+    public function photos()
+    {
+        return $this->belongsToMany(Photo::class)->withTimestamps();
+        
+    }
+
 }
