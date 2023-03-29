@@ -55,8 +55,7 @@
   
   <ul class="grid">
     @foreach ($tags as $tag)
-        <li>{{$tag->name}}</li>
-
+        <li class='{{$tag->name}}'>{{$tag->name}}</li>
     @endforeach
   </ul>
   
