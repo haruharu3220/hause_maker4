@@ -68,11 +68,9 @@
               <!--Tags-->
               
               <select class="select2 html block m-4 w-full" name="tags[]" multiple>
-                  <option value="a">キッチン</option>
-                  <option value="b">リビング</option>
-                  <option value="c">風呂</option>
-                  <option value="d">洗面</option>
-                  <option value="e">和室</option>
+              @foreach($tags as $tag)
+                  <option value="{{$tag->id}}">{{$tag->name}}</option>
+              @endforeach
               </select>
               
               {{--<!--<select class="select2 html block mt-1 w-full" name="tags[]" multiple>-->
