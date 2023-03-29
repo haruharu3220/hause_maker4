@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\Models\Photo;
+use App\Models\Type;
+
 
 
 class PhotoController extends Controller
@@ -56,10 +58,13 @@ class PhotoController extends Controller
 
         $photo -> user_id = Auth::user() -> id;
         $photo -> team_id = Auth::user() -> team_id;
+        
+        // dd($request->type);
+        $photo -> type_id = $request->type;
         $photo-> save();
     
         //tagの登録はまだ
-
+        // dd($request);
         // photo.index」にリクエスト送信（一覧ページに移動）
         return redirect()->route('photo.index');
     }

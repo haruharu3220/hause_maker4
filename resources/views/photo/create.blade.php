@@ -14,7 +14,7 @@
 
       <!-- Fonts -->
       <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+      <link rel="stylesheet" href="{{ asset('css/radiobutton.css') }}">
       <style>
           body {
               font-family: 'Nunito', sans-serif;
@@ -35,15 +35,16 @@
           <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 ">
             @include('common.errors')
             <form class="mb-6" action="{{ route('photo.store') }}" method="POST" enctype="multipart/form-data">
-
               @csrf
+              
+              <!--画像ファイルの選択-->
               <div class="flex flex-col mb-4">
-                <x-input-label for="image" :value="__('Picture')" />
+                <x-input-label for="image" :value="__('画像')" />
                 <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required autofocus onchange="previewImage(this)"/>
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
               </div>
               <p>
-              Preview:<br>
+              <!--Preview:<br>-->
               <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
               </p>
               <script>
@@ -57,9 +58,16 @@
               }
               </script>
 
+              <x-input-label for="image" :value="__('タイプ')" />
+                <input type="radio" name="type" value="1"> 写真
+                <input type="radio" name="type" value="2"> 図面
+                <input type="radio" name="type" value="3"> 書類・メモ
+                <input type="radio" name="type" value="4"> その他
+
+              
               <!--Tags-->
               
-              <select class="select2 html block mt-1 w-full" name="tags[]" multiple>
+              <select class="select2 html block m-4 w-full" name="tags[]" multiple>
                   <option value="a">キッチン</option>
                   <option value="b">リビング</option>
                   <option value="c">風呂</option>

@@ -31,7 +31,7 @@
 
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-       {{$team->team_name}}の{{ __('画像一覧ページ') }}
+       {{$team->team_name}}の{{ __('タグ設定画面') }}
       </h2>
     </x-slot>
 
