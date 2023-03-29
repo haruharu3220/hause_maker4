@@ -50,9 +50,9 @@
           <dt>設備・部屋</dt>
           <dd>
             <ul>
-              <li class="color01">キッチン1</li>
-              <li class="color02">リビング</li>
-              <li class="color03">和室</li> 
+              @foreach($tags as $tag)
+                <li class="color01 {{$tag->id}}">{{$tag->name}}</li>
+              @endforeach
             </ul>
           </dd>
         </dl>
