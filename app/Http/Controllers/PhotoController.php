@@ -7,6 +7,8 @@ use Auth;
 use Validator;
 use App\Models\Photo;
 use App\Models\Type;
+use App\Models\Tag;
+
 
 
 class PhotoController extends Controller
@@ -16,7 +18,26 @@ class PhotoController extends Controller
     public function index(){
         // $photos = Photo::getAllOrderByUpdated_at();
         $photos = Photo::getByTeamIdOrderByUpdated_at(Auth::user()->team_id);
+        foreach($photos as $photo){
+            
+            // $tags = Tag::where('team_id', $team)->get();
+            $results = Photo::with("tags")->where('id', $photo->id)->get();
+            // dd($results);
+            // dd($results->$tags);
+            $classname ="";
+            foreach($results as $result){
+                foreach($result->tags as $tag) {
+                    $classname .= "tag_no_";
+                    $classname .= $tag->id." ";
+                }
+            }
+            // dd($classname);
+            $photo ->tag_no = $classname;
+        }
+
         
+        
+        // dd($photos);
         return response()->view('photo.index',compact('photos'));
     }
     

@@ -26,7 +26,7 @@ var grid = new Muuri('.grid', {
 $('.sort-btn ul li').on('click',function(){//並び替えボタンをクリックしたら
 	var className = $(this).attr("class")//クリックしたボタンのクラス名を取得
 	className = className.split(' '); //「.sort-btn ul li」のクラス名を分割して配列にする
-
+	console.log(className);
     //ボタンにクラス名activeがついている場合
 	if($(this).hasClass("active")){	
 		if(className[0] != "all"){							//ボタンのクラス名がallでなければ

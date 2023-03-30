@@ -51,7 +51,7 @@
           <dd>
             <ul>
               @foreach($tags as $tag)
-                <li class="color01 {{$tag->id}}">{{$tag->name}}</li>
+                <li class="tag_no_{{$tag->id}}">{{$tag->name}}</li>
               @endforeach
             </ul>
           </dd>
@@ -74,7 +74,7 @@
   <ul class="grid">
     @foreach ($photos as $photo)
       <!--itemというクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
-      <li class="item {{$photo->image}} {{$photo->id}}">
+      <li class="item {{$photo->tag_no}}">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
 

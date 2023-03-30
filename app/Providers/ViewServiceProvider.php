@@ -41,14 +41,15 @@ class ViewServiceProvider extends ServiceProvider
             'dashboard'], function ($view) {
             if (auth()->check()) {
                 $user = User::find(Auth::id());
+                
                 if($user->team_id != NULL){
-                $team = Team::find($user->team_id);
-                $tags = Tag::where('team_id', $team->id)->orderBy('updated_at', 'asc')->get();
-                $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
+                    $team = Team::find($user->team_id);
+                    $tags = Tag::where('team_id', $team->id)->orderBy('updated_at', 'asc')->get();
+                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
                 }else{
-                $team ="";
-                $tags ="";
-                $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
+                    $team ="";
+                    $tags ="";
+                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
                 }
                 // dd($user,$team,$tags);
 
