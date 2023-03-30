@@ -74,7 +74,6 @@
   
   <ul class="grid">
     @foreach ($photos as $photo)
-      <!--itemというクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
       <li class="item {{$photo->tag_no}} cat03">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
@@ -82,6 +81,11 @@
           <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
+          @foreach ($photo->tag_names as $tag_name)
+          <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+          @endforeach
+          
+          
           <div class="flex">
             <!--更新ボタン-->
             <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">

@@ -25,14 +25,19 @@ class PhotoController extends Controller
             // dd($results);
             // dd($results->$tags);
             $classname ="";
+            $tagnames = [];
             foreach($results as $result){
                 foreach($result->tags as $tag) {
                     $classname .= "tag_no_";
                     $classname .= $tag->id." ";
+                    array_push($tagnames,$tag->name);
                 }
             }
             // dd($classname);
             $photo ->tag_no = $classname;
+            $photo ->tag_names = $tagnames;
+            // dd($photo);
+            
         }
 
         
