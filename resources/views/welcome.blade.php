@@ -37,7 +37,7 @@
                 </div>
             @endif
             <dev class="main">
-                <img class="family-picture" src="{{ asset('storage/res/family.jpg')}}"  >
+                <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
                 <h1>aaa</h1>
             </div>
         </div>
