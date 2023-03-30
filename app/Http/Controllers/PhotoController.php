@@ -15,9 +15,29 @@ class PhotoController extends Controller
 {
     
     //index
-    public function index(){
-        // $photos = Photo::getAllOrderByUpdated_at();
-        $photos = Photo::getByTeamIdOrderByUpdated_at(Auth::user()->team_id);
+    public function index(Request $request){
+        
+        $team_id = Auth::user()->team_id;
+    
+        $startDate = "2000-01-01";
+        $endDate = "2100-01-01";
+        
+        if($request->input('start') != null){
+            $startDate = $request->input('start');
+        }
+        if($request->input('end') != null){
+            $endDate = $request->input('end');
+        }
+
+        $query = Photo::query()
+            ->where('team_id', $team_id)
+            ->where('updated_at', '>=', $startDate)
+            ->where('updated_at', '<=', $endDate)
+            ->orderBy('updated_at', 'desc');
+
+        $photos = $query->paginate(25);
+        
+        // dd($photos);
         foreach($photos as $photo){
             
             // $tags = Tag::where('team_id', $team)->get();
@@ -39,8 +59,6 @@ class PhotoController extends Controller
             // dd($photo);
             
         }
-
-        
         
         // dd($photos);
         return response()->view('photo.index',compact('photos'));

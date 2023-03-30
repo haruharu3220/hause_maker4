@@ -33,8 +33,7 @@ class Photo extends Model
         // return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->get();
         return self::where('team_id', $team_id)->orderBy('updated_at', 'desc')->paginate(25);
     }
-  
-  
+    
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();

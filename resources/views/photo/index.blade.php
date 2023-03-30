@@ -35,6 +35,20 @@
        {{$team->team_name}}の{{ __('画像一覧ページ') }}
       </h2>
     </x-slot>
+    
+
+<form action="{{ route('photo.index') }}" method="GET">
+        <h2>検索</h2>
+    <p>開始日：</p>
+    <input type="date" name="start">
+    
+    <p>~終了日：</p>
+    <input type="date" name="end">
+
+    <button type="submit">送信</button>
+</form>
+    
+    
     <ul class="sort-btn"> 
       <li>
         <dl>  <!--description list 説明リスト-->
