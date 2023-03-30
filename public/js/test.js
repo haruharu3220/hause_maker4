@@ -74,20 +74,20 @@ function filterDo(){
 });
 
 
-$(function() {
-  // 画像をクリックした時にモーダルウィンドウを表示する
-  $('.modal-trigger').click(function() {
-    console.log("あああ");
-    // 画像のパスを取得する
-    var imgSrc = $(this).attr('src');
-    // モーダルウィンドウに画像を表示する
-    $('#modal .modal-content img').attr('src', imgSrc);
-    // モーダルウィンドウを表示する
-    $('#modal').fadeIn();
-  });
+// $(function() {
+//   // 画像をクリックした時にモーダルウィンドウを表示する
+//   $('.modal-trigger').click(function() {
+//     console.log("あああ");
+//     // 画像のパスを取得する
+//     var imgSrc = $(this).attr('src');
+//     // モーダルウィンドウに画像を表示する
+//     $('#modal .modal-content img').attr('src', imgSrc);
+//     // モーダルウィンドウを表示する
+//     $('#modal').fadeIn();
+//   });
   
-  // モーダルウィンドウを閉じる
-  $('#modal .modal-close').click(function() {
-    $('#modal').fadeOut();
-  });
-});
+//   // モーダルウィンドウを閉じる
+//   $('#modal .modal-close').click(function() {
+//     $('#modal').fadeOut();
+//   });
+// });

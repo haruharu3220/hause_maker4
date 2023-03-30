@@ -23,7 +23,8 @@
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">-->
+    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
 </head>
   
@@ -74,11 +75,11 @@
   <ul class="grid">
     @foreach ($photos as $photo)
       <!--itemというクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
-      <li class="item {{$photo->tag_no}}">
+      <li class="item {{$photo->tag_no}} cat03">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
 
-          <a href="{{$photo->image}}" data-fancybox="group2" data-caption="グループ2キャプション">
+          <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
           <div class="flex">
@@ -103,16 +104,28 @@
     @endforeach
   </ul>
   {{$photos->links()}}
+  
+  
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'alwaysShowNavOnTouchDevices',true
+    })
+</script>
+  
+  
+  
 <!-- モーダルウィンドウ -->
-<div class="modal-wrapper">
-  <div id="modal">
-    <div class="modal-content">
-      <img src="" alt="">
+<!--<div class="modal-wrapper">-->
+<!--  <div id="modal">-->
+<!--    <div class="modal-content">-->
+<!--      <img src="" alt="">-->
       
-    </div>
-    <div class="modal-close">×</div>
-  </div>
-</div>
+<!--    </div>-->
+<!--    <div class="modal-close">×</div>-->
+<!--  </div>-->
+<!--</div>-->
 
   </x-app-layout> 
 
@@ -122,6 +135,7 @@
   <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
+  <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/test.js') }}"></script>
 
     
