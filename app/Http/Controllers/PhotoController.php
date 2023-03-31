@@ -8,6 +8,7 @@ use Validator;
 use App\Models\Photo;
 use App\Models\Type;
 use App\Models\Tag;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -156,12 +157,32 @@ class PhotoController extends Controller
         //     ->withErrors($validator);
         // }
         //データ更新処理
-        $result = Photo::find($id)->update($request->all());
-        $user = User::find(Auth::id());
-        $team = Team::find($user->team_id);
-        // return redirect()->route('photo.index');
         
-        return view('photo.index', compact('$team', '$user'));
+        // dd($request); 
+        if($request->type){
+            $photo = Photo::find($id);
+            $photo->type_id = $request->type;
+            $photo->save();
+        }
+        
+        if($request->tags){
+            $photo = Photo::find($id);
+        
+            // 既存のタグ関連を削除
+            DB::table('photo_tag')->where('photo_id', $id)->delete();
+        
+            // 新しいタグ関連を作成
+            foreach ($request->tags as $tag_id) {
+                DB::table('photo_tag')->insert([
+                    'photo_id' => $id,
+                    'tag_id' => $tag_id,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        }
+        
+        return redirect()->route('photo.index');
         
     }
     
