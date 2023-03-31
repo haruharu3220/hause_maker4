@@ -40,7 +40,7 @@ class PhotoController extends Controller
         
         // dd($photos);
         foreach($photos as $photo){
-            
+            $type = Type::where('id', $photo->type_id)->first()->name;
             // $tags = Tag::where('team_id', $team)->get();
             $results = Photo::with("tags")->where('id', $photo->id)->get();
             // dd($results);
@@ -55,6 +55,7 @@ class PhotoController extends Controller
                 }
             }
             // dd($classname);
+            $photo ->type_name = $type;
             $photo ->tag_no = $classname;
             $photo ->tag_names = $tagnames;
             // dd($photo);

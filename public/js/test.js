@@ -1,93 +1,66 @@
-$(window).on('load',function(){	//画面遷移時にギャラリーの画像が被らないように、すべての読み込みが終わった後に実行する
-
-//＝＝＝Muuriギャラリープラグイン設定
-var grid = new Muuri('.grid', {
-    //アイテムのドラッグを有効にする
-    dragEnabled: true,
-    
-    //アイテムの表示速度※オプション。入れなくても動作します
+$(window).on('load', function () {
+  var grid = new Muuri('.grid', {
     showDuration: 600,
     showEasing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
     hideDuration: 600,
     hideEasing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
-	
-    // アイテムの表示/非表示状態のスタイル※オプション。入れなくても動作します
     visibleStyles: {
-        opacity: '1',
-        transform: 'scale(1)'
+      opacity: '1',
+      transform: 'scale(1)'
     },
     hiddenStyles: {
-        opacity: '0',
-        transform: 'scale(0.5)'
-    } 
+      opacity: '0',
+      transform: 'scale(0.5)'
+    }
+  });
+
+  $('.sort-btn ul li').on('click', function () {
+    var className = $(this).attr("class");
+    className = className.split(' ');
+
+    if ($(this).hasClass("active")) {
+      if (className[0] != "all") {
+        $(this).removeClass("active");
+        var selectElms = $(".sort-btn ul li.active");
+        if (selectElms.length == 0) {
+          $(".sort-btn ul li.all").addClass("active");
+          grid.show('');
+        } else {
+          filterDo();
+        }
+      }
+    } else {
+      if (className[0] == "all") {
+        $(".sort-btn ul li").removeClass("active");
+        $(this).addClass("active");
+        grid.show('');
+      } else {
+        if ($(".all").hasClass("active")) {
+          $(".sort-btn ul li.all").removeClass("active");
+        }
+        $(this).addClass("active");
+        filterDo();
+      }
+    }
+  });
+
+  function filterDo() {
+    var selectElms = $(".sort-btn ul li.active");
+    var selectElemAry = [];
+    $.each(selectElms, function (index, selectElm) {
+      var className = $(this).attr("class");
+      className = className.split(' ');
+      selectElemAry.push("." + className[0]);
+    });
+
+    if (selectElemAry.length === 0 || selectElemAry.includes(".all")) {
+      grid.show('');
+    } else {
+      grid.filter(function (item) {
+        return selectElemAry.every(function (className) {
+          return item.getElement().classList.contains(className.substring(1));
+        });
+      });
+    }
+  }
 });
-
-//＝＝＝並び替えボタン設定
-$('.sort-btn ul li').on('click',function(){//並び替えボタンをクリックしたら
-	var className = $(this).attr("class")//クリックしたボタンのクラス名を取得
-	className = className.split(' '); //「.sort-btn ul li」のクラス名を分割して配列にする
-	console.log(className);
-    //ボタンにクラス名activeがついている場合
-	if($(this).hasClass("active")){	
-		if(className[0] != "all"){							//ボタンのクラス名がallでなければ
-			$(this).removeClass("active");					//activeクラスを消す
-			var selectElms = $(".sort-btn ul li.active");	//ボタン内にactiveクラスがついている要素を全て取得
-			if(selectElms.length == 0){						//取得した配列内にactiveクラスがついている要素がなければ
-				$(".sort-btn ul li.all").addClass("active");//ボタンallにactiveを追加し
-				grid.show('');								//ギャラリーの全ての画像を表示
-			}else{
-				filterDo();									//取得した配列内にactiveクラスがついている要素があれば並び替えを行う
-			}
-		}	
-	}
-    //ボタンにクラス名activeがついていない場合
-    else{
-		if(className[0] == "all"){							//ボタンのクラス名にallとついていたら
-			$(".sort-btn ul li").removeClass("active");		//ボタンのli要素の全てのactiveを削除し
-			$(this).addClass("active");						//allにactiveクラスを付与
-			grid.show('');									//ギャラリーの全ての画像を表示
-		}else{
-			if($(".all").hasClass("active")){				//allクラス名にactiveクラスが付いていたら
-				$(".sort-btn ul li.all").removeClass("active");//ボタンallのactiveクラスを消し
-			}
-			$(this).addClass("active");						//クリックしたチェックボックスへactiveクラスを付与
-			filterDo();										//並び替えを行う
-		}
-
-	}
-	
-});
-
-//＝＝＝画像の並び替え設定
-function filterDo(){
-	var selectElms = $(".sort-btn ul li.active");	//全てのボタンのactive要素を取得
-	var selectElemAry = [];							//activeクラスがついているボタンのクラス名（sortXX）を保存する配列を定義
-	$.each(selectElms, function(index, selectElm) {
-		var className = $(this).attr("class")		//activeクラスがついている全てのボタンのクラス名（sortXX）を取得
-		className = className.split(' ');			//ボタンのクラス名を分割して配列にし、
-		selectElemAry.push("."+className[0]);		//selectElemAry配列に、チェックのついたクラス名（sortXX）を追加
-	})
-	str = selectElemAry.join(',');				//selectElemAry配列に追加されたクラス名をカンマ区切りでテキストにして
-	grid.filter(str); 							//grid.filter(str);のstrに代入し、ボタンのクラス名とliにつけられたクラス名が一致したら出現
-}
-
-});
-
-
-// $(function() {
-//   // 画像をクリックした時にモーダルウィンドウを表示する
-//   $('.modal-trigger').click(function() {
-//     console.log("あああ");
-//     // 画像のパスを取得する
-//     var imgSrc = $(this).attr('src');
-//     // モーダルウィンドウに画像を表示する
-//     $('#modal .modal-content img').attr('src', imgSrc);
-//     // モーダルウィンドウを表示する
-//     $('#modal').fadeIn();
-//   });
-  
-//   // モーダルウィンドウを閉じる
-//   $('#modal .modal-close').click(function() {
-//     $('#modal').fadeOut();
-//   });
-// });

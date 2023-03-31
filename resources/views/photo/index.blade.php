@@ -62,6 +62,19 @@
       </li>
       <li>
         <dl>
+          <dt>タイプ</dt>
+          <dd>
+            <ul>
+              @foreach($types as $type)
+                <li class="type_no_{{$type->id}}">{{$type->name}}</li>
+              @endforeach
+            </ul>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+        <dl>
           <dt>設備・部屋</dt>
           <dd>
             <ul>
@@ -88,13 +101,16 @@
   
   <ul class="grid">
     @foreach ($photos as $photo)
-      <li class="item {{$photo->tag_no}} cat03">
+      <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
 
           <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
+          
+          <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
+          
           @foreach ($photo->tag_names as $tag_name)
           <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
           @endforeach

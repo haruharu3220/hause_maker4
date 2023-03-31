@@ -10,6 +10,8 @@ use Validator;
 use App\Models\User;
 use App\Models\Team;
 use App\Models\Tag;
+use App\Models\Type;
+
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -45,7 +47,8 @@ class ViewServiceProvider extends ServiceProvider
                 if($user->team_id != NULL){
                     $team = Team::find($user->team_id);
                     $tags = Tag::where('team_id', $team->id)->orderBy('updated_at', 'asc')->get();
-                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
+                    $types = Type::all();
+                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'types' => $types]);
                 }else{
                     $team ="";
                     $tags ="";
