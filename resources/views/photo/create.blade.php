@@ -72,14 +72,7 @@
                   <option value="{{$tag->id}}">{{$tag->name}}</option>
               @endforeach
               </select>
-              
-              {{--<!--<select class="select2 html block mt-1 w-full" name="tags[]" multiple>-->
-              <!--    <option value="キッチン" {{ in_array('キッチン', $tagNames) ? 'selected' : '' }}>キッチン</option>-->
-              <!--    <option value="リビング" {{ in_array('リビング', $tagNames) ? 'selected' : '' }}>リビング</option>-->
-              <!--    <option value="風呂" {{ in_array('風呂', $tagNames) ? 'selected' : '' }}>風呂</option>-->
-              <!--    <option value="洗面" {{ in_array('洗面', $tagNames) ? 'selected' : '' }}>洗面</option>-->
-              <!--    <option value="和室" {{ in_array('和室', $tagNames) ? 'selected' : '' }}>和室</option>-->
-              <!--</select>   -->--}}
+
               <script>
 
                 $(".select2.html").select2({
