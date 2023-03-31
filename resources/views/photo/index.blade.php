@@ -132,18 +132,6 @@
     })
 </script>
   
-  
-  
-<!-- モーダルウィンドウ -->
-<!--<div class="modal-wrapper">-->
-<!--  <div id="modal">-->
-<!--    <div class="modal-content">-->
-<!--      <img src="" alt="">-->
-      
-<!--    </div>-->
-<!--    <div class="modal-close">×</div>-->
-<!--  </div>-->
-<!--</div>-->
 
   </x-app-layout> 
 

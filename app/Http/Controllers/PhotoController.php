@@ -125,6 +125,18 @@ class PhotoController extends Controller
     public function edit($id)
     {
         $photo = Photo::find($id);
+
+        $results = Photo::with("tags")->where('id', $photo->id)->get();
+        $tagnames = [];
+            foreach($results as $result){
+                foreach($result->tags as $tag) {
+                    array_push($tagnames,$tag->name);
+                }
+            }
+        
+        $photo ->tag_names = $tagnames;
+        // dd($photo);
+        // dd($photo->tag_names);
         return response()->view('photo.edit', compact('photo'));
     }
 

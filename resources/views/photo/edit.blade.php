@@ -41,42 +41,37 @@
           <form class="mb-6" action="{{ route('photo.update',$photo->id) }}" method="POST">
             @method('put')
             @csrf
+        
+            <!--画像-->
+            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" style="height:300px;">
             
- 
-            <!--Tags-->
-            <!--<select class="select2 html block mt-1 w-full" name="tags[]"   multiple>-->
-            <!--    <option value="a">キッチン</option>-->
-            <!--    <option value="b">リビング</option>-->
-            <!--    <option value="c">風呂</option>-->
-            <!--    <option value="d">洗面</option>-->
-            <!--    <option value="e">和室</option>-->
-            <!--</select>-->
-              <select class="select2 html block mt-1 w-full" name="tags[]" multiple>
-                  <option value="a">キッチン</option>
-                  <option value="b">リビング</option>
-                  <option value="c">風呂</option>
-                  <option value="d">洗面</option>
-                  <option value="e">和室</option>
-              </select>
+            <x-input-label for="image" :value="__('タイプ')" />
+                <input type="radio" name="type" value="1"> 写真
+                <input type="radio" name="type" value="2"> 図面
+                <input type="radio" name="type" value="3"> 書類・メモ
+                <input type="radio" name="type" value="4"> その他
+
+            
+            <select class="select2 html block mt-1 w-full" name="tags[]" multiple>
+              @foreach($tags as $tag)
+                  <option value="{{$tag->name}}" {{ in_array($tag->name, $photo->tag_names ?? []) ? 'selected' : '' }}>{{$tag->name}}</option>
+              @endforeach
+            </select>
             <script>
               $(".select2.html").select2({
                 placeholder: "タグを選択"
               });
             </script>
-            
-            <!--画像-->
-            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" style="height:300px;">
-            
             <div class="flex items-center justify-end mt-4">
               <!--前画面に戻るボタン-->
               <a href="{{ url()->previous() }}">
                 <x-secondary-button class="ml-3">
-                  {{ __('Back') }}
+                  {{ __('戻る') }}
                 </x-primary-button>
               </a>
               <!--更新ボタン-->
               <x-primary-button class="ml-3">
-                {{ __('Update') }}
+                {{ __('更新') }}
               </x-primary-button>
             </div>
           </form>
