@@ -33,7 +33,7 @@ class PhotoController extends Controller
             ->where('team_id', $team_id)
             ->where('updated_at', '>=', $startDate)
             ->where('updated_at', '<=', $endDate)
-            ->orderBy('updated_at', 'desc');
+            ->orderBy('updated_at', 'asc');
 
         $photos = $query->paginate(25);
         

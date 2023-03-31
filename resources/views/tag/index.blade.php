@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>イエつく！！</title>
+    <title>エつく！！</title>
     
     <!-- Select2.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
@@ -55,21 +55,20 @@
   
   <ul class="grid">
     @foreach ($tags as $tag)
-        <li class='{{$tag->name}}'>{{$tag->name}}</li>
+    <li class="flex">
+        <span class="w-full {{$tag->name}}">{{$tag->name}}</span>
+         <!-- 削除ボタン -->
+        <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" class="text-left">
+          @method('delete')
+          @csrf
+            <button class="destroy" type="submit">
+             <i class="fas fa-trash"></i>
+            </button>
+        </form>
+    </li>
     @endforeach
   </ul>
   
-<!-- モーダルウィンドウ -->
-<div class="modal-wrapper">
-  <div id="modal">
-    <div class="modal-content">
-      <img src="" alt="">
-      
-    </div>
-    <div class="modal-close">×</div>
-  </div>
-</div>
-
   </x-app-layout> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
