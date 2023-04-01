@@ -37,9 +37,9 @@
                     @endauth
                 </div>
             @endif
-            <dev class="main">
+            <div class="main">
                 <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
-                <h1>aaa</h1>
+                <h1>My Home Journey</h1>
             </div>
         </div>
         
