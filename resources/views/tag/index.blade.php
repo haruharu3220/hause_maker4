@@ -53,21 +53,21 @@
         </form>
     </div>
   
-  <ul class="grid">
     @foreach ($tags as $tag)
-    <li class="flex">
-        <span class="w-full {{$tag->name}}">{{$tag->name}}</span>
-         <!-- 削除ボタン -->
-        <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" class="text-left">
-          @method('delete')
-          @csrf
-            <button class="destroy" type="submit">
-             <i class="fas fa-trash"></i>
-            </button>
-        </form>
-    </li>
+    <div class="w-1/5">
+        <li class="flex">
+            <span class="{{$tag->name}}">{{$tag->name}}</span>
+             <!-- 削除ボタン -->
+            <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" class="text-left">
+              @method('delete')
+              @csrf
+                <button class="destroy" type="submit">
+                 <i class="fas fa-trash"></i>
+                </button>
+            </form>
+        </li>
+    </div>
     @endforeach
-  </ul>
   
   </x-app-layout> 
 
