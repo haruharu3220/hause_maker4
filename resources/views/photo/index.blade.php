@@ -20,9 +20,9 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
-    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
-    
+    <!--<link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">-->
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
@@ -37,7 +37,6 @@
       </h2>
     </x-slot>
     
-
     <form action="{{ route('photo.index') }}" method="GET">
             <h2>検索</h2>
         <p>開始日：</p>
@@ -50,7 +49,7 @@
     </form>
     
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
-    <div class="contents">
+    <div class="flex">
       <div id="sidebar">
         <nav id="global-nav">
           <ul class="sort-btn">
@@ -85,43 +84,47 @@
     
     
       <div class="main_content">
-        <!--ここから-->
- 
-        <!--ここまで-->
       
         <ul class="grid">
         @foreach ($photos as $photo)
+          <!--<i class="fa-solid fa-star" style="color: #7a7a71;"></i>-->
           <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
             <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
             <div class="item-content">
-              <div>投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
-              <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
+              <div class="photo_date">
+                <div>投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+              </div>
+              <div class="photo_area">
+                <i class="star fas fa-star fa-2xl" style="color: #7a7a71;"> </i>
+                <i class="fa-regular fa-star fa-2xl star"></i>
+                <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
                   <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
-              </a>
-              
-              <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
-              
-              @foreach ($photo->tag_names as $tag_name)
-              <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
-              @endforeach
-              
-              
-              <div class="flex">
-                <!--更新ボタン-->
-                <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
+                </a>
+              </div>
+              <div class="photo_attribute">
+                <!--タイプを表示-->
+                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
+                <!--タグを表示-->
+                @foreach ($photo->tag_names as $tag_name)
+                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+                @endforeach
+                <div class="flex p-4">
+                  <!--更新ボタン-->
+                  <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
                     @csrf
                       <button type="submit">
                        <i class="far fa-edit"></i>
                       </button>
-                </form>
-                <!--削除ボタン-->
-                <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
+                  </form>
+                  <!--削除ボタン-->
+                  <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
                     @method('delete')
                     @csrf
                       <button class="destroy" type="submit">
                        <i class="fas fa-trash"></i>
                       </button>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </li>
