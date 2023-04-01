@@ -32,9 +32,9 @@ class PhotoController extends Controller
 
         $query = Photo::query()
             ->where('team_id', $team_id)
-            ->where('updated_at', '>=', $startDate)
-            ->where('updated_at', '<=', $endDate)
-            ->orderBy('updated_at', 'asc');
+            ->where('created_at', '>=', $startDate)
+            ->where('created_at', '<=', $endDate)
+            ->orderBy('created_at', 'desc');
 
         $photos = $query->paginate(25);
         
@@ -182,10 +182,22 @@ class PhotoController extends Controller
                 ]);
             }
         }
-        
         return redirect()->route('photo.index');
-        
     }
     
+    public function favorite($id)
+    {
+        $photo =Photo::find($id);
+        $photo->iine = true;
+        $photo->save();
+        return redirect()->route('photo.index');
+    }
+    public function unfavorite($id)
+    {
+        $photo =Photo::find($id);
+        $photo->iine = false;
+        $photo->save();
+        return redirect()->route('photo.index');
+    }
 }
 

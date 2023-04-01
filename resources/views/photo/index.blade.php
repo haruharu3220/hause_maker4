@@ -91,12 +91,26 @@
           <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
             <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
             <div class="item-content">
-              <div class="photo_date">
+              <div class="flex photo_date">
                 <div>投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+                @if($photo->iine != true)
+                  <form action="{{ route('favorite', $photo->id) }}" method="POST" class="text-left">
+                      @csrf
+                    <button>
+                      <i class="fa-regular fa-star fa-2xl star"></i>
+                    </button>
+                  </form>
+                @else
+                  <form action="{{ route('unfavorite', $photo->id) }}" method="POST" class="text-left">
+                    @csrf
+                    <button>
+                      <i class="fa-solid fa-star fa-2xl star" style="color: #e7f519;"></i>
+                    </button>
+                  </form>
+                @endif
+                
               </div>
               <div class="photo_area">
-                <i class="star fas fa-star fa-2xl" style="color: #7a7a71;"> </i>
-                <i class="fa-regular fa-star fa-2xl star"></i>
                 <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
                   <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
                 </a>

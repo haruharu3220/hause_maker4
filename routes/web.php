@@ -9,6 +9,8 @@ use App\Http\Controllers\TeamController;
 
 Route::middleware('auth')->group(function () {
     //RESTfulルートを自動的に生成
+    Route::post('photo/{photo}/favorite', [PhotoController::class, 'favorite'])->name('favorite');
+    Route::post('photo/{photo}/unfavorite', [PhotoController::class, 'unfavorite'])->name('unfavorite');
     Route::resource('photo', PhotoController::class);
     Route::resource('tag', TagController::class);
     // Route::post('/tag', [TagController::class,'create'])->name('setting.tag');
