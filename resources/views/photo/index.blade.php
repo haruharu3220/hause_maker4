@@ -104,7 +104,7 @@
       <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
-
+          <div>投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
           <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
