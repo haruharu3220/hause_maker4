@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel!!</title>
+        <title>My Hoem Album</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             @endif
             <div class="main">
                 <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
-                <h1>My Home Journey</h1>
+                <h1>My Home Album</h1>
             </div>
         </div>
         
