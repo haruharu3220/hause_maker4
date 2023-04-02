@@ -77,7 +77,14 @@
 
                                         <br>
                                         <div class="box">
-                                            <p>内容が入ります。{{$tag->memo}}</p>
+                                            <h3>メモ</h3>
+                                            <p>{{$tag->memo}}</p>
+                                            <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
+                                            @csrf
+                                                <button>
+                                                  <i class="fa-regular fa-pen-to-square"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </section>
                                 </li>

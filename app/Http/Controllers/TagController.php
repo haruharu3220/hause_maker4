@@ -38,4 +38,29 @@ class TagController extends Controller
         return redirect()->route('tag.index');
 
     }
+    
+    public function memoedit($id){
+        $tag = Tag::find($id);
+        return response()->view('tag.edit', compact('tag'));
+    }
+    
+    
+    public function update(Request $request, $id){
+    //     //バリデーション
+    //   $validator = Validator::make($request->all(), [
+    //     'name' => 'required | max:191',
+    //   ]);
+    //   //バリデーション:エラー
+    //   if ($validator->fails()) {
+    //     return redirect()
+    //       -> route('memoedit', $id)
+    //       ->withInput()
+    //       ->withErrors($validator);
+    //     }
+        // dd($request);
+        $result = Tag::find($id)->update($request->all());
+        // dd($result);
+        return redirect()->route('dashboard');
+    }
+    
 }

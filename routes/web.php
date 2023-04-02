@@ -13,6 +13,8 @@ Route::middleware('auth')->group(function () {
     Route::post('photo/{photo}/unfavorite', [PhotoController::class, 'unfavorite'])->name('unfavorite');
     Route::resource('photo', PhotoController::class);
     Route::resource('tag', TagController::class);
+    Route::get('tag/{tag}', [TagController::class,'memoedit'])->name('memoedit');
+    Route::put('tag/{tag}/edit', [TagController::class,'update'])->name('tag.update');
     // Route::post('/tag', [TagController::class,'create'])->name('setting.tag');
     // Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
     
