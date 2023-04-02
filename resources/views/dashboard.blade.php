@@ -1,3 +1,32 @@
+<!-- resources/views/tweet/index.blade.php -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>イエつく！！</title>
+    
+    <!-- Select2.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <!-- jquery & iScroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Select2本体 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/test.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/side.css') }}">
+</head>
+
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -38,16 +67,30 @@
             <div class="bg-white p-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @if($tags!="")
                 <h2>タグ一覧</h2>    
-                    <table class="grid">
-                        @foreach ($tags as $tag)
-                            <tr>
-                                <td>{{$tag->name}}</td>
-                                <td>{{$tag->status}}</td>
-                            </tr>
-                        @endforeach
-                    </table>
+                    <div class="grid">
+                        <ul class="accordion-area">
+                            @foreach ($tags as $tag)
+                                <li>                                       
+                                    <section class="grid flex">
+                                         <div class="status">{{$tag->status}}</div>
+                                        <h3 class="title">{{$tag->name}}</h3>
+
+                                        <br>
+                                        <div class="box">
+                                            <p>内容が入ります。{{$tag->memo}}</p>
+                                        </div>
+                                    </section>
+                                </li>
+                            @endforeach
+                        </ui>
+                    </div>
                 @endif
             </div>
         </div>
     </div>
 </x-app-layout>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/accordion.js') }}"></script>
+
+</body>
