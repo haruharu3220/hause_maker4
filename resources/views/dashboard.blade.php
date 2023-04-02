@@ -38,11 +38,14 @@
             <div class="bg-white p-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @if($tags!="")
                 <h2>タグ一覧</h2>    
-                    <ul class="grid">
+                    <table class="grid">
                         @foreach ($tags as $tag)
-                            <li>{{$tag->name}}</li>
+                            <tr>
+                                <td>{{$tag->name}}</td>
+                                <td>{{$tag->status}}</td>
+                            </tr>
                         @endforeach
-                    </ul>
+                    </table>
                 @endif
             </div>
         </div>
