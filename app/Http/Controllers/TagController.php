@@ -19,16 +19,19 @@ class TagController extends Controller
     }
     
     public function store(Request $request){
-        
-        // dd($request->tagName);
-        dd($request);
-        $tag = new tag();
-        $tag -> team_id = Auth::user() ->team_id;
-        $tag -> name = $request->tagName;
-        $tag -> save();
-        
-        return redirect()->route('tag.index');
-    
+        // dd($request);
+        $tagNames = $request->tagName;
+        // dd($tagNames);
+        if (is_array($tagNames)) {
+            foreach ($tagNames as $tagName) {
+                $tag = new Tag();
+                $tag->team_id = Auth::user()->team_id;
+                $tag->name = $tagName;
+                $tag->save();
+            }
+        }
+
+        return redirect()->route('dashboard');
     }
     
     
