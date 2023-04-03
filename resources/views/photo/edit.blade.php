@@ -46,10 +46,10 @@
             <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" style="height:300px;">
             
             <x-input-label for="type" :value="__('タイプ')" />
-              <input type="radio" name="type" id="type-1" value="1"> 写真
-              <input type="radio" name="type" id="type-2" value="2"> 図面
-              <input type="radio" name="type" id="type-3" value="3"> 書類・メモ
-              <input type="radio" name="type" id="type-4" value="4"> その他
+              <input type="radio" name="type" id="type-1" value="1" @if($photo->type_id == "1") checked @endif> 写真
+              <input type="radio" name="type" id="type-2" value="2" @if($photo->type_id == "2") checked @endif> 図面
+              <input type="radio" name="type" id="type-3" value="3" @if($photo->type_id == "3") checked @endif> 書類・メモ
+              <input type="radio" name="type" id="type-4" value="4" @if($photo->type_id == "4") checked @endif> その他
             
             <select class="select2 html block mt-1 w-full" name="tags[]" multiple>
               @foreach($tags as $tag)
