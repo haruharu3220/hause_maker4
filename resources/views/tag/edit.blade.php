@@ -34,6 +34,21 @@
           <form class="mb-6" action="{{ route('tag.update',$tag->id) }}" method="POST">
             @method('put')
             @csrf
+            
+            <x-input-label for="status" :value="__('タイプ')" />
+              <div class="flex">
+              <input type="radio" name="status" id="type-1" value="未決定">    
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
+              </div>
+              <div class="flex">
+              <input type="radio" name="status" id="type-2" value="検討中">    
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">検討中</div>
+              </div>
+              <div class="flex">
+              <input type="radio" name="status" id="type-1" value="決定">    
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-gray-200 text-gray-800 rounded-full status">決定</div>
+              </div>
+
         
             <div class="flex flex-col mb-4">
               <x-input-label for="tag" :value="__('tag')" />
