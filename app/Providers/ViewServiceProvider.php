@@ -38,7 +38,9 @@ class ViewServiceProvider extends ServiceProvider
             'photo.create', 
             'photo.edit',
             'tag.index',
+            'tag.create',
             'team.option',
+            'team.create',
             'team.join',
             'dashboard'], function ($view) {
             if (auth()->check()) {

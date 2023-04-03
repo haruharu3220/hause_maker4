@@ -21,7 +21,7 @@ class TagController extends Controller
     public function store(Request $request){
         
         // dd($request->tagName);
-        // dd($request);
+        dd($request);
         $tag = new tag();
         $tag -> team_id = Auth::user() ->team_id;
         $tag -> name = $request->tagName;
@@ -44,6 +44,9 @@ class TagController extends Controller
         return response()->view('tag.edit', compact('tag'));
     }
     
+    public function create(){
+        return response()->view('tag.create');
+    }
     
     public function update(Request $request, $id){
     //     //バリデーション

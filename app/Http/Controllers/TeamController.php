@@ -29,12 +29,11 @@ class TeamController extends Controller
     }
     
     public function store(Request $request){
-        // dd($request->team_id);
+        
         $user = User::find(Auth::id());
         $team = Team::where('original_id',$request->team_id)->first();
-        // dd($team->id);
+
         $user->team_id = $team->id;
-        // dd($team,$user->team_id);
         $user->save();
         return redirect()->route('dashboard');
     }
@@ -56,6 +55,7 @@ class TeamController extends Controller
         $user->save();
         
         // dd($team,$user);
-        return view('dashboard');
+        return redirect()->route('tag.create');
+        // return view('tag.create');
     }
 }

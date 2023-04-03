@@ -2,13 +2,13 @@
 
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <form method="POST" action="{{ route('team.create') }}">
+    <form method="POST" action="{{ route('team.firstcreate') }}">
         @csrf
 
         <!-- familyName -->
         <div>
-            <x-input-label for="familyName" :value="__('家族名')" />
-            <p>夫婦の苗字を決めてください。</p>
+            <x-input-label for="familyName" :value="__('チーム名')" />
+            <p>家族でチームの名前を決めてください。</p>
             <x-text-input id="familyName" class="block mt-1 w-full" type="text" name="familyName" :value="old('familyName')" required autofocus autocomplete="familyName" />
             <x-input-error :messages="$errors->get('familyName')" class="mt-2" />
         </div>

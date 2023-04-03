@@ -39,13 +39,14 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {	
     Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');
+    Route::post('/tag/firstcreate', [TeamController::class, 'register'])->name('team.firstcreate');	
+    
     Route::get('/team/option', [TeamController::class, 'option'])->name('team.option');
     
     Route::get('/team/join', [TeamController::class, 'join'])->name('team.join');	
     Route::post('/team/join', [TeamController::class, 'store'])->name('team.join');	
     
     
-    Route::post('/team/create', [TeamController::class, 'register'])->name('team.create');	
 });
 
 
