@@ -54,6 +54,17 @@
                     </x-secondary-button>
                 </a>
                 @endif
+                
+                <tr>
+                    @if($family !=null)
+                        <th>家族：</th>
+                        @foreach($family as $member)
+                        <td>{{$member->name}}</td>
+                        @endforeach
+                    @endif
+                </tr>
+                
+                
                 </table>
             </div>
             <div class="bg-white p-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
