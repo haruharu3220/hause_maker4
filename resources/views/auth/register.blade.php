@@ -1,3 +1,6 @@
+<h1 class="text-2xl m-4 text-center">家づくりアルバム</h1>
+<h2 class="m-4 text-center">新規アカウント登録</h2>
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf

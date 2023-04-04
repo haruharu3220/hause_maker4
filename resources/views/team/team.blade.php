@@ -1,3 +1,5 @@
+<h1 class="text-2xl m-4 text-center">家づくりアルバム</h1>
+
 <x-guest-layout>
 
 

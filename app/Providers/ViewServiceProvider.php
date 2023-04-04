@@ -48,16 +48,17 @@ class ViewServiceProvider extends ServiceProvider
                 
                 if($user->team_id != NULL){
                     $team = Team::find($user->team_id);
-                    $famiry = User::where('team_id', $team->id)
+                    $family = User::where('team_id', $team->id)
                             ->where('id', '!=', Auth::id())
                             ->orderBy('created_at', 'asc')->get();
                     $tags = Tag::where('team_id', $team->id)->orderBy('created_at', 'asc')->get();
                     $types = Type::all();
-                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'types' => $types,'family' => $famiry]);
+                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'types' => $types,'family' => $family]);
                 }else{
                     $team ="";
                     $tags ="";
-                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags]);
+                    $family  = "";
+                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'family' => $family]);
                 }
                 // dd($user,$team,$tags);
 
