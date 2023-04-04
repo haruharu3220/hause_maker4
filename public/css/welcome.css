@@ -1,6 +1,6 @@
 
 .head{
-    height: 5vh;
+    height: 6vh;
 }
 .main{
     position: relative;
@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    height: 94vh;
 }
 
 .family-picture {
