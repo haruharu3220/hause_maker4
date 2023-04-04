@@ -8,6 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
         <!-- Styles -->
@@ -22,7 +25,8 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+            <div class=head>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -32,14 +36,37 @@
                             <a href="{{ route('login') }}" class="ml-4 text-9xl dark:text-gray-500 underline">ログイン</a>
                             
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-9xl dark:text-gray-500 underline">登録</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-9xl dark:text-gray-500 underline">新規登録</a>
                         @endif
                     @endauth
                 </div>
             @endif
+            </div>
             <div class="main">
                 <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
-                <h1>家づくりアルバム</h1>
+                <h1 class="font-black">家づくりアルバム</h1>
+            </div>
+
+
+            <div class="intro">
+                <h2 class="m-4">我が家を建てるとき、たくさんの苦労があります</2>
+                
+                <div class="flex">
+                    <div class="m-4 w-1/4 h-12 bg-amber-500">
+                        <div>画像１</div>
+                        <div>夫婦間で意見</div>
+                    </div>
+                    <div class="m-4 w-1/4 h-12 bg-amber-500">
+                        <div>画像２</div> 
+                        <div>夫婦間で意見</div>
+                    </div>
+                    <div class="m-4 w-1/4 h-12 bg-amber-500">
+                        <div>画像３</div>
+                        <div>夫婦間で意見</div>
+                    </div>
+                </div>    
+                
+                
             </div>
         </div>
         
