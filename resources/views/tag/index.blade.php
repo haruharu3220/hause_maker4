@@ -19,8 +19,10 @@
        {{$team->team_name}}の{{ __('タグ設定画面') }}
       </h2>
     </x-slot>
-
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+    
+    <div class="flex justify-center">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        
         <form method="POST" action="{{ route('tag.store') }}">
             @csrf
             <div>
@@ -36,24 +38,29 @@
                 </x-primary-button>
             </div>
         </form>
-    </div>
-  
-    @foreach ($tags as $tag)
-    <div class="w-1/5">
-        <li class="flex">
+        
+            <div class="">
+      @foreach ($tags as $tag)
+        <div class="w-1/5 items-center">
+          <li class="flex">
             <span class="{{$tag->name}}">{{$tag->name}}</span>
-             <!-- 削除ボタン -->
+            <!-- 削除ボタン -->
             <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" class="text-left">
               @method('delete')
               @csrf
-                <button class="destroy" type="submit">
-                 <i class="fas fa-trash"></i>
-                </button>
+              <button class="destroy" type="submit">
+                <i class="fas fa-trash"></i>
+              </button>
             </form>
-        </li>
+          </li>
+        </div>
+      @endforeach
     </div>
-    @endforeach
-  
+    </div>  
+
+
+
+
   </x-app-layout> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   

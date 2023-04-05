@@ -19,6 +19,12 @@
       </h2>
     </x-slot>
     
+
+    
+    <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
+    <div class="flex">
+      <div id="sidebar" class="bg-red-300">
+        
     <form action="{{ route('photo.index') }}" method="GET">
             <h2>検索</h2>
         <p>開始日：</p>
@@ -28,14 +34,12 @@
         <input type="date" name="end">
     
         <button type="submit">送信</button>
-    </form>
-    
-    <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
-    <div class="flex">
-      <div id="sidebar">
+    </form>        
+        
+        
         <nav id="global-nav">
           <ul class="sort-btn">
-           <li class="sub-menu">
+            <li>
               <a href="#"><dt>All</dt></a>
                 <ul class="sub-menu-nav">  <!--unordered list 順不同リスト-->
                   <li class="all active">全て</li>  <!--list item リスト項目-->
@@ -172,4 +176,3 @@
   <script src="{{ asset('js/test.js') }}"></script>
 
     
-
