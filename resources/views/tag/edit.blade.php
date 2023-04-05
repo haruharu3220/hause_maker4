@@ -32,7 +32,8 @@
             @method('put')
             @csrf
             
-            <x-input-label for="status" :value="__('タイプ')"/>
+            <div class="my-4">
+              <x-input-label for="status" :value="__('タイプ')"/>
               <div class="flex">
               <input type="radio" name="status" id="type-1" value="未決定" @if($tag->status == "未決定") checked @endif>    
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
@@ -45,16 +46,16 @@
               <input type="radio" name="status" id="type-1" value="決定" @if($tag->status == '決定') checked @endif>    
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-gray-200 text-gray-800 rounded-full status">決定</div>
               </div>
-
+            </div>
         
-            <div class="flex flex-col mb-4">
-              <x-input-label for="tag" :value="__('tag')" />
+            <div class="flex flex-col my-4">
+              <x-input-label for="tag" :value="__('タグ')" />
               <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$tag->name}}" required autofocus />
               <x-input-error :messages="$errors->get('tag')" class="mt-2" />
             </div>
             
             <div class="flex flex-col mb-4">
-              <x-input-label for="memo" :value="__('memo')" />
+              <x-input-label for="memo" :value="__('メモ')" />
               <x-text-input id="memo" class="block mt-1 w-full" type="text" name="memo" value="{{$tag->memo}}" />
               <x-input-error :messages="$errors->get('tag')" class="mt-2" />
             </div>
