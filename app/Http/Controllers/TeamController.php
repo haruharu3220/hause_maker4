@@ -33,6 +33,17 @@ class TeamController extends Controller
         $user = User::find(Auth::id());
         $team = Team::where('original_id',$request->team_id)->first();
 
+        
+        // 家族IDが見つからない場合
+        if (!$team) {
+            // エラーメッセージをセッションに追加
+            $request->session()->flash('error', 'エラー：家族IDが見つかりませんでした。');
+        
+            // join.blade.php にリダイレクト
+            return redirect()->route('team.join');
+        }
+        
+        
         $user->team_id = $team->id;
         $user->save();
         return redirect()->route('dashboard');
