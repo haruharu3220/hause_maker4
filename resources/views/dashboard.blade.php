@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     
     <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!--<link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">
 
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
@@ -28,12 +28,12 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 h-full bg-yellow-400">
+    <div class="py-12 bg-white">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white my-5 p-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <h1>私の情報</h1>
-                <table>
-                <tr>
+            <div class="bg-white py-4 border-4 border-gray-100 shadow-2xl my-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <h1 class="m-4">私の情報</h1>
+                <table class="mx-4">
+                <tr class="mx-4">
                     <th>名前：</th>
                     <td>{{$user->name}}</td>
                 </tr>
@@ -69,7 +69,7 @@
                 
                 </table>
             </div>
-            <div class="bg-white p-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white p-5 border-4 border-gray-100 shadow-2xl dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @if($tags!="")
                 <h2>タグ一覧</h2>    
                     <div class="grid">
