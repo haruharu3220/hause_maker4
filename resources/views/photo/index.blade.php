@@ -27,7 +27,7 @@
       <div id="sidebar" class="">
         
     <form action="{{ route('photo.index') }}" method="GET">
-        <h2 class="my-4">検索範囲指定</h2>
+        <h2 class="my-4 text-xl">検索範囲指定</h2>
         <p>開始日</p>
         <div class="my-2"><input type="date" name="start"></div>
         
@@ -44,23 +44,23 @@
         <nav id="global-nav">
           <ul class="sort-btn">
             <li>
-              <a href="#"><dt>All</dt></a>
+              <a href="#"><dt class="text-xl">All</dt></a>
                 <ul class="sub-menu-nav">  <!--unordered list 順不同リスト-->
-                  <li class="w-full all active">全て</li>  <!--list item リスト項目-->
+                  <li class="all active">全て</li>  <!--list item リスト項目-->
                 </ul>
             </li>
  
-            <li class="sub-menu w-full ">
-              <a href="#"><dt>部屋</dt></a>
+            <li class="sub-menu">
+              <a href="#"><dt class="text-xl">部屋</dt></a>
                 <ul class="sub-menu-nav w-full">
                   @foreach($tags as $tag)
-                    <li class="w-full tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
+                    <li class="tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
                   @endforeach
                 </ul>
             </li>
         
             <li class="sub-menu">
-              <a href="#"><dt>タイプ</dt></a>
+              <a href="#"><dt class="text-xl">タイプ</dt></a>
                 <ul class="sub-menu-nav">
                   @foreach($types as $type)
                     <li class="type_no_{{$type->id}}"><a href="#">{{$type->name}}</a></li>

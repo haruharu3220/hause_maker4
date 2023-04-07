@@ -1,8 +1,8 @@
 .sort-btn{
-	background: #f3f3f3;
+	/*background: #f3f3f3;*/
 	padding: 20px;
 	margin:50px 0;
-	display: flex;
+	/*display: flex;*/
 	justify-content: center;
 	flex-wrap: wrap;
 }
@@ -17,7 +17,7 @@
 }
 
 .sort-btn ul{
-	display: flex;
+	/*display: flex;*/
 }
 
 .sort-btn li{
