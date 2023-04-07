@@ -42,13 +42,13 @@
             <div class="">
       @foreach ($tags as $tag)
         <div class="w-full items-center">
-          <li class="flex">
-            <span class="{{$tag->name}}">{{$tag->name}}</span>
+          <li class="flex w-full my-8 shadow-sm #e2e8f0">
+            <span class="w-4/5 {{$tag->name}}">・{{$tag->name}}</span>
             <!-- 削除ボタン -->
-            <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" class="text-left">
+            <form action="{{ route('tag.destroy',$tag->id) }}" method="POST" >
               @method('delete')
               @csrf
-              <button class="destroy" type="submit">
+              <button class="text-right destroy" type="submit">
                 <i class="fas fa-trash"></i>
               </button>
             </form>
