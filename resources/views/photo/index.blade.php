@@ -9,7 +9,6 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/accordion.css') }}">
 </head>
   
   <x-app-layout>
@@ -82,23 +81,24 @@
             <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
             <div class="item-content">
               <div class="flex photo_date">
-                <div>投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
-                @if($photo->iine != true)
-                  <form action="{{ route('favorite', $photo->id) }}" method="POST" class="text-left">
+                <div class="w-2/3 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+                <div class="w-1/3 star-container">
+                  @if($photo->iine != true)
+                    <form action="{{ route('favorite', $photo->id) }}" method="POST">
+                        @csrf
+                      <button>
+                        <i class="fa-regular fa-star fa-2xl star"></i>
+                      </button>
+                    </form>
+                  @else
+                    <form action="{{ route('unfavorite', $photo->id) }}" method="POST">
                       @csrf
-                    <button>
-                      <i class="fa-regular fa-star fa-2xl star"></i>
-                    </button>
-                  </form>
-                @else
-                  <form action="{{ route('unfavorite', $photo->id) }}" method="POST" class="text-left">
-                    @csrf
-                    <button>
-                      <i class="fa-solid fa-star fa-2xl star" style="color: #e7f519;"></i>
-                    </button>
-                  </form>
-                @endif
-                
+                      <button>
+                        <i class="fa-solid fa-star fa-2xl star" style="color: #ffd700;"></i>
+                      </button>
+                    </form>
+                  @endif
+                </div>
               </div>
               <div class="photo_area">
                 <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
