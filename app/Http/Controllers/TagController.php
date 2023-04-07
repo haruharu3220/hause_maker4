@@ -29,9 +29,14 @@ class TagController extends Controller
                 $tag->name = $tagName;
                 $tag->save();
             }
+        }else{
+                $tag = new Tag();
+                $tag->team_id = Auth::user()->team_id;
+                $tag->name = $tagNames;
+                $tag->save();
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('tag.store');
     }
     
     

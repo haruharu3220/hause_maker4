@@ -48,26 +48,24 @@
             </div>
 
 
-            <div class="intro">
-                <h2 class="m-4">我が家を建てるとき、たくさんの苦労があります</2>
+            <!--<div class="intro">-->
+            <!--    <h2 class="m-4">我が家を建てるとき、たくさんの苦労があります</2>-->
                 
-                <div class="flex">
-                    <div class="m-4 w-1/4 h-12 bg-amber-500">
-                        <div>画像１</div>
-                        <div>夫婦間で意見</div>
-                    </div>
-                    <div class="m-4 w-1/4 h-12 bg-amber-500">
-                        <div>画像２</div> 
-                        <div>夫婦間で意見</div>
-                    </div>
-                    <div class="m-4 w-1/4 h-12 bg-amber-500">
-                        <div>画像３</div>
-                        <div>夫婦間で意見</div>
-                    </div>
-                </div>    
-                
-                
-            </div>
+            <!--    <div class="flex">-->
+            <!--        <div class="m-4 w-1/4 h-12 bg-amber-500">-->
+            <!--            <div>画像１</div>-->
+            <!--            <div>夫婦間で意見</div>-->
+            <!--        </div>-->
+            <!--        <div class="m-4 w-1/4 h-12 bg-amber-500">-->
+            <!--            <div>画像２</div> -->
+            <!--            <div>夫婦間で意見</div>-->
+            <!--        </div>-->
+            <!--        <div class="m-4 w-1/4 h-12 bg-amber-500">-->
+            <!--            <div>画像３</div>-->
+            <!--            <div>夫婦間で意見</div>-->
+            <!--        </div>-->
+            <!--    </div>    -->
+            <!--</div>-->
         </div>
         
     </body>

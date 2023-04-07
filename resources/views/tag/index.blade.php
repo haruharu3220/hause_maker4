@@ -41,7 +41,7 @@
         
             <div class="">
       @foreach ($tags as $tag)
-        <div class="w-1/5 items-center">
+        <div class="w-full items-center">
           <li class="flex">
             <span class="{{$tag->name}}">{{$tag->name}}</span>
             <!-- 削除ボタン -->
