@@ -9,6 +9,7 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/accordion.css') }}">
 </head>
   
   <x-app-layout>
@@ -23,17 +24,20 @@
     
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
     <div class="flex">
-      <div id="sidebar" class="bg-red-300">
+      <div id="sidebar" class="">
         
     <form action="{{ route('photo.index') }}" method="GET">
-            <h2>検索</h2>
-        <p>開始日：</p>
-        <input type="date" name="start">
+        <h2 class="my-4">検索範囲指定</h2>
+        <p>開始日</p>
+        <div class="my-2"><input type="date" name="start"></div>
         
-        <p>~終了日：</p>
-        <input type="date" name="end">
+        <p>〜終了日</p>
+        <div class="my-2"><input type="date" name="end"></div>
     
-        <button type="submit">送信</button>
+        <x-primary-button class="ml-3">
+          {{ __('検索') }}
+        </x-primary-button>
+    
     </form>        
         
         
@@ -42,15 +46,15 @@
             <li>
               <a href="#"><dt>All</dt></a>
                 <ul class="sub-menu-nav">  <!--unordered list 順不同リスト-->
-                  <li class="all active">全て</li>  <!--list item リスト項目-->
+                  <li class="w-full all active">全て</li>  <!--list item リスト項目-->
                 </ul>
             </li>
  
-            <li class="sub-menu">
+            <li class="sub-menu w-full ">
               <a href="#"><dt>部屋</dt></a>
-                <ul class="sub-menu-nav">
+                <ul class="sub-menu-nav w-full">
                   @foreach($tags as $tag)
-                    <li class="tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
+                    <li class="w-full tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
                   @endforeach
                 </ul>
             </li>
