@@ -51,7 +51,7 @@
             </li>
  
             <li class="sub-menu">
-              <a href="#"><dt class="text-xl">部屋</dt></a>
+              <a href="#" class="flex items-center justify-center"><dt class="text-xl">部屋</dt><i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></a>
                 <ul class="sub-menu-nav w-full">
                   @foreach($tags as $tag)
                     <li class="tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
@@ -60,7 +60,7 @@
             </li>
         
             <li class="sub-menu">
-              <a href="#"><dt class="text-xl">タイプ</dt></a>
+              <a href="#" class="flex items-center justify-center"><dt class="text-xl">タイプ <i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></dt></a>
                 <ul class="sub-menu-nav">
                   @foreach($types as $type)
                     <li class="type_no_{{$type->id}}"><a href="#">{{$type->name}}</a></li>

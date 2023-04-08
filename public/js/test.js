@@ -63,4 +63,15 @@ $(window).on('load', function () {
       });
     }
   }
+  
+
 });
+
+
+function toggleChevron(e) {
+    $(e.target)
+    .closest('.sub-menu')
+    .find("i.indicator")
+    .toggleClass('glyphicon-chevron-down-custom glyphicon-chevron-up-custom');
+}
+$('.sub-menu a').on('click', toggleChevron);
