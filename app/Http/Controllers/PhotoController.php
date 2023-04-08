@@ -21,7 +21,12 @@ class PhotoController extends Controller
         $team_id = Auth::user()->team_id;
         
         $startDate = "2000-01-01";
-        $endDate = date('Y-m-d');
+        $endDate_pre = date('Y-m-d');
+        // 日付をDateTimeオブジェクトに変換
+        $endDateObject = new \DateTime($endDate_pre);
+        // 1日を追加
+        $endDateObject->modify('+1 day');
+        $endDate = $endDateObject->format('Y-m-d');
         
         if($request->input('start') != null){
             $startDate = $request->input('start');
