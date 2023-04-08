@@ -75,67 +75,69 @@
     
       <div class="main_content pt-4">
       
+        @if(count($photos) > 0)
         <ul class="grid">
-        @foreach ($photos as $photo)
-          <!--<i class="fa-solid fa-star" style="color: #7a7a71;"></i>-->
-          <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
-            <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
-            <div class="item-content">
-              <div class="flex photo_date">
-                <div class="datetime w-4/5 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
-                <div class="w-1/5 star-container">
-                  @if($photo->iine != true)
-                    <form action="{{ route('favorite', $photo->id) }}" method="POST">
+          @foreach ($photos as $photo)
+            <!--<i class="fa-solid fa-star" style="color: #7a7a71;"></i>-->
+            <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
+              <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
+              <div class="item-content">
+                <div class="flex photo_date">
+                  <div class="datetime w-4/5 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+                  <div class="w-1/5 star-container">
+                    @if($photo->iine != true)
+                      <form action="{{ route('favorite', $photo->id) }}" method="POST">
+                          @csrf
+                        <button>
+                          <i class="fa-regular fa-star fa-2xl star"></i>
+                        </button>
+                      </form>
+                    @else
+                      <form action="{{ route('unfavorite', $photo->id) }}" method="POST">
                         @csrf
-                      <button>
-                        <i class="fa-regular fa-star fa-2xl star"></i>
-                      </button>
-                    </form>
-                  @else
-                    <form action="{{ route('unfavorite', $photo->id) }}" method="POST">
+                        <button>
+                          <i class="fa-solid fa-star fa-2xl star" style="color: #ffd700;"></i>
+                        </button>
+                      </form>
+                    @endif
+                  </div>
+                </div>
+                <div class="photo_area">
+                  <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
+                    <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
+                  </a>
+                </div>
+                <div class="photo_attribute">
+                  <!--タイプを表示-->
+                  <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
+                  <!--タグを表示-->
+                  @foreach ($photo->tag_names as $tag_name)
+                  <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+                  @endforeach
+                  <div class="flex p-4">
+                    <!--更新ボタン-->
+                    <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
                       @csrf
-                      <button>
-                        <i class="fa-solid fa-star fa-2xl star" style="color: #ffd700;"></i>
-                      </button>
+                        <button type="submit">
+                         <i class="far fa-edit"></i>
+                        </button>
                     </form>
-                  @endif
+                    <!--削除ボタン-->
+                    <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
+                      @method('delete')
+                      @csrf
+                        <button class="destroy" type="submit">
+                         <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                  </div>
                 </div>
               </div>
-              <div class="photo_area">
-                <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
-                  <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
-                </a>
-              </div>
-              <div class="photo_attribute">
-                <!--タイプを表示-->
-                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
-                <!--タグを表示-->
-                @foreach ($photo->tag_names as $tag_name)
-                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
-                @endforeach
-                <div class="flex p-4">
-                  <!--更新ボタン-->
-                  <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
-                    @csrf
-                      <button type="submit">
-                       <i class="far fa-edit"></i>
-                      </button>
-                  </form>
-                  <!--削除ボタン-->
-                  <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
-                    @method('delete')
-                    @csrf
-                      <button class="destroy" type="submit">
-                       <i class="fas fa-trash"></i>
-                      </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </li>
-        @endforeach
-          </ul>
-          {{$photos->links()}}
+            </li>
+          @endforeach
+            </ul>
+            {{$photos->links()}}
+        
       
   
             <script>
@@ -145,6 +147,10 @@
                 'alwaysShowNavOnTouchDevices':true,
               })
           </script>
+        @else
+          <h1>この期間に投稿された画像はありません。</h1>
+        
+        @endif
       </div>
     </div>
 
