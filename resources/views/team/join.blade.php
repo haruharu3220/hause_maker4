@@ -24,7 +24,7 @@
                 {{ __('ログイン') }}
             </x-primary-button>
             
-            <a href="/team/option">
+            <a href="{{ route('team.option') }}">
                 <x-secondary-button class="ml-3">
                 {{ __('戻る') }}
                 </x-secondary-button>
