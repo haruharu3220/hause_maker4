@@ -23,23 +23,7 @@
     
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
     <div class="flex">
-      
-      
-      <button id="menu-toggle" class="lg:hidden text-white">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <script>
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hidden');
-    sidebar.classList.toggle('block');
-  });
-</script>
-      
-      
-      
-      
+    
       <div id="sidebar" class="">
         
     <form action="{{ route('photo.index') }}" method="GET">
