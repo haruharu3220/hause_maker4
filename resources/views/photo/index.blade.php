@@ -23,6 +23,23 @@
     
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
     <div class="flex">
+      
+      
+      <button id="menu-toggle" class="lg:hidden text-white">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('hidden');
+    sidebar.classList.toggle('block');
+  });
+</script>
+      
+      
+      
+      
       <div id="sidebar" class="">
         
     <form action="{{ route('photo.index') }}" method="GET">
@@ -72,7 +89,7 @@
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここまで★★★★★★★★★★★★★★★★★★★★★★★-->
     
     
-      <div class="main_content">
+      <div class="main_content pt-4">
       
         <ul class="grid">
         @foreach ($photos as $photo)
@@ -81,8 +98,8 @@
             <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
             <div class="item-content">
               <div class="flex photo_date">
-                <div class="w-2/3 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
-                <div class="w-1/3 star-container">
+                <div class="datetime w-4/5 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+                <div class="w-1/5 star-container">
                   @if($photo->iine != true)
                     <form action="{{ route('favorite', $photo->id) }}" method="POST">
                         @csrf

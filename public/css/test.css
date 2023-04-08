@@ -110,12 +110,40 @@
 	
 }
 
-/*横幅が768px以下になった際の指定*/
-@media only screen and (max-width: 768px) {
+/*横幅が1500px以下になった際の指定→小さいPC対応*/
+@media only screen and (max-width: 1500px) {
+.item {
+  width: 33.0%;/*横並びで2つ表示*/
+  padding: 0 5px 10px 5px;
+}
+
+.datetime{
+	/*color: green;*/
+}
+}
+
+/*横幅が768px以下になった際の指定→タブレット対応*/
+@media only screen and (max-width: 940px) {
 .item {
   width: 49.5%;/*横並びで2つ表示*/
   padding: 0 5px 10px 5px;
 }
+
+.datetime{
+	/*color: blue;*/
+}
+}
+
+/*横幅が600px以下になった際の指定→スマホ対応*/
+@media only screen and (max-width: 690px) {
+.item {
+  width: 95.0%;/*横並びで2つ表示*/
+  padding: 0 5px 10px 5px;
+}
+.datetime{
+	/*color: red;*/
+}
+	
 }
 
 .photo_date{
