@@ -29,10 +29,10 @@
     <form action="{{ route('photo.index') }}" method="GET">
         <h2 class="my-4 text-xl">検索範囲指定</h2>
         <p>開始日</p>
-        <div class="my-2"><input type="date" name="start"></div>
+        <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
         
         <p>〜終了日</p>
-        <div class="my-2"><input type="date" name="end"></div>
+        <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
     
         <x-primary-button class="ml-3">
           {{ __('検索') }}

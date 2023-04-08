@@ -19,9 +19,9 @@ class PhotoController extends Controller
     public function index(Request $request){
         
         $team_id = Auth::user()->team_id;
-    
+        
         $startDate = "2000-01-01";
-        $endDate = "2100-01-01";
+        $endDate = date('Y-m-d');
         
         if($request->input('start') != null){
             $startDate = $request->input('start');
@@ -63,7 +63,7 @@ class PhotoController extends Controller
         }
         
         // dd($photos);
-        return response()->view('photo.index',compact('photos'));
+        return response()->view('photo.index',compact('photos','startDate','endDate'));
     }
     
     //create
