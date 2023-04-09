@@ -73,39 +73,11 @@
                     </div>
                     <div class="w-2/3">
                     @if($totalTags > 0)
-                     <script>
-                        window.onload = function () {
-                            let context = document.querySelector("#sushi_circle").getContext('2d');
-                            
-                            // Get counts from blade variables
-                            let totalTags = @json($totalTags);
-                            let undecidedTags = @json($undecidedTags);
-                            let consideringTags = @json($consideringTags);
-                            let decidedTags = @json($decidedTags);
-                    
-                            // Calculate percentages
-                            let undecidedPercentage = (undecidedTags / totalTags) * 100;
-                            let consideringPercentage = (consideringTags / totalTags) * 100;
-                            let decidedPercentage = (decidedTags / totalTags) * 100;
-                    
-                            new Chart(context, {
-                                type: 'doughnut',
-                                data: {
-                                    labels: ["未決定", "検討中", "決定"],
-                                    datasets: [{
-                                        backgroundColor: ["#fecaca", "#bfdbfe", "#99f6e4"],
-                                        data: [undecidedPercentage, consideringPercentage, decidedPercentage]
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                }
-                            });
-                        }
-                        </script>
+
+                    <!--円グラフを表示 circle.jsで処理をしている。canvasのattributeとして値を渡している-->
+                    <canvas id="sushi_circle" width="500" height="500" data-total-tags="{{ $totalTags }}" data-undecided-tags="{{ $undecidedTags }}" data-considering-tags="{{ $consideringTags }}" data-decided-tags="{{ $decidedTags }}"></canvas>
 
 
-                        <canvas id="sushi_circle" width="500" height="500"></canvas>
 
                     </div>
                     @else
@@ -158,5 +130,6 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/accordion.js') }}"></script>
+<script src="{{ asset('js/circle.js') }}"></script>
 
 </body>
