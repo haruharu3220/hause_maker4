@@ -32,42 +32,47 @@
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white py-4 border-4 border-gray-100 shadow-2xl my-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <h1 class="m-4">私の情報</h1>
-                <table class="mx-4">
-                <tr class="mx-4">
-                    <th>名前：</th>
-                    <td>{{$user->name}}</td>
-                </tr>
-                @if($team!="")
-                <tr>
-                    <th>家：</th>
-                    <td>{{$team->team_name}}</td>
-                </tr>
+                <div class="flex">
+                    <table class="mx-4 w-1/3">
+                        <tr class="mx-4">
+                            <th>名前：</th>
+                            <td>{{$user->name}}</td>
+                        </tr>
+                        @if($team!="")
+                        <tr>
+                            <th>　家：</th>
+                            <td>{{$team->team_name}}</td>
+                        </tr>
+                        
+                        @else
+                        <p>　家：家族設定していません。</p>
+                        <a href="/team/join">
+                            <x-secondary-button class="ml-3">
+                            {{ __('家族に参加') }}
+                            </x-secondary-button>
+                        </a>                
+                        <a href="/team/create">
+                            <x-secondary-button class="ml-3">
+                            {{ __('家族ID作成') }}
+                            </x-secondary-button>
+                        </a>
+                        @endif
+                        
+                        <tr>
+                            @if($family !=null)
+                                <th>家族：</th>
+                                @foreach($family as $member)
+                                <td>{{$member->name}}</td>
+                                @endforeach
+                            @endif
+                        </tr>
+                    </table>
                 
-                @else
-                <p>家：家族設定していません。</p>
-                <a href="/team/join">
-                    <x-secondary-button class="ml-3">
-                    {{ __('家族に参加') }}
-                    </x-secondary-button>
-                </a>                
-                <a href="/team/create">
-                    <x-secondary-button class="ml-3">
-                    {{ __('家族ID作成') }}
-                    </x-secondary-button>
-                </a>
-                @endif
-                
-                <tr>
-                    @if($family !=null)
-                        <th>家族：</th>
-                        @foreach($family as $member)
-                        <td>{{$member->name}}</td>
-                        @endforeach
-                    @endif
-                </tr>
-                
-                
-                </table>
+                    <div class="w-2/3 bg-gray-500">
+                        <h2>これはテスト</h2>
+                    </div>
+                </div>
+
             </div>
             <div class="bg-white p-5 border-4 border-gray-100 shadow-2xl dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @if($tags!="")
