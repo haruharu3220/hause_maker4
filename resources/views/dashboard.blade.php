@@ -93,26 +93,26 @@
                         <ul class="accordion-area">
                             @foreach ($tags as $tag)
                                 <li>                                       
-                                    <section class="grid flex">
-                                        <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
-                                        @csrf
-                                            <button>
-                                              <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </form>
+                                    <section>
+                                        <div class="flex items-center mb-4 tag-area">
+                                            <h3 class="title">{{$tag->name}}</h3>
+                                            @if($tag->status =="未決定")
+                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</div>
+    
+                                            @elseif($tag->status =="検討中")
+                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div>
+                                            
+                                            @else($tag->status =="決定")
+                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
+                                            @endif
+                                            <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
+                                            @csrf
+                                                <button>
+                                                  <i class="fa-regular fa-pen-to-square"></i>
+                                                </button>
+                                            </form>
                                         
-                                        @if($tag->status =="未決定")
-                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</div>
-                                        @endif
-
-                                        @if($tag->status =="検討中")
-                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div>
-                                        @endif
-                                        
-                                        @if($tag->status =="決定")
-                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
-                                        @endif
-                                        <h3 class="title">{{$tag->name}}</h3>
+                                        </div>
                                         <div class="box">
                                             <h3>メモ</h3>
                                             <p>{{$tag->memo}}</p>

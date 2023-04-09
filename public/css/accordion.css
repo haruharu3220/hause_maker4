@@ -20,7 +20,7 @@
     cursor: pointer;
     font-size:1rem;
     font-weight: normal;
-    padding: 3% 0 3% 50px;
+    padding: 0 0 0 50px;
     transition: all .5s ease;
     width: 70%;
 }
