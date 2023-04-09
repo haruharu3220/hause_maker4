@@ -18,6 +18,7 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 
 
@@ -32,8 +33,8 @@
 
     <div class="py-12 bg-white">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white py-4 border-4 border-gray-100 shadow-2xl my-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <h1 class="m-4">私の情報</h1>
+            <div class="my-info my-4 pb-4">
+                <h2 class="m-4">私の情報</h2>
                 <div class="flex">
                     <div class="mx-4 w-1/3 flex-shrink-0 max-w-[300px]"> 
                         <table>
@@ -86,7 +87,7 @@
                 </div>
 
             </div>
-            <div class="bg-white p-5 border-4 border-gray-100 shadow-2xl dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="my-tag-info my-4 pb-4">
                 @if($tags!="")
                 <h2>タグ一覧</h2>    
                     <div class="grid">

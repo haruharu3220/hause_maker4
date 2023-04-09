@@ -1,0 +1,11 @@
+.my-info ,
+.my-tag-info{
+border-radius: 47px;
+background: #ffffff;
+box-shadow:  12px 12px 13px #b2b2b2,
+             -12px -12px 13px #ffffff;
+}
+
+h2{
+    font-size: 100px;
+}
