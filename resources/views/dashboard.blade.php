@@ -9,6 +9,8 @@
     <!-- Select2本体 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    
     <!-- Fonts -->
     <!--<link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">
@@ -33,44 +35,82 @@
             <div class="bg-white py-4 border-4 border-gray-100 shadow-2xl my-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <h1 class="m-4">私の情報</h1>
                 <div class="flex">
-                    <table class="mx-4 w-1/3">
-                        <tr class="mx-4">
-                            <th>名前：</th>
-                            <td>{{$user->name}}</td>
-                        </tr>
-                        @if($team!="")
-                        <tr>
-                            <th>　家：</th>
-                            <td>{{$team->team_name}}</td>
-                        </tr>
-                        
-                        @else
-                        <p>　家：家族設定していません。</p>
-                        <a href="/team/join">
-                            <x-secondary-button class="ml-3">
-                            {{ __('家族に参加') }}
-                            </x-secondary-button>
-                        </a>                
-                        <a href="/team/create">
-                            <x-secondary-button class="ml-3">
-                            {{ __('家族ID作成') }}
-                            </x-secondary-button>
-                        </a>
-                        @endif
-                        
-                        <tr>
-                            @if($family !=null)
-                                <th>家族：</th>
-                                @foreach($family as $member)
-                                <td>{{$member->name}}</td>
-                                @endforeach
+                    <div class="mx-4 w-1/3 flex-shrink-0 max-w-[300px]"> 
+                        <table>
+                            <tr class="mx-4">
+                                <th>名前：</th>
+                                <td>{{$user->name}}</td>
+                            </tr>
+                            @if($team!="")
+                            <tr>
+                                <th>　家：</th>
+                                <td>{{$team->team_name}}</td>
+                            </tr>
+                            
+                            @else
+                            <p>　家：家族設定していません。</p>
+                            <a href="/team/join">
+                                <x-secondary-button class="ml-3">
+                                {{ __('家族に参加') }}
+                                </x-secondary-button>
+                            </a>                
+                            <a href="/team/create">
+                                <x-secondary-button class="ml-3">
+                                {{ __('家族ID作成') }}
+                                </x-secondary-button>
+                            </a>
                             @endif
-                        </tr>
-                    </table>
-                
-                    <div class="w-2/3 bg-gray-500">
-                        <h2>これはテスト</h2>
+                            
+                            <tr>
+                                @if($family !=null)
+                                    <th>家族：</th>
+                                    @foreach($family as $member)
+                                    <td>{{$member->name}}</td>
+                                    @endforeach
+                                @endif
+                            </tr>
+                        </table>
                     </div>
+                    <div class="w-2/3">
+                    @if($totalTags > 0)
+                     <script>
+                        window.onload = function () {
+                            let context = document.querySelector("#sushi_circle").getContext('2d');
+                            
+                            // Get counts from blade variables
+                            let totalTags = @json($totalTags);
+                            let undecidedTags = @json($undecidedTags);
+                            let consideringTags = @json($consideringTags);
+                            let decidedTags = @json($decidedTags);
+                    
+                            // Calculate percentages
+                            let undecidedPercentage = (undecidedTags / totalTags) * 100;
+                            let consideringPercentage = (consideringTags / totalTags) * 100;
+                            let decidedPercentage = (decidedTags / totalTags) * 100;
+                    
+                            new Chart(context, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ["未決定", "検討中", "決定"],
+                                    datasets: [{
+                                        backgroundColor: ["#fecaca", "#bfdbfe", "#99f6e4"],
+                                        data: [undecidedPercentage, consideringPercentage, decidedPercentage]
+                                    }]
+                                },
+                                options: {
+                                    responsive: false,
+                                }
+                            });
+                        }
+                        </script>
+
+
+                        <canvas id="sushi_circle" width="500" height="500"></canvas>
+
+                    </div>
+                    @else
+                        <p>タグがありません</p>
+                    @endif
                 </div>
 
             </div>
@@ -94,11 +134,11 @@
                                         @endif
 
                                         @if($tag->status =="検討中")
-                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
+                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div>
                                         @endif
                                         
                                         @if($tag->status =="決定")
-                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-gray-200 text-gray-800 rounded-full">{{$tag->status}}</div>
+                                        <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
                                         @endif
                                         <h3 class="title">{{$tag->name}}</h3>
                                         <div class="box">

@@ -53,12 +53,35 @@ class ViewServiceProvider extends ServiceProvider
                             ->orderBy('created_at', 'asc')->get();
                     $tags = Tag::where('team_id', $team->id)->orderBy('created_at', 'asc')->get();
                     $types = Type::all();
-                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'types' => $types,'family' => $family]);
+                    
+                    // タグのカウントを計算
+                    $totalTags = $tags->count();
+                    $undecidedTags = $tags->where('status', '未決定')->count();
+                    $consideringTags = $tags->where('status', '検討中')->count();
+                    $decidedTags = $tags->where('status', '決定')->count();
+                    
+                    $view->with([
+                        'user' => $user, 
+                        'team' => $team, 
+                        'tags' => $tags,
+                        'types' => $types,
+                        'family' => $family,
+                        'totalTags' => $totalTags,
+                        'undecidedTags' => $undecidedTags,
+                        'consideringTags' => $consideringTags,
+                        'decidedTags' => $decidedTags
+                    ]);
+                    
                 }else{
                     $team ="";
                     $tags ="";
                     $family  = "";
-                    $view->with(['user' => $user, 'team' => $team, 'tags' => $tags,'family' => $family]);
+                    $view->with([
+                        'user' => $user, 
+                        'team' => $team, 
+                        'tags' => $tags,
+                        'family' => $family
+                    ]);
                 }
                 // dd($user,$team,$tags);
 

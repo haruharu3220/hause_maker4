@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "chart.js": "^4.2.1",
         "lightbox2": "^2.11.4"
     }
 }
