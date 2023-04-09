@@ -9,6 +9,7 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loading.css') }}">
 </head>
   
   <x-app-layout>
@@ -103,9 +104,15 @@
                 </div>
                 <div class="photo_area">
                   <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
-                    <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
+                    <div class="image-container">
+                      <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" onload="hideSpinner(this)" loading="lazy">
+                      <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                      </div>
+                    </div>
                   </a>
                 </div>
+
                 <div class="photo_attribute">
                   <!--タイプを表示-->
                   <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
@@ -184,5 +191,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
   <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/test.js') }}"></script>
+  <script src="{{ asset('js/loadind.js') }}"></script>
+  
 
     
