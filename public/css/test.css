@@ -95,7 +95,7 @@
   display: block;
   position: absolute;
   width: 25%;/*横並びで4つ表示*/
-  height: 30vh;
+  height: 40vh;
   padding:0 10px 10px 10px;/*画像に余白をつける*/
   list-style:none;
   margin-bottom: 5vh;
@@ -168,7 +168,7 @@
 .photo_area{
   /*position: absolute;*/
   width:100%;
-	height: 70%;
+	height: 80%;
 }
 
 .star-container {
@@ -183,11 +183,13 @@
 }
 
 .photo_attribute{
-	padding-top: 8px;
+	/*padding-top: 8px;*/
 	width:100%;
-	height: 20%;
+	height: 10%;
 }
 
+
+/*サイドバーの部屋、タイプの横にある矢印の制御*/
 .glyphicon-chevron-down-custom span, .glyphicon-chevron-up-custom span {width: 10px; height: 5px; background-color: black; display: inline-block; transition: all .1s linear;}
 .glyphicon-chevron-down-custom .sp-1, .glyphicon-chevron-up-custom .sp-2 {transform: skewY(-40deg);}
 .glyphicon-chevron-up-custom .sp-1, .glyphicon-chevron-down-custom .sp-2 {transform: skewY(40deg);}

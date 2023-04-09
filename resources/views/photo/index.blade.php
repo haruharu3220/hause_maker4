@@ -113,14 +113,14 @@
                   </a>
                 </div>
 
-                <div class="photo_attribute">
+                <div class="photo_attribute flex p-4 flex-wrap">
                   <!--タイプを表示-->
-                  <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
+                  <span class="h-5 mr-4 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
                   <!--タグを表示-->
                   @foreach ($photo->tag_names as $tag_name)
-                  <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+                  <span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
                   @endforeach
-                  <div class="flex p-4">
+                  <div class="flex ">
                     <!--更新ボタン-->
                     <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
                       @csrf
