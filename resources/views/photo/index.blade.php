@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loading.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
 </head>
   
   <x-app-layout>
@@ -22,11 +23,12 @@
     
 
     
+
+    
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
     <div class="flex">
-    
       <div id="sidebar" class="">
-        
+    
         <form action="{{ route('photo.index') }}" method="GET">
             <h2 class="my-4 text-xl">検索範囲指定</h2>
             <p>開始日</p>
@@ -70,6 +72,7 @@
           </ul>
         </nav>
       </div>
+      
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここまで★★★★★★★★★★★★★★★★★★★★★★★-->
     
     

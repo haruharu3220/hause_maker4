@@ -15,22 +15,13 @@
     width: 80%
 }
 
-/*#global-nav .sub-menu > a:after {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    bottom: 0;*/
-/*    right: 18px;*/
-/*    margin: auto;*/
-/*    vertical-align: middle;*/
-/*    width: 8px;*/
-/*    height: 8px;*/
-/*    border-top: 1px solid #033560;*/
-/*    border-right: 1px solid #033560;*/
-/*    transition: all .2s ease-out;*/
-/*    transform: rotate(135deg);*/
-/*}*/
-/*#global-nav .sub-menu.is-active > a:after {*/
-/*    transform: rotate(-45deg);*/
-/*}*/
 
+@media screen and (max-width: 768px) {
+    #sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
