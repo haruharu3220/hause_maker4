@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loading.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
+    
+    
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
   
   <x-app-layout>
 
@@ -86,7 +90,9 @@
               <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
               <div class="item-content">
                 <div class="flex photo_date">
-                  <div class="datetime w-4/5 flex items-center">投稿日：{{ date('Y年m月d日', strtotime($photo->created_at)) }}</div>
+                  <!--タイプを表示-->
+<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 typename">{{$photo->type_name}}</span>
+
                   <div class="w-1/5 star-container">
                     @if($photo->iine != true)
                       <form action="{{ route('favorite', $photo->id) }}" method="POST">
@@ -115,20 +121,29 @@
                     </div>
                   </a>
                 </div>
-
-                <div class="photo_attribute flex p-4 flex-wrap">
-                  <!--タイプを表示-->
-                  <span class="h-5 mr-4 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-red-100 text-blue-800">{{$photo->type_name}}</span>
-                  <!--タグを表示-->
-                  @foreach ($photo->tag_names as $tag_name)
-                  <span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
-                  @endforeach
-                  <div class="flex ">
+                     <div class="flex  justify-end">
+   <div class="datetime mb-4 mr-4 flex items-center">{{ date('Y/m/d', strtotime($photo->created_at))  }}</div>
+   
                     <!--更新ボタン-->
                     <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
                       @csrf
                         <button type="submit">
-                         <i class="far fa-edit"></i>
+
+<div class="h-full flex items-center">
+  <span class="material-symbols-outlined">
+    edit_square
+  </span>
+</div>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 48
+  }
+</style>
+
                         </button>
                     </form>
                     <!--削除ボタン-->
@@ -136,10 +151,32 @@
                       @method('delete')
                       @csrf
                         <button class="destroy" type="submit">
-                         <i class="fas fa-trash"></i>
+
+<span class="material-symbols-outlined">
+delete
+</span>
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 48
+}
+</style>
                         </button>
                     </form>
                   </div>
+                  
+   
+   
+                <div class="photo_attribute flex flex-wrap">
+
+                  <!--タグを表示-->
+                  @foreach ($photo->tag_names as $tag_name)
+                  <span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+                  @endforeach
+
                 </div>
               </div>
             </li>

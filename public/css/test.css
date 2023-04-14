@@ -1,3 +1,12 @@
+.datetime{
+	/*color: green;*/
+	font-family: 'Sacramento', cursive;
+}
+
+.typename{
+	font-family: 'Sacramento', cursive;
+}
+
 .sort-btn{
 	/*background: #f3f3f3;*/
 	padding: 20px;
@@ -54,9 +63,6 @@
 	margin:0;
 }
 	
-.sort-btn ul li{
-	width:auto;
-}
 	
 }
 
@@ -132,9 +138,6 @@
   padding: 0 5px 10px 5px;
 }
 
-.datetime{
-	/*color: green;*/
-}
 }
 
 /*横幅が768px以下になった際の指定→タブレット対応*/
@@ -144,9 +147,6 @@
   padding: 0 5px 10px 5px;
 }
 
-.datetime{
-	/*color: blue;*/
-}
 }
 
 /*横幅が600px以下になった際の指定→スマホ対応*/
@@ -156,7 +156,7 @@
   padding: 0 5px 10px 5px;
 }
 .datetime{
-	/*color: red;*/
+	font-family: 'Sacramento', cursive;
 }
 	
 }
