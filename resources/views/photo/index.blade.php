@@ -121,57 +121,50 @@
                     </div>
                   </a>
                 </div>
-                     <div class="flex  justify-end">
-   <div class="datetime mb-4 mr-4 flex items-center">{{ date('Y/m/d', strtotime($photo->created_at))  }}</div>
+                
+                <div class="flex my-1 justify-end photo_attribute">
+                  <div class="datetime my-1 mr-4 flex items-center">{{ date('Y/m/d', strtotime($photo->created_at))  }}</div>
    
-                    <!--更新ボタン-->
-                    <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
-                      @csrf
-                        <button type="submit">
-
-<div class="h-full flex items-center">
-  <span class="material-symbols-outlined">
-    edit_square
-  </span>
-</div>
-<style>
-  .material-symbols-outlined {
-    font-variation-settings:
-      'FILL' 0,
-      'wght' 300,
-      'GRAD' 0,
-      'opsz' 48
-  }
-</style>
-
-                        </button>
-                    </form>
-                    <!--削除ボタン-->
-                    <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
+                  <!--更新ボタン-->
+                  <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
+                    @csrf
+                    <button type="submit">
+                      <span class="material-symbols-outlined">
+                        edit_square
+                      </span>
+                      <style>
+                        .material-symbols-outlined {
+                          font-variation-settings:
+                            'FILL' 0,
+                            'wght' 300,
+                            'GRAD' 0,
+                            'opsz' 48
+                        }
+                      </style>
+                    </button>
+                  </form>
+                  <!--削除ボタン-->
+                  <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
                       @method('delete')
-                      @csrf
-                        <button class="destroy" type="submit">
-
-<span class="material-symbols-outlined">
-delete
-</span>
-<style>
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 300,
-  'GRAD' 0,
-  'opsz' 48
-}
-</style>
-                        </button>
-                    </form>
-                  </div>
+                    @csrf
+                    <button class="destroy" type="submit">
+                      <span class="material-symbols-outlined">
+                      delete
+                      </span>
+                      <style>
+                      .material-symbols-outlined {
+                        font-variation-settings:
+                        'FILL' 0,
+                        'wght' 300,
+                        'GRAD' 0,
+                        'opsz' 48
+                      }
+                      </style>
+                    </button>
+                  </form>
+                </div>
                   
-   
-   
-                <div class="photo_attribute flex flex-wrap">
-
+                <div class="flex flex-wrap photo_attribute">
                   <!--タグを表示-->
                   @foreach ($photo->tag_names as $tag_name)
                   <span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
