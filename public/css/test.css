@@ -23,11 +23,11 @@
 }
 
 .sort-menu a dt{
-	   text-align: center; /* テキストを中央揃えにする */
-    display: block; /* インライン要素からブロック要素に変更 */
+	text-align: center; /* テキストを中央揃えにする */
+	display: block; /* インライン要素からブロック要素に変更 */
 	width: 80%;
-
 }
+
 .indicator{
 	display: inline-block;      /* インラインブロックにする */
 	vertical-align:  middle;    /* 中央寄せ */
@@ -101,7 +101,7 @@
   display: block;
   position: absolute;
   width: 25%;/*横並びで4つ表示*/
-  height: 40vh;
+  height: 440px;
   padding:0 10px 10px 10px;/*画像に余白をつける*/
   list-style:none;
   margin-bottom: 5vh;
@@ -110,7 +110,7 @@
 
 
 .item:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 
@@ -119,6 +119,8 @@
   position: relative;
   width: 100%;
   height: 100%;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
   /*z-index: 1;*/
 }
 
@@ -163,12 +165,12 @@
 
 .photo_date{
 	width:100%;
-	height: 10%;
+	height: 8%;
 }
 .photo_area{
   /*position: absolute;*/
   width:100%;
-	height: 80%;
+	height: 70%;
 }
 
 .star-container {
@@ -182,13 +184,21 @@
   transform: translate(-50%, -50%);
 }
 
-.photo_attribute{
+.photo_attribute_1{
 	/*padding-top: 8px;*/
 	width:100%;
-	height: 5%;
+	height: 6%;
 }
+
+
+.photo_attribute_2{
+	/*padding-top: 8px;*/
+	width:100%;
+	height: 16%;
+}
+
 .modal-trigger{
-	border-radius: 35px;
+	/*border-radius: 7px;*/
 }
 
 /*サイドバーの部屋、タイプの横にある矢印の制御*/

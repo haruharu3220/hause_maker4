@@ -79,19 +79,19 @@
       
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここまで★★★★★★★★★★★★★★★★★★★★★★★-->
     
-    
       <div class="main_content pt-4">
-      
         @if(count($photos) > 0)
         <ul class="grid">
           @foreach ($photos as $photo)
             <!--<i class="fa-solid fa-star" style="color: #7a7a71;"></i>-->
-            <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} cat03">
+            <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} mb-2">
               <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
               <div class="item-content">
                 <div class="flex photo_date">
                   <!--タイプを表示-->
-<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 typename">{{$photo->type_name}}</span>
+                  {{--<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename ">{{$photo->type_name}}</span>--}}
+
+<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename h-full">{{$photo->type_name}}</span>
 
                   <div class="w-1/5 star-container">
                     @if($photo->iine != true)
@@ -122,8 +122,8 @@
                   </a>
                 </div>
                 
-                <div class="flex my-1 justify-end photo_attribute">
-                  <div class="datetime my-1 mr-4 flex items-center">{{ date('Y/m/d', strtotime($photo->created_at))  }}</div>
+                <div class="flex my-1 justify-end photo_attribute_1">
+                  <div class="datetime my-1 mr-4 flex items-center text-gray-600">{{ date('Y.m.d', strtotime($photo->created_at))  }}</div>
    
                   <!--更新ボタン-->
                   <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
@@ -164,10 +164,11 @@
                   </form>
                 </div>
                   
-                <div class="flex flex-wrap photo_attribute">
+                <div class="flex flex-wrap photo_attribute_2">
                   <!--タグを表示-->
                   @foreach ($photo->tag_names as $tag_name)
-                  <span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">{{$tag_name}}</span>
+                  {{--<span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">#{{$tag_name}}</span>--}}
+                  <span class="inline-block h-1/3 bg-gray-200 font-light rounded-md px-2 py-1 text-sm text-gray-700 mx-2 mb-2 flex items-center justify-center">#{{$tag_name}}</span>
                   @endforeach
 
                 </div>
