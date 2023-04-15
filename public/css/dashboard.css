@@ -1,9 +1,9 @@
 .my-info ,
 .my-tag-info{
-border-radius: 47px;
+border-radius: 15px;
 background: #ffffff;
-box-shadow:  12px 12px 13px #b2b2b2,
-             -12px -12px 13px #ffffff;
+box-shadow:  5px 5px 10px #b2b2b2,
+             -5px -5px 10px #ffffff;
 }
 
 h2{

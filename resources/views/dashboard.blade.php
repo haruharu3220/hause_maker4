@@ -11,8 +11,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     
-    <!-- Fonts -->
-    <!--<link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">
 
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
@@ -33,11 +31,12 @@
 
     <div class="py-12 bg-white">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="my-info my-4 pb-4">
-                <h2 class="m-4">私の情報</h2>
-                <div class="flex">
-                    <div class="mx-4 w-1/3 flex-shrink-0 max-w-[300px]"> 
-                        <table>
+            <div class="my-info my-4 p-4 border-gray-300 border">
+                <h2 class="m-4 text-xl">私の情報</h2>
+                <div class="flex w-full">
+                    <!--<div class="mx-4 w-1/2 flex-shrink-0 max-w-[300px]"> -->
+                    <div class="mx-4 w-1/2">
+                        <table class="">
                             <tr class="mx-4">
                                 <th>名前：</th>
                                 <td>{{$user->name}}</td>
@@ -66,30 +65,29 @@
                                 @if($family !=null)
                                     <th>家族：</th>
                                     @foreach($family as $member)
-                                    <td>{{$member->name}}</td>
+                                    <td>{{$member->name}}</td></br>
                                     @endforeach
                                 @endif
                             </tr>
                         </table>
                     </div>
-                    <div class="w-2/3">
+                    <div class="w-1/2 flex justify-center items-center">
                     @if($totalTags > 0)
 
                     <!--円グラフを表示 circle.jsで処理をしている。canvasのattributeとして値を渡している-->
-                    <canvas id="sushi_circle" width="500" height="500" data-total-tags="{{ $totalTags }}" data-undecided-tags="{{ $undecidedTags }}" data-considering-tags="{{ $consideringTags }}" data-decided-tags="{{ $decidedTags }}"></canvas>
-
-
-
+                    <canvas id="sushi_circle" width="250" height="250" data-total-tags="{{ $totalTags }}" data-undecided-tags="{{ $undecidedTags }}" data-considering-tags="{{ $consideringTags }}" data-decided-tags="{{ $decidedTags }}"></canvas>
                     </div>
                     @else
                         <p>タグがありません</p>
                     @endif
                 </div>
-
             </div>
-            <div class="my-tag-info my-4 pb-4">
+            
+            
+            
+            <div class="my-tag-info my-4 p-4 border-gray-300 border">
                 @if($tags!="")
-                <h2>タグ一覧</h2>    
+                <h2 class="text-xl">タグ一覧</h2>    
                     <div class="grid">
                         <ul class="accordion-area">
                             @foreach ($tags as $tag)
