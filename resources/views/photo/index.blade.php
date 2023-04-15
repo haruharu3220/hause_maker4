@@ -38,7 +38,7 @@
             <p>開始日</p>
             <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
             
-            <p>〜終了日</p>
+            <p>終了日</p>
             <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
         
             <x-primary-button class="ml-3">

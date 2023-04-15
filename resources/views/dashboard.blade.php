@@ -113,8 +113,9 @@
                                         
                                         </div>
                                         <div class="box">
-                                            <h3>メモ</h3>
-                                            <p>{{$tag->memo}}</p>
+                                            <h3 class="text-lg italic font-semibold mb-2">メモ</h3>
+                                            {{--<p>{{$tag->memo}}</p>--}}
+                                            <div>{!! nl2br(e($tag->memo)) !!}</div>
                                         </div>
                                     </section>
                                 </li>

@@ -54,11 +54,13 @@
               <x-input-error :messages="$errors->get('tag')" class="mt-2" />
             </div>
             
-            <div class="flex flex-col mb-4">
-              <x-input-label for="memo" :value="__('メモ')" />
-              <x-text-input id="memo" class="block mt-1 w-full" type="text" name="memo" value="{{$tag->memo}}" />
-              <x-input-error :messages="$errors->get('tag')" class="mt-2" />
-            </div>
+          
+          <div class="flex flex-col mb-4">
+            <x-input-label for="memo" :value="__('メモ')" />
+            <textarea id="memo" class="block mt-1 w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
+            <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+          </div>
+
         
             <div class="flex items-center justify-end mt-4">
               <!--前画面に戻るボタン-->

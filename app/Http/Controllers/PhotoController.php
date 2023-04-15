@@ -204,5 +204,49 @@ class PhotoController extends Controller
         $photo->save();
         return redirect()->route('photo.index');
     }
-}
+    
+    
+    public function memory(){
+        return response()->view('photo.memory' );
+    }
+    
+    public function memoryindex(){
+        
+        $team_id = Auth::user()->team_id;
+        
 
+        $query = Photo::query()
+            ->where('team_id', $team_id)
+            ->orderBy('created_at', 'desc');
+
+        $photos = $query->get();
+        
+        // dd($photos);
+        foreach($photos as $photo){
+            $type = Type::where('id', $photo->type_id)->first()->name;
+            // $tags = Tag::where('team_id', $team)->get();
+            $results = Photo::with("tags")->where('id', $photo->id)->get();
+            // dd($results);
+            // dd($results->$tags);
+            $classname ="";
+            $tagnames = [];
+            foreach($results as $result){
+                foreach($result->tags as $tag) {
+                    $classname .= "tag_no_";
+                    $classname .= $tag->id." ";
+                    array_push($tagnames,$tag->name);
+                }
+            }
+            // dd($classname);
+            $photo ->type_name = $type;
+            $photo ->tag_no = $classname;
+            $photo ->tag_names = $tagnames;
+            // dd($photo);
+            
+        }
+        
+        // dd($photos);
+        return response()->view('photo.memory',compact('photos'));
+    }
+    
+}
