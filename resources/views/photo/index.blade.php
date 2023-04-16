@@ -77,8 +77,6 @@
         </nav>
       </div>
       
-    <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここまで★★★★★★★★★★★★★★★★★★★★★★★-->
-    
       <div class="main_content pt-4">
         @if(count($photos) > 0)
         <ul class="grid">
@@ -99,6 +97,11 @@
                           @csrf
                         <button>
                           <i class="fa-regular fa-star fa-2xl star"></i>
+                          
+                          <!--svgのスター画像　（大きさが変更できず一旦コメントアウト）-->
+                          {{--<img class="star-svg" src="{{ asset('images/star_gray.svg')}}" width="34" height="34">--}}
+
+                          {{--<svg class="star-svg" src="{{ asset('images/star_gray.svg')}}"></svg>--}}
                         </button>
                       </form>
                     @else

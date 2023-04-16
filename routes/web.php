@@ -11,10 +11,13 @@ Route::middleware('auth')->group(function () {
     //RESTfulルートを自動的に生成
     Route::post('photo/{photo}/favorite', [PhotoController::class, 'favorite'])->name('favorite');
     Route::post('photo/{photo}/unfavorite', [PhotoController::class, 'unfavorite'])->name('unfavorite');
+    Route::get('photo/memory', [PhotoController::class, 'memoryindex'])->name('memory');
     Route::resource('photo', PhotoController::class);
+    
     Route::resource('tag', TagController::class);
     Route::get('tag/{tag}', [TagController::class,'memoedit'])->name('memoedit');
     Route::put('tag/{tag}/edit', [TagController::class,'update'])->name('tag.update');
+    
     // Route::post('/tag', [TagController::class,'create'])->name('setting.tag');
     // Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
     
