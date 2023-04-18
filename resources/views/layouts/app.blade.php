@@ -23,6 +23,10 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        
+        <link rel="icon" href="{{ asset('images/favicon.ico') }}" id="favicon">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon-180x180.png') }}">
+
     
     </head>
     <body class="font-sans antialiased">
