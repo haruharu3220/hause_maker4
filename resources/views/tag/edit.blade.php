@@ -32,8 +32,14 @@
             @method('put')
             @csrf
             
+            <div class="flex flex-col my-4">
+              <x-input-label for="tag" :value="__('タグ')" />
+              <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$tag->name}}" required autofocus />
+              <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+            </div>
+            
             <div class="my-4">
-              <x-input-label for="status" :value="__('タイプ')"/>
+              <x-input-label for="status" :value="__('ステータス')"/>
               <div class="flex mb-4">
               <input type="radio" name="status" id="type-1" value="未決定" @if($tag->status == "未決定") checked @endif>    
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
@@ -47,12 +53,27 @@
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">決定</div>
               </div>
             </div>
-        
-            <div class="flex flex-col my-4">
-              <x-input-label for="tag" :value="__('タグ')" />
-              <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$tag->name}}" required autofocus />
-              <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+            
+            <div class="my-4">
+              <x-input-label for="importance" :value="__('こだわり度')"/>
+              <div class="flex mb-4">
+                <input type="radio" name="importance" id="importance-1" value=1 @if($tag->importance == 1) checked @endif>
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div>
+              </div>
+              <div class="flex mb-4">
+                <input type="radio" name="importance" id="importance-2" value=2 @if($tag->importance == 2) checked @endif>    
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div>
+              </div>
+              <div class="flex mb-4">
+                <input type="radio" name="importance" id="importance-1" value=3 @if($tag->status == 3) checked @endif>    
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div>
+              </div>
             </div>
+            
+            <x-input-label for="importance" :value="__('締切')"/>
+            <div class="my-2"><input type="date" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
+
+
             
           
           <div class="flex flex-col mb-4">

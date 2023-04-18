@@ -32,7 +32,7 @@
     <div class="py-12 bg-white">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
             <div class="my-info my-4 p-4 border-gray-300 border">
-                <h2 class="m-4 text-xl">私の情報</h2>
+                <h2 class="mx-4 mt-4 text-xl">私の情報</h2>
                 <div class="flex w-full">
                     <!--<div class="mx-4 w-1/2 flex-shrink-0 max-w-[300px]"> -->
                     <div class="mx-4 w-1/2">
@@ -109,21 +109,21 @@
                                             <!--★★d★★★★★重要度★★★★★★★★★★★★-->
                                             <div class="w-1/6">
                                             @if($tag->importance == NULL)
-                                                <div name="名前" class="w-3/4 text-xs px-3 bg-transparent"></div>
+                                                <div name="importance" class="w-3/4 text-xs px-3 bg-transparent"></div>
                                             @elseif($tag->importance == 1)
-                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-red-600 rounded-full">
+                                              <select name="importance" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-red-600 rounded-full">
                                                   <option selected>↗︎</option>
                                                   <option>→</option>
                                                   <option>↘︎</option>
                                               </select>
                                             @elseif($tag->importance == 2)
-                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-orange-600 rounded-full">
+                                              <select name="importance" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-orange-600 rounded-full">
                                                   <option>↗︎</option>
                                                   <option selected>→</option>
                                                   <option>↘︎</option>
                                               </select>
                                             @elseif($tag->importance == 3)
-                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-blue-600 rounded-full">
+                                              <select name="importance" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-blue-600 rounded-full">
                                                   <option>↗︎</option>
                                                   <option>→</option>
                                                   <option selected>↘︎</option>
@@ -142,22 +142,25 @@
                                             <div class="datetime my-1 mr-4 w-1/6 flex items-center justify-center items-center text-red-600">
                                               @if($tag->status != "決定")
                                                 @if($tag->deadline)
-                                                  @if(strtotime($tag->deadline) > strtotime('now'))
-                                                    <div class="text-gray-600">
-                                                      あと{{ \Carbon\Carbon::parse($tag->deadline)->diffInDays() }}日
-                                                    </div>
-                                                  @elseif(strtotime($tag->deadline) >= strtotime(date('Y-m-d')))
-                                                    <div class="text-red-600">
-                                                      本日
-                                                    </div>
-                                                  @elseif(strtotime($tag->deadline) >= strtotime('tomorrow'))
-                                                    <div class="text-orange-600">
-                                                    明日
-                                                    </div>
+                                                  @php
+                                                      $diffInDays = \Carbon\Carbon::parse($tag->deadline)->diff(now())->days;
+                                                  @endphp
+                                                  @if($diffInDays == 0 && \Carbon\Carbon::parse($tag->deadline)->isToday())
+                                                      <div class="text-red-400">
+                                                          本日
+                                                      </div>
+                                                  @elseif($diffInDays == 0 && \Carbon\Carbon::parse($tag->deadline)->isTomorrow())
+                                                      <div class="text-orange-600">
+                                                          明日
+                                                      </div>
+                                                  @elseif(\Carbon\Carbon::parse($tag->deadline)->isFuture())
+                                                      <div class="text-gray-600">
+                                                          あと{{ $diffInDays + 1 }}日
+                                                      </div>
                                                   @else
-                                                    <div class="text-red-600">
-                                                    締切切れてます！
-                                                    </div>
+                                                      <div class="text-red-800">
+                                                          締切切れてます！
+                                                      </div>
                                                   @endif
                                                 @endif
                                               @endif
