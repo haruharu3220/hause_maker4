@@ -90,6 +90,16 @@
                 <h2 class="text-xl">タグ一覧</h2>    
                     <div class="grid">
                         <ul class="accordion-area" id="sorted-list">
+                          <li>
+                            <section class="flex">
+                                <div class="w-1/3 flex items-center justify-center">部屋名</div>
+                                <div class="w-1/6 flex items-start justify-start">ステータス</div>
+                                <div class="w-1/6 flex items-start justify-start">こだわり度</div>
+                                <div class="flex items-center justify-center">締切</div>
+                            </section>
+                          </li>              
+                          
+                          
                             @foreach ($tags as $tag)
                                 <li>                                       
                                     <section>
