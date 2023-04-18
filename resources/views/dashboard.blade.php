@@ -83,11 +83,16 @@
                 </div>
             </div>
             
-            <!-- liを昇順で並び替えるボタン作成 -->
+
+
             
             <div class="my-tag-info my-4 p-4 border-gray-300 border">
                 @if($tags!="")
                 <h2 class="text-xl">タグ一覧</h2>    
+                            <!-- liを昇順で並び替えるボタン作成 -->
+            <button id="sort-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Sort by Importance
+            </button>
                     <div class="grid">
                         <ul class="accordion-area" id="sorted-list">
                           <li>
@@ -204,5 +209,4 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/accordion.js') }}"></script>
 <script src="{{ asset('js/circle.js') }}"></script>
-
 </body>
