@@ -143,13 +143,21 @@
                                               @if($tag->status != "決定")
                                                 @if($tag->deadline)
                                                   @if(strtotime($tag->deadline) > strtotime('now'))
-                                                    あと{{ \Carbon\Carbon::parse($tag->deadline)->diffInDays() }}日
+                                                    <div class="text-gray-600">
+                                                      あと{{ \Carbon\Carbon::parse($tag->deadline)->diffInDays() }}日
+                                                    </div>
                                                   @elseif(strtotime($tag->deadline) >= strtotime(date('Y-m-d')))
-                                                    本日
+                                                    <div class="text-red-600">
+                                                      本日
+                                                    </div>
                                                   @elseif(strtotime($tag->deadline) >= strtotime('tomorrow'))
+                                                    <div class="text-orange-600">
                                                     明日
+                                                    </div>
                                                   @else
+                                                    <div class="text-red-600">
                                                     締切切れてます！
+                                                    </div>
                                                   @endif
                                                 @endif
                                               @endif
