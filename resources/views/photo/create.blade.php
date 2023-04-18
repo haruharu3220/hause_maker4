@@ -46,20 +46,20 @@
               </script>
 
               <x-input-label for="image" :value="__('タイプ')" />
-                <input type="radio" name="type" value="1"> 写真
+                <input type="radio" name="type" value="1" checked> 写真
                 <input type="radio" name="type" value="2"> 図面
                 <input type="radio" name="type" value="3"> 書類・メモ
                 <input type="radio" name="type" value="4"> その他
 
               
               <!--Tags-->
-              
+              <div class="my-4">
               <select class="select2 html block m-4 w-full" name="tags[]" multiple>
               @foreach($tags as $tag)
                   <option value="{{$tag->id}}">{{$tag->name}}</option>
               @endforeach
               </select>
-
+              </div>
               <script>
 
                 $(".select2.html").select2({

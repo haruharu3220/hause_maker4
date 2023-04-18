@@ -70,9 +70,13 @@
               </div>
             </div>
             
-            <x-input-label for="importance" :value="__('締切')"/>
+            <x-input-label for="deadline" :value="__('締切')"/>
+            @if($tag->deadline)
             <div class="my-2"><input type="date" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
+            @else
+<div class="my-2"><input type="date" name="deadline" value="{{ date('Y-m-d') }}"></div>
 
+            @endif
 
             
           
