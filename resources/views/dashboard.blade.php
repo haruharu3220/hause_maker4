@@ -95,55 +95,67 @@
                                     <section>
                                         <div class="flex items-center mb-4 tag-area">
                                             <h3 class="title w-1/3">{{$tag->name}}</h3>
-                                            @if($tag->status =="未決定")
-                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</div>
-    
-                                            @elseif($tag->status =="検討中")
-                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div>
-                                            
-                                            @else($tag->status =="決定")
-                                            <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
-                                            @endif
-                                            
+                                            <div class="w-1/6 flex justify-start">
+                                              @if($tag->status =="未決定")
+                                              <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-4/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</div>
+      
+                                              @elseif($tag->status =="検討中")
+                                              <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-4/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div>
+                                              
+                                              @else($tag->status =="決定")
+                                              <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-4/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div>
+                                              @endif
+                                            </div>
                                             <!--★★d★★★★★重要度★★★★★★★★★★★★-->
                                             <div class="w-1/6">
                                             @if($tag->importance == NULL)
                                                 <div name="名前" class="w-3/4 text-xs px-3 bg-transparent"></div>
                                             @elseif($tag->importance == 1)
-                                                 <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-red-200 text-gray-800 rounded-full">
-                                                    <option selected>大</option>
-                                                    <option>中</option>
-                                                    <option>小</option>
-                                                </select>
+                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-red-600 rounded-full">
+                                                  <option selected>↗︎</option>
+                                                  <option>→</option>
+                                                  <option>↘︎</option>
+                                              </select>
                                             @elseif($tag->importance == 2)
-                                                <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-orange-200 text-gray-800 rounded-full">
-                                                    <option>大</option>
-                                                    <option selected>中</option>
-                                                    <option>小</option>
-                                                </select>
+                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-orange-600 rounded-full">
+                                                  <option>↗︎</option>
+                                                  <option selected>→</option>
+                                                  <option>↘︎</option>
+                                              </select>
                                             @elseif($tag->importance == 3)
-                                            
-                                                <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-blue-200 text-gray-800 rounded-full">
-                                                    <option>大</option>
-                                                    <option>中</option>
-                                                    <option selected>小</option>
-                                                </select>
+                                              <select name="名前" style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/4 flex justify-center text-xs px-3 bg-white text-blue-600 rounded-full">
+                                                  <option>↗︎</option>
+                                                  <option>→</option>
+                                                  <option selected>↘︎</option>
+                                              </select>
                                             @endif
                                             </div>
                                             <!--★★★★★★★★★重要度★★★★★★★★★★★★-->
 
-                                            <div class="datetime my-1 mr-4 flex flex items-center justify-center items-center text-gray-600">{{ date('Y.m.d', strtotime($tag->deadline))  }}</div>
+                                            <div class="datetime w-1/6 my-1 mr-4 flex flex items-center justify-center items-center text-gray-600">
+                                              @if($tag->deadline)
+                                                {{ date('Y.m.d', strtotime($tag->deadline)) }}
+                                              @endif
+                                            </div>
                                             
                                             
-                                            
-                                            <div class="datetime w-1/6 my-1 mr-4 flex items-center justify-center text-red-600">
-                                                @if(strtotime($tag->deadline) > strtotime('today'))
+                                            <div class="datetime my-1 mr-4 w-1/6 flex items-center justify-center items-center text-red-600">
+                                              @if($tag->status != "決定")
+                                                @if($tag->deadline)
+                                                  @if(strtotime($tag->deadline) > strtotime('now'))
                                                     あと{{ \Carbon\Carbon::parse($tag->deadline)->diffInDays() }}日
-                                                @endif  
+                                                  @elseif(strtotime($tag->deadline) >= strtotime(date('Y-m-d')))
+                                                    本日
+                                                  @elseif(strtotime($tag->deadline) >= strtotime('tomorrow'))
+                                                    明日
+                                                  @else
+                                                    締切切れてます！
+                                                  @endif
+                                                @endif
+                                              @endif
                                             </div>
 
 
- 
                                             <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
                                             @csrf
                                                 <button>
