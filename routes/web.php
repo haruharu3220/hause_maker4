@@ -33,6 +33,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -48,6 +49,9 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/team/join', [TeamController::class, 'join'])->name('team.join');	
     Route::post('/team/join', [TeamController::class, 'store'])->name('team.join');	
+    
+    
+    Route::get('/photos', [PhotoController::class, 'index2'])->name('photo.index2');	
     
     
 });

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>家づくりアルバム</title>
+        <!--<title>家づくりアルバム</title>-->
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,6 +23,9 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        
+        <!--Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js"></script>
     </head>
     <body class="antialiased">
         <div class="relative items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -43,14 +46,13 @@
             @endif
             </div>
             <div class="main">
-                <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
-                <h1 class="font-black">家づくりアルバム</h1>
+                {{-- <img class="family-picture" src="{{ asset('images//family.jpg')}}"  > --}}
+                <img class="homeny-picture" src="{{ asset('images//homeny.png')}}"  >
+
             </div>
 
-
-
         </div>
-        
     </body>
 
 </html>
+
