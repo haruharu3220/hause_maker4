@@ -29,7 +29,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // ユーザのposition_idが5の場合、デザイナー用のダッシュボードにリダイレクト
+        if (Auth::user()->position_id == 5) {
+            return redirect(RouteServiceProvider::DESIGNER_HOME);
+        }else{
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     /**
