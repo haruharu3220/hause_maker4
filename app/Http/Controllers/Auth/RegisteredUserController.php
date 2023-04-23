@@ -25,6 +25,7 @@ class RegisteredUserController extends Controller
     //ユーザ登録
     public function store(Request $request): RedirectResponse
     {
+        //dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'position_id' => $request->position // ここを追加
         ]);
 
         event(new Registered($user));
