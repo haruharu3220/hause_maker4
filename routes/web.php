@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\DesignerController;
+
 
 
 Route::middleware('auth')->group(function () {
@@ -21,6 +23,10 @@ Route::middleware('auth')->group(function () {
     // Route::post('/tag', [TagController::class,'create'])->name('setting.tag');
     // Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
     
+    Route::get('designer/setting', [DesignerController::class,'setting_page'])->name('designer.setting_page');
+    Route::post('designer/register', [DesignerController::class,'register'])->name('designer.register');
+    
+    
 });
 
 
@@ -32,6 +38,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('designer/dashboard', function () {
+    return view('designer.dashboard');
+})->middleware(['auth', 'verified'])->name('designer.dashboard');
+
 
 
 Route::middleware('auth')->group(function () {
