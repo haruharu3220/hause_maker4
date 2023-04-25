@@ -42,14 +42,7 @@
                     <div class="grid">
                         --
                         @foreach($teams as $team)
-                              <li>                                       
-                                    <section>
-                                        <div class="flex items-center mb-4 tag-area">
-                                            {{ $team->team_name }}
-                                        </div>
-                                        
-                                    </section>
-                                </li>
+ <li onclick="location.href='{{ route('designer.project', ['project' => $team->id]) }}'">{{ $team->team_name }}</li>
                         @endforeach
                         --
 

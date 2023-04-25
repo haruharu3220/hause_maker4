@@ -56,5 +56,25 @@ class DesignerController extends Controller
         return redirect()->route('designer.dashboard')->with('user', $user)->with('teams', $teams);
     }
     
+    public function project($id){
+
+        // teamsテーブルから$idと同じ値のレコードを取得する
+        $team = Team::findOrFail($id);
+        // dd($team);
+        // tagsテーブルから$team->team_idと同じ値のレコードを取得する
+        $tags = Tag::where('team_id', $team->id)->get();
+
+        // photosテーブルから$team->team_idと同じ値のレコードを取得する
+        $photos = Photo::where('team_id', $team->id)->get();
+
+        // dd($team,$tags,$photos);
+        // ビューにデータを渡してレスポンスを返す
+        return view('designer.project', [
+            'team' => $team,
+            'tags' => $tags,
+            'photos' => $photos,
+        ]);
+
+    }
     
 }

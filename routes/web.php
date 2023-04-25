@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
     
     Route::get('designer/setting', [DesignerController::class,'setting_page'])->name('designer.setting_page');
+    Route::get('designer/{project}/project', [DesignerController::class,'project'])->name('designer.project');
     Route::post('designer/register', [DesignerController::class,'register'])->name('designer.register');
     
     
