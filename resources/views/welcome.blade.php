@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>家づくりアルバム</title>
+        <!--<title>家づくりアルバム</title>-->
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,6 +23,9 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        
+        <!--Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js"></script>
     </head>
     <body class="antialiased">
         <div class="relative items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -30,7 +33,11 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">マイページ</a>
+                        @if (Auth::user()->position_id == 5)
+                            <a href="{{ url('designer/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">デザイナーマイページ</a>
+                        @else
+                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">マイページ</a>
+                        @endif
                     @else
                     
                             <a href="{{ route('login') }}" class="ml-4 text-9xl dark:text-gray-500 underline">ログイン</a>
@@ -43,14 +50,13 @@
             @endif
             </div>
             <div class="main">
-                <img class="family-picture" src="{{ asset('images//family.jpg')}}"  >
-                <h1 class="font-black">家づくりアルバム</h1>
+                {{-- <img class="family-picture" src="{{ asset('images//family.jpg')}}"  > --}}
+                <img class="homeny-picture" src="{{ asset('images//homeny.png')}}"  >
+
             </div>
 
-
-
         </div>
-        
     </body>
 
 </html>
+

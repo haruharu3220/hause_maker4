@@ -13,4 +13,10 @@ class Team extends Model
         'original_id',
         'team_name',
     ];
+    
+    
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

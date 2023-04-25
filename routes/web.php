@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\DesignerController;
+
 
 
 Route::middleware('auth')->group(function () {
@@ -21,6 +23,10 @@ Route::middleware('auth')->group(function () {
     // Route::post('/tag', [TagController::class,'create'])->name('setting.tag');
     // Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
     
+    Route::get('designer/setting', [DesignerController::class,'setting_page'])->name('designer.setting_page');
+    Route::post('designer/register', [DesignerController::class,'register'])->name('designer.register');
+    
+    
 });
 
 
@@ -33,6 +39,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('designer/dashboard', [DesignerController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('designer.dashboard');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -42,12 +55,15 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {	
     Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');
-    Route::post('/tag/firstcreate', [TeamController::class, 'register'])->name('team.firstcreate');	
+    Route::post('/tag/firstcreate', [TeamController::class, 'register'])->name('team.firstcreate');
     
     Route::get('/team/option', [TeamController::class, 'option'])->name('team.option');
     
     Route::get('/team/join', [TeamController::class, 'join'])->name('team.join');	
     Route::post('/team/join', [TeamController::class, 'store'])->name('team.join');	
+    
+    
+    Route::get('/photos', [PhotoController::class, 'index2'])->name('photo.index2');	
     
     
 });

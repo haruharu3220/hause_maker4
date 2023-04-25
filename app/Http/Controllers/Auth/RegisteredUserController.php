@@ -25,6 +25,7 @@ class RegisteredUserController extends Controller
     //ユーザ登録
     public function store(Request $request): RedirectResponse
     {
+        //dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'position_id' => $request->position // ここを追加
         ]);
 
         event(new Registered($user));
@@ -43,8 +45,13 @@ class RegisteredUserController extends Controller
 
         // return redirect(RouteServiceProvider::HOME);
         // return redirect(RouteServiceProvider::TEAM_CREATE);
-        return redirect(RouteServiceProvider::TEAM_OPTION);
-    
+        if($request->position == 1){
+            return redirect(RouteServiceProvider::TEAM_OPTION);
+        }
+        
+        if($request->position == 5){
+            return redirect(RouteServiceProvider::DESIGNER_HOME);
+        }
         
     }
 }

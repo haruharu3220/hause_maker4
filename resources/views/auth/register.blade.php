@@ -4,7 +4,24 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        
+        
+        <div class="m-2">
+            <x-input-label for="position" :value="__('属性')" />
+                <input type="radio" name="position" id="position-1" value="1" checked> 施主の方
+                <input type="radio" name="position" id="position-2" value="5" > 設計士の方
+        </div>
+        
+        {{--
+        <div class="m-2">
+            <x-input-label for="position" :value="__('属性')" />
+            <input type="radio" name="position" id="position-1" value="1" checked>
+            <label for="position-1">{{ __('施主の方') }}</label>
+            <input type="radio" name="position" id="position-2" value="5">
+            <label for="position-2">{{ __('設計士の方') }}</label>
+        </div>
+        --}}
+                
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('名前')" />
