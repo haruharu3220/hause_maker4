@@ -42,7 +42,14 @@
                     <div class="grid">
                         --
                         @foreach($teams as $team)
-                            <li>{{ $team->team_name }}</li>
+                              <li>                                       
+                                    <section>
+                                        <div class="flex items-center mb-4 tag-area">
+                                            {{ $team->team_name }}
+                                        </div>
+                                        
+                                    </section>
+                                </li>
                         @endforeach
                         --
 
