@@ -40,9 +40,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('designer/dashboard', function () {
-    return view('designer.dashboard');
-})->middleware(['auth', 'verified'])->name('designer.dashboard');
+Route::get('designer/dashboard', [DesignerController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('designer.dashboard');
 
 
 

@@ -16,8 +16,20 @@ use Illuminate\Support\Facades\DB;
 
 class DesignerController extends Controller
 {
+    
+    public function dashboard()
+    {
+        $user = User::find(Auth::id());
+
+        // 中間テーブルから紐づくチーム情報を取得する
+        $teamIds = $user->teams()->pluck('team_id')->toArray();
+        $teams = Team::whereIn('id', $teamIds)->get();
+
+        return view('designer.dashboard', compact('user', 'teams'));
+    }
+    
+    
     public function setting_page(){
-        
         return response()->view('designer.setting');
     }
     
@@ -30,8 +42,18 @@ class DesignerController extends Controller
             return back()->with('error', '家族IDが見つかりませんでした。');
         }
         
+        if ($user->teams()->where('team_user.team_id', $team->id)->where('team_user.user_id', $user->id)->count() > 0) {
+            return back()->with('error', 'すでに登録ずみです。');
+        }
+        
         $user->teams()->attach($team->id);
-         return redirect()->route('designer.dashboard')->with('success', 'チームに参加しました。');
+        
+        // 中間テーブルから紐づくチーム情報を取得する
+        $teamIds = $user->teams()->pluck('team_id')->toArray();
+        $teams = Team::whereIn('id', $teamIds)->get();
+        
+        // dd($teams);
+        return redirect()->route('designer.dashboard')->with('user', $user)->with('teams', $teams);
     }
     
     

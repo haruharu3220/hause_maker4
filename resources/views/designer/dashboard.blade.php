@@ -40,6 +40,14 @@
             <div class="my-tag-info my-4 p-4 border-gray-300 border">
                 <h2 class="text-xl">案件一覧</h2>    
                     <div class="grid">
+                        --
+                        @foreach($teams as $team)
+                            <li>{{ $team->team_name }}</li>
+                        @endforeach
+                        --
+
+                        
+                        
                     </div>
             </div>
         </div>
