@@ -6,13 +6,13 @@
   @if(Auth::user()->position_id == 5)
       <!-- Navigation Links -->
       <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('designer.dashboard')" :active="request()->routeIs('designer.dashboard')">
           {{ __('デザイナーマイページ') }}
         </x-nav-link>
       </div>
       
       <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-        <x-nav-link :href="route('designer.setting_page')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('designer.setting_page')" :active="request()->routeIs('designer.setting_page')">
           {{ __('案件追加') }}
         </x-nav-link>
       </div>
