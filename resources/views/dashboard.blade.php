@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
 </head>
 
 
@@ -199,10 +201,111 @@
             </div>
         </div>
     </div>
+
+
+
+<div id="users">
+  <input class="search" placeholder="Search" />
+
+  <section class="flex">
+      <div class="w-1/3 flex items-center justify-center"><button class="sort" data-sort="name">部屋名</button></div>
+      <div class="w-1/6 flex items-start justify-start">    <button class="sort" data-sort="status">
+          ステータス</button></div>
+      <div class="w-1/6 flex items-start justify-start">  <button class="sort" data-sort="importance">こだわり度</button></div>
+      <div class="flex items-center justify-center">  <button class="sort" data-sort="deadline">締切
+        </button>
+      </div>
+  </section>
+
+  <table class="w-3/4 custom-table">
+    <tbody class="list">
+      
+    @foreach ($tags as $tag)
+      <tr>
+        <td class="name w-1/5">{{$tag->name}}</td>
+        
+        @if($tag->status =="未決定")
+        <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
+          class="status text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</td>
+
+        @elseif($tag->status =="検討中")
+        <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
+          class="status text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</td>
+
+        @else($tag->status =="決定")
+        <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
+          class="status text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</td>
+        @endif
+
+        
+        
+        
+        <td class="importance w-1/5">{{$tag->importance}}</td>
+
+        <td class="deadline datetime w-1/5 my-1 mr-4 items-center justify-center items-center text-gray-600">
+          @if($tag->deadline)
+            {{ date('Y.m.d', strtotime($tag->deadline)) }}
+          @endif
+        </td>
+        
+        <td class="datetime my-1 mr-4 w-1/5 items-center justify-center items-center text-red-600">
+          @if($tag->status != "決定")
+            @if($tag->deadline)
+              @php
+                $diffInDays = \Carbon\Carbon::parse($tag->deadline)->diff(now())->days;
+              @endphp
+              @if($diffInDays == 0 && \Carbon\Carbon::parse($tag->deadline)->isToday())
+                <div class="text-red-400">
+                  本日
+                </div>
+              @elseif($diffInDays == 0 && \Carbon\Carbon::parse($tag->deadline)->isTomorrow())
+                <div class="text-orange-600">
+                  明日
+                </div>
+              @elseif(\Carbon\Carbon::parse($tag->deadline)->isFuture())
+                <div class="text-gray-600">
+                  あと{{ $diffInDays + 1 }}日
+                </div>
+              @else
+                <div class="text-red-800">
+                  締切過ぎてます！
+                </div>
+              @endif
+            @endif
+          @endif
+        </td>
+        <td> 
+          <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
+            @csrf
+            <button>
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
+
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+
 </x-app-layout>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/accordion.js') }}"></script>
 <script src="{{ asset('js/circle.js') }}"></script>
+<script>
+  var options = {
+  valueNames: [ 'name', 'status','importance','deadline' ]
+};
+
+var userList = new List('users', options);
+  
+</script>
 
 </body>
