@@ -162,6 +162,21 @@
                       </style>
                     </button>
                   </form>
+                  @if($photo->share_flag==false)
+                  <form action="{{ route('share',$photo->id) }}" method="POST" class="text-right">
+                    @csrf
+                    <button class="share" type="submit">
+                      共有する
+                    </button>
+                  </form>
+                  @else
+                  <form action="{{ route('share',$photo->id) }}" method="POST" class="text-right">
+                    @csrf
+                    <button class="share" type="submit">
+                      共有済
+                    </button>
+                  </form>
+                  @endif
                 </div>
                   
                 <div class="flex flex-wrap photo_attribute_2">

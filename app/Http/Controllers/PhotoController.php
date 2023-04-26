@@ -248,5 +248,12 @@ class PhotoController extends Controller
         // dd($photos);
         return response()->view('photo.memory',compact('photos'));
     }
+ 
     
+    public function share($id){
+        $photo =Photo::find($id);
+        $photo->share_flag = !$photo->share_flag;
+        $photo->save();
+        return redirect()->route('photo.index');
+    }
 }
