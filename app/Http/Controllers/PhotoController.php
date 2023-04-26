@@ -253,7 +253,13 @@ class PhotoController extends Controller
     public function share($id){
         $photo =Photo::find($id);
         $photo->share_flag = !$photo->share_flag;
+        
+        if($photo->share_flag == true){
+            $photo->shared_at = now();
+        }
+        
         $photo->save();
         return redirect()->route('photo.index');
+        
     }
 }
