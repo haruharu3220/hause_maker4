@@ -45,6 +45,17 @@
                             <li class="flex">
                                 <div>{{$tag->name}}</div>
                                 <div>{{$tag->status}}</div>
+                                @php
+                                    $photoCount = $photosWithTags->where('tag_id', $tag->id)->count();
+                                @endphp
+                                <div>{{ $photoCount }}</div>
+                                @php
+                                    $photoCount = $photosWithTags
+                                        ->where('tag_id', $tag->id)
+                                        ->where('share_flag', 1)
+                                        ->count();
+                                @endphp
+                                <div>{{ $photoCount }}</div>
                             </li>
                         @endforeach
                         

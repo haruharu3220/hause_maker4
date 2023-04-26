@@ -66,13 +66,23 @@ class DesignerController extends Controller
 
         // photosテーブルから$team->team_idと同じ値のレコードを取得する
         $photos = Photo::where('team_id', $team->id)->get();
+        
+        
+        $tagIds = Tag::where('team_id', $team->id)->pluck('id');
 
+        $photosWithTags = Photo::where('team_id', $team->id)
+            ->join('photo_tag', 'photos.id', '=', 'photo_tag.photo_id')
+            ->whereIn('photo_tag.tag_id', $tagIds)
+            ->get();
+        // dd($photosWithTags);
         // dd($team,$tags,$photos);
         // ビューにデータを渡してレスポンスを返す
+        
         return view('designer.project', [
             'team' => $team,
             'tags' => $tags,
             'photos' => $photos,
+            'photosWithTags' => $photosWithTags,
         ]);
 
     }

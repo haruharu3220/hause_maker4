@@ -31,5 +31,8 @@ class Tag extends Model
         return $this->belongsToMany(Photo::class)->withTimestamps();
         
     }
+    
+    
+    
 
 }
