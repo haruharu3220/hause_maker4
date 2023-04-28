@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loading.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/card2.css') }}">
     
     
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -19,45 +21,49 @@
   
   <x-app-layout>
 
+    {{--
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
        {{$team->team_name}}の{{ __('画像一覧ページ') }}
       </h2>
     </x-slot>
+    --}}
   
     
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
+    <div class="main">
     <div class="flex">
-      <div id="sidebar" class="">
+      <div id="sidebar" class="sidebar">
     
-        <form action="{{ route('photo.index') }}" method="GET">
-            <h2 class="my-4 text-xl">検索範囲指定</h2>
-            <p>開始日</p>
-            <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
-            
-            <p>終了日</p>
-            <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
-        
-            <x-primary-button class="ml-3">
-              {{ __('検索') }}
-            </x-primary-button>
-        </form>        
-        
-        
         <nav id="global-nav">
           <ul class="sort-btn">
+        <div class="serch">
+          <form action="{{ route('photo.index') }}" method="GET">
+              <h2 class="my-4 text-xl">検索範囲指定</h2>
+              <p>開始日</p>
+              <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
+              
+              <p>終了日</p>
+              <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
+          
+              <x-primary-button class="ml-3">
+                {{ __('検索') }}
+              </x-primary-button>
+          </form>        
+        </div>
+        
             <li>
-              <a href="#"><dt class="text-xl">All</dt></a>
+              <!--<a href="#"><dt class="text-xl">ALL</dt></a>-->
                 <ul class="sub-menu-nav">  <!--unordered list 順不同リスト-->
-                  <li class="all active">全て</li>  <!--list item リスト項目-->
+                  <li class="all active">ALL</li>  <!--list item リスト項目-->
                 </ul>
             </li>
  
             <li class="sub-menu">
-              <a href="#" class="flex items-center justify-center"><dt class="text-xl">部屋</dt><i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></a>
+              <a href="#" class="flex items-center justify-center "><dt class="text-xl">部屋 <i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></dt></a>
                 <ul class="sub-menu-nav w-full">
                   @foreach($tags as $tag)
-                    <li class="tag_no_{{$tag->id}}"><a href="#">{{$tag->name}}</a></li>
+                    <li class="tag_no_{{$tag->id}} tag"><a href="#">{{$tag->name}}</a></li>
                   @endforeach
                 </ul>
             </li>
@@ -86,7 +92,7 @@
                   <!--タイプを表示-->
                   {{--<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename ">{{$photo->type_name}}</span>--}}
 
-<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename h-full">{{$photo->type_name}}</span>
+                <span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename h-full">{{$photo->type_name}}</span>
 
                   <div class="w-1/5 star-container">
                     @if($photo->iine != true)
@@ -208,7 +214,7 @@
         @endif
       </div>
     </div>
-
+  </div>
   </x-app-layout> 
 
 

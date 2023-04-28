@@ -27,6 +27,7 @@
 
 
 <x-app-layout>
+    {{--
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             @if($team !="")
@@ -34,10 +35,11 @@
             @endif
         </h2>
     </x-slot>
+    --}}
 
-    <div class="py-12 bg-white">
+    <div class="py-12 main">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="my-info my-4 p-4 border-gray-300 border">
+            <div class="my-info my-4 p-4 ">
                 <h2 class="mx-4 mt-4 text-xl">私の情報</h2>
                 <div class="flex w-full">
                     <!--<div class="mx-4 w-1/2 flex-shrink-0 max-w-[300px]"> -->

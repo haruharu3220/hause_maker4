@@ -10,17 +10,25 @@
 .sort-btn{
 	/*background: #f3f3f3;*/
 	padding: 20px;
-	margin:50px 0;
+	/*margin:50px 0;*/
 	/*display: flex;*/
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
+
 .sort-btn dt{
+	width: 90%;
 	font-weight: bold;
 	margin:10px;
- 	
+	padding: 10px;
+	background: #f5f6f7;
+	box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
+	border-radius: 7px;
+	
 }
+
+
 
 .sort-menu a dt{
 	text-align: center; /* テキストを中央揃えにする */
@@ -43,15 +51,19 @@
 }
 
 .sort-btn li{
-	margin:0 10px;
-    list-style:none;
+	margin:0 10px,20px,0;
+  list-style:none;
 }
 
+/*チェックリストボタン*/
 .sort-btn ul li{
 	position: relative;
 	cursor: pointer;
 	padding:0 0 0 30px;
-	margin:0 10px 0 0;
+	margin:0 0px 10px 0;
+	padding: 10px;
+	background: #f5f6f7;
+	box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
 }
 
 
@@ -78,7 +90,7 @@
 	content:'';
 	position: absolute;
 	left:5px;	
-	top:0;
+	/*top:0;*/
     /*チェックマークの色や形*/
 	border-left:2px solid #333;
 	border-bottom:2px solid #333;
@@ -109,6 +121,8 @@
 
 .item:hover {
   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 9px;
+  
 }
 
 
@@ -118,7 +132,11 @@
   width: 100%;
   height: 100%;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: -6px -6px 6px 0px #ffffff, 6px 6px 6px 0px #DFE4EA;
+  box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
+
   border-radius: 7px;
+  background: #f5f6f7;
   /*z-index: 1;*/
 }
 
@@ -204,3 +222,21 @@
 .glyphicon-chevron-down-custom .sp-1, .glyphicon-chevron-up-custom .sp-2 {transform: skewY(-40deg);}
 .glyphicon-chevron-up-custom .sp-1, .glyphicon-chevron-down-custom .sp-2 {transform: skewY(40deg);}
 .glyphicon {top: -2px;}
+
+.serch,
+.sub-menu{
+	font-weight: bold;
+	margin-bottom: 20px;
+	padding: 10px;
+	background: #f5f6f7;
+	border-radius: 7px;
+	box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
+}
+
+/*h2{*/
+/*  color: #FF8C00;*/
+/*  background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);*/
+/*  -webkit-background-clip: text;*/
+/*  -webkit-text-fill-color: transparent;*/
+
+/*}*/

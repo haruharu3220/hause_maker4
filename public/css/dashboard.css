@@ -1,12 +1,22 @@
 .my-info ,
 .my-tag-info{
 border-radius: 15px;
-background: #ffffff;
-box-shadow:  5px 5px 10px #b2b2b2,
-             -5px -5px 10px #ffffff;
+/*background: #ffffff;*/
+/*box-shadow:  5px 5px 10px #b2b2b2,*/
+/*             -5px -5px 10px #ffffff;*/
+background: #f5f6f7;
+box-shadow: -6px -6px 6px 0px #ffffff, 6px 6px 6px 0px #DFE4EA;
+
 }
 
 h2{
     font-size: 100px;
 }
 
+.main{
+    /*background-color: linear-gradient(to bottom right, #A5F2EE,#BCF16F);*/
+     
+    /*background: linear-gradient(to bottom right, #A5F2EE, #BCF16F);*/
+    background: linear-gradient(to bottom right, #E0FBF9, #E0F9DA);
+
+}
