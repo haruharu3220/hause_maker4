@@ -37,11 +37,11 @@
           </x-nav-link>
         </div>
         
-        {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('memory')" :active="request()->routeIs('photo.memory')">
             {{ __('これまでの過程') }}
           </x-nav-link>
-        </div> --}}
+        </div>
         
         
         <!-- タグページへのリンクを追加 -->

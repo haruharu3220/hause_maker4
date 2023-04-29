@@ -10,7 +10,7 @@
         <!-- Select2本体 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
         <script src="{{ asset('js/test.js') }}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     </head>
     <body>
