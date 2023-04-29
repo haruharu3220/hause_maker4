@@ -16,8 +16,11 @@
     use Illuminate\Support\Facades\File;
 
     $files = File::files(storage_path('app/public/image'));
-    $fileNames = array_map(function($file) {
-        return basename($file);
+    
+    $filesa = 'public/storage/image/';
+
+    $fileNames = array_map(function($filea) {
+        return basename($filea);
     }, $files);
 @endphp
 
@@ -36,7 +39,7 @@
 <script>
 var responsiveImage = [];
 var homeimages = @json($fileNames); // ファイル名を配列に格納
-
+console.log(homeimages);
 var imageDir = '../storage/image/';
 
 for (var i = 0; i < homeimages.length; i++) {
