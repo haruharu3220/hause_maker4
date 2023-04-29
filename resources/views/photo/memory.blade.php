@@ -19,8 +19,8 @@
     
     $filesa = 'public/storage/image/';
 
-    $fileNames = array_map(function($filea) {
-        return basename($filea);
+    $fileNames = array_map(function($filesa) {
+        return basename($filesa);
     }, $files);
 @endphp
 
