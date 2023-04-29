@@ -17,8 +17,6 @@
 
     $files = File::files(storage_path('app/public/image'));
     
-    $filesa = 'public/storage/image/';
-
     $fileNames = array_map(function($filesa) {
         return basename($filesa);
     }, $files);
