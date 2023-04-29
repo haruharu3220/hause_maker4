@@ -1,13 +1,15 @@
 
-  .image-container {
-    position: relative;
-  }
+  /*.image-container {*/
+  /*  position: relative;*/
+  /*border-radius: 7px;*/
+    
+  /*}*/
 
-  .loading-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-  }
+  /*.loading-spinner {*/
+  /*  position: absolute;*/
+  /*  top: 50%;*/
+  /*  left: 50%;*/
+  /*  transform: translate(-50%, -50%);*/
+  /*  display: none;*/
+  /*}*/
 

@@ -93,15 +93,13 @@
             
             <!-- liを昇順で並び替えるボタン作成 -->
             
-            <div class="my-tag-info my-4 p-4 border-gray-300 border">
+            <div class="my-tag-info my-4 p-4">
                 @if($tags!="")
                 <h2 class="text-xl">タグ一覧</h2>
                 
                 <!--ソート付きテーブル-->
-                  <div id="users">
-                    <input class="search" placeholder="Search" />
-                  
-                    <section class="flex">
+                  <div id="users ">
+                    <section class="w-4/5 flex justify-center">
                         <div class="w-1/3 flex items-center justify-center"><button class="sort" data-sort="name">部屋名</button></div>
                         <div class="w-1/6 flex items-start justify-start">    <button class="sort" data-sort="status">
                             ステータス</button></div>
@@ -111,7 +109,7 @@
                         </div>
                     </section>
 
-                    <table class="w-3/4 custom-table">
+                    <table class="w-4/5 custom-table flex justify-center">
                       <tbody class="list">
       
                         @foreach ($tags as $tag)

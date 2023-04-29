@@ -9,7 +9,6 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/loading.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card2.css') }}">
@@ -37,27 +36,30 @@
     
         <nav id="global-nav">
           <ul class="sort-btn">
-        <div class="serch">
-          <form action="{{ route('photo.index') }}" method="GET">
-              <h2 class="my-4 text-xl">検索範囲指定</h2>
-              <p>開始日</p>
-              <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
+            <div class="serch">
+              <form action="{{ route('photo.index') }}" method="GET">
+
+                <dt class="my-4 text-xl">検索範囲指定</dt>
+                <p>開始日</p>
+                <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
               
-              <p>終了日</p>
-              <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
+                <p>終了日</p>
+                <div class="my-2"><input type="date" name="end" value="{{$endDate}}"></div>
           
-              <x-primary-button class="ml-3">
-                {{ __('検索') }}
-              </x-primary-button>
-          </form>        
-        </div>
+                <x-secondary-button class="ml-3">
+                  {{ __('検索') }}
+                </x-secondary-button>
+              </form>        
+            </div>
         
             <li>
               <!--<a href="#"><dt class="text-xl">ALL</dt></a>-->
-                <ul class="sub-menu-nav">  <!--unordered list 順不同リスト-->
-                  <li class="all active">ALL</li>  <!--list item リスト項目-->
-                </ul>
+                <!--unordered list 順不同リスト-->
+              <ul class="all-menu">
+                <li class="all active text-xl">ALL</li>  <!--list item リスト項目-->
+              </ul>
             </li>
+            
  
             <li class="sub-menu">
               <a href="#" class="flex items-center justify-center "><dt class="text-xl">部屋 <i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></dt></a>
@@ -84,27 +86,19 @@
         @if(count($photos) > 0)
         <ul class="grid">
           @foreach ($photos as $photo)
-            <!--<i class="fa-solid fa-star" style="color: #7a7a71;"></i>-->
+          
             <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} mb-2">
               <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
               <div class="item-content">
-                <div class="flex photo_date">
-                  <!--タイプを表示-->
-                  {{--<span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename ">{{$photo->type_name}}</span>--}}
-
-                <span class="w-4/5 mr-4 inline-flex items-center gap-1.5 px-3 my-1 rounded-md text-base font-medium border-gray-300 text-gray-700 text-xl typename h-full">{{$photo->type_name}}</span>
-
-                  <div class="w-1/5 star-container">
+                <!--写真エリア-->
+                <div class="photo_area">
+                  <!--スターボタン-->
+                  <div class="star-container">
                     @if($photo->iine != true)
                       <form action="{{ route('favorite', $photo->id) }}" method="POST">
                           @csrf
                         <button>
                           <i class="fa-regular fa-star fa-2xl star"></i>
-                          
-                          <!--svgのスター画像　（大きさが変更できず一旦コメントアウト）-->
-                          {{--<img class="star-svg" src="{{ asset('images/star_gray.svg')}}" width="34" height="34">--}}
-
-                          {{--<svg class="star-svg" src="{{ asset('images/star_gray.svg')}}"></svg>--}}
                         </button>
                       </form>
                     @else
@@ -116,58 +110,86 @@
                       </form>
                     @endif
                   </div>
-                </div>
-                <div class="photo_area">
+                  
                   <a href="{{ asset('storage/image/'.$photo->image)}}" data-lightbox="picture" data-title="{{$photo->name}}">
                     <div class="image-container">
-                      <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" onload="hideSpinner(this)" loading="lazy">
-                      <div class="loading-spinner">
-                        <i class="fas fa-spinner fa-spin"></i>
-                      </div>
+                      <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
                     </div>
                   </a>
                 </div>
-                
-                <div class="flex my-1 justify-end photo_attribute_1">
-                  <div class="datetime my-1 mr-4 flex items-center text-gray-600">{{ date('Y.m.d', strtotime($photo->created_at))  }}</div>
-   
-                  <!--更新ボタン-->
-                  <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
-                    @csrf
-                    <button type="submit">
-                      <span class="material-symbols-outlined">
-                        edit_square
-                      </span>
-                      <style>
+            
+                <!--データエリア-->
+                <div class="photo_date">
+                  <!--タグ名-->
+                  <div class="flex justify-center m-2">
+                    <p>{{$photo->type_name}}</p>
+                  </div>
+                  
+                  <!--投稿日-->
+                  <div class="my-1 justify-end flex justify-center">
+                    <div >{{ date('Y.m.d', strtotime($photo->created_at))  }}</div>
+                  </div>
+            
+                  <!--タグ表示     -->
+                  <div class="flex justify-center flex-wrap w-3/5 ">
+                    <!--タグを表示-->
+                    @foreach ($photo->tag_names as $tag_name)
+                    {{--<span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">#{{$tag_name}}</span>--}}
+                    <span class="inline-block h-1/3 bg-gray-200 font-light rounded-md px-2 py-1 text-sm text-gray-700 mx-2 mb-2 flex items-center justify-center">#{{$tag_name}}</span>
+                    @endforeach
+                  </div>
+            
+                  <div class="flex justify-center">
+                    <!--更新ボタン-->
+                    <form action="{{ route('photo.edit',$photo->id) }}" method="GET">
+                      @csrf
+                      <button type="submit">
+                        <span class="material-symbols-outlined">
+                          edit_square
+                        </span>
+                        <style>
+                          .material-symbols-outlined {
+                            font-variation-settings:
+                              'FILL' 0,
+                              'wght' 300,
+                              'GRAD' 0,
+                              'opsz' 48
+                          }
+                        </style>
+                      </button>
+                    </form>
+                  
+                    <!--削除ボタン-->
+                    <form action="{{ route('photo.destroy',$photo->id) }}" method="POST">
+                      @method('delete')
+                      @csrf
+                      <button class="destroy" type="submit">
+                        <span class="material-symbols-outlined">
+                          delete
+                        </span>
+                        <style>
                         .material-symbols-outlined {
                           font-variation-settings:
-                            'FILL' 0,
-                            'wght' 300,
-                            'GRAD' 0,
-                            'opsz' 48
+                          'FILL' 0,
+                          'wght' 300,
+                          'GRAD' 0,
+                          'opsz' 48
                         }
-                      </style>
-                    </button>
-                  </form>
-                  <!--削除ボタン-->
-                  <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
-                      @method('delete')
-                    @csrf
-                    <button class="destroy" type="submit">
-                      <span class="material-symbols-outlined">
-                      delete
-                      </span>
-                      <style>
-                      .material-symbols-outlined {
-                        font-variation-settings:
-                        'FILL' 0,
-                        'wght' 300,
-                        'GRAD' 0,
-                        'opsz' 48
-                      }
-                      </style>
-                    </button>
-                  </form>
+                        </style>
+                      </button>
+                    </form>
+                  </div>
+                <!--item-content終了-->
+                </div>    
+                  
+                
+                
+                
+                
+                
+                
+                  <!--共有ボタン-->
+                  {{--
                   @if($photo->share_flag==false)
                   <form action="{{ route('share',$photo->id) }}" method="POST" class="text-right">
                     @csrf
@@ -183,16 +205,9 @@
                     </button>
                   </form>
                   @endif
-                </div>
+                --}}
                   
-                <div class="flex flex-wrap photo_attribute_2">
-                  <!--タグを表示-->
-                  @foreach ($photo->tag_names as $tag_name)
-                  {{--<span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">#{{$tag_name}}</span>--}}
-                  <span class="inline-block h-1/3 bg-gray-200 font-light rounded-md px-2 py-1 text-sm text-gray-700 mx-2 mb-2 flex items-center justify-center">#{{$tag_name}}</span>
-                  @endforeach
 
-                </div>
               </div>
             </li>
           @endforeach
@@ -246,7 +261,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
   <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/test.js') }}"></script>
-  <script src="{{ asset('js/loadind.js') }}"></script>
-  
 
     
