@@ -14,12 +14,13 @@
 
 @php
     use Illuminate\Support\Facades\File;
-
-    $files = File::files(storage_path('app/public/image'));
+    $fileNames = [];
+    foreach($photos as $photo){        
+        if($photo->share_flag==1){
+            array_push($fileNames, $photo->image);
+        }
+    }
     
-    $fileNames = array_map(function($filesa) {
-        return basename($filesa);
-    }, $files);
 @endphp
 
 <body>
@@ -56,12 +57,13 @@ if (windowwidth <= 768) {
 }
 
 $('#slider').vegas({
-    overlay: true,
+    overlay: true,//画像の上に網線やドットのオーバーレイパターン画像を指定。
+
     transition: 'fade2',
-    transitionDuration: 2000,
-    delay: 5000,
+    transitionDuration: 2000, //切り替わりのアニメーション時間をミリ秒単位で設定
+    delay: 5000,                    //スライド間の遅延をミリ秒単位。
     animationDuration: 20000,
-    animation: 'random',
+    animation: 'random',//画像設定を読む
     slides: responsiveImage,
 });
 

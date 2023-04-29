@@ -244,8 +244,10 @@ class PhotoController extends Controller
             // dd($photo);
             
         }
+        // foreach($photos as $photo){
+        //     dd($photo->image);
+        // }
         
-        // dd($photos);
         return response()->view('photo.memory',compact('photos'));
     }
  
