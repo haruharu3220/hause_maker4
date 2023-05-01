@@ -213,11 +213,10 @@ class PhotoController extends Controller
     public function memoryindex(){
         
         $team_id = Auth::user()->team_id;
-        
 
         $query = Photo::query()
             ->where('team_id', $team_id)
-            ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'asc');
 
         $photos = $query->get();
         
@@ -244,9 +243,7 @@ class PhotoController extends Controller
             // dd($photo);
             
         }
-        // foreach($photos as $photo){
-        //     dd($photo->image);
-        // }
+
         
         return response()->view('photo.memory',compact('photos'));
     }

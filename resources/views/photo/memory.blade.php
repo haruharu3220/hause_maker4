@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
@@ -44,27 +43,22 @@ var imageDir = '../storage/image/';
 for (var i = 0; i < homeimages.length; i++) {
     var src = imageDir + homeimages[i];
     responsiveImage.push({src: src});
+    console.log(responsiveImage);
 }
 
 var windowwidth = window.innerWidth || document.documentElement.clientWidth || 0;
 
-if (windowwidth <= 768) {
-    responsiveImage = [
-        { src: './img/img_sp_01.jpg' },
-        { src: './img/img_sp_02.jpg' },
-        { src: './img/img_sp_03.jpg' }
-    ];
-}
 
 $('#slider').vegas({
     overlay: true,//画像の上に網線やドットのオーバーレイパターン画像を指定。
 
-    transition: 'fade2',
-    transitionDuration: 2000, //切り替わりのアニメーション時間をミリ秒単位で設定
-    delay: 1000,                    //スライド間の遅延をミリ秒単位。
-    animationDuration: 20000,//スライドアニメーション時間をミリ秒単位で設定
+    transition: ['fade2'],       //https://vegas.jaysalvat.com/documentation/transitions/
+    transitionDuration: 4000, //切り替わりのアニメーション時間をミリ秒単位で設定
+    delay: 4000,                    //スライド間の遅延をミリ秒単位。
+    animationDuration: 4000,//スライドアニメーション時間をミリ秒単位で設定
     animation: 'random',//画像設定を読む
     slides: responsiveImage,
+    loop: false,
 });
 
 

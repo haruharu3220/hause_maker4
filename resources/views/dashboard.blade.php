@@ -39,7 +39,7 @@
     <div class="main">
     <div class="py-12">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="my-info my-4 p-4 border-gray-300 border">
+            <div class="my-info my-4 p-4 border">
                 <h2 class="mx-4 mt-4 text-xl">私の情報</h2>
                 <div class="flex w-full">
                     <!--<div class="mx-4 w-1/2 flex-shrink-0 max-w-[300px]"> -->
@@ -93,13 +93,12 @@
             
             <!-- liを昇順で並び替えるボタン作成 -->
             
-            <div class="my-tag-info my-4 p-4 border-gray-300 border">
+            <div class="my-tag-info my-4 p-4">
                 @if($tags!="")
                 <h2 class="text-xl">タグ一覧</h2>
                 
                 <!--ソート付きテーブル-->
                   <div id="users">
-                    <input class="search" placeholder="Search" />
                   
                     <section class="flex">
                         <div class="w-1/3 flex items-center justify-center"><button class="sort" data-sort="name">部屋名</button></div>
