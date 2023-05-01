@@ -61,8 +61,8 @@ $('#slider').vegas({
 
     transition: 'fade2',
     transitionDuration: 2000, //切り替わりのアニメーション時間をミリ秒単位で設定
-    delay: 5000,                    //スライド間の遅延をミリ秒単位。
-    animationDuration: 20000,
+    delay: 1000,                    //スライド間の遅延をミリ秒単位。
+    animationDuration: 20000,//スライドアニメーション時間をミリ秒単位で設定
     animation: 'random',//画像設定を読む
     slides: responsiveImage,
 });

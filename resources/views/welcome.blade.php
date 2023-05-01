@@ -51,7 +51,9 @@
             </div>
             <div class="main">
                 {{-- <img class="family-picture" src="{{ asset('images//family.jpg')}}"  > --}}
-                <img class="homeny-picture" src="{{ asset('images//homeny.png')}}"  >
+                {{-- <img class="homeny-picture" src="{{ asset('images//homeny.png')}}"  > --}}
+                <img class="homeny-picture" src="{{ asset('images//homeny_logo2.png')}}"  >
+                
 
             </div>
 
