@@ -10,24 +10,28 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/background.css') }}">
+    
 </head>
   
   <x-app-layout>
-
+    
+    {{--
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
        {{$team->team_name}}の{{ __('タグ設定画面') }}
       </h2>
     </x-slot>
-    
+    --}}
+  <div class="main">
     <div class="flex justify-center">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
         
         <form method="POST" action="{{ route('tag.store') }}">
             @csrf
             <div>
-                <x-input-label for="tagName" :value="__('タグ名')" />
-                <p>新しいタグを追加してください。</p>
+                <x-input-label for="tagName" :value="__('タグ追加')" />
+                <p>追加するタグ(部屋名)を入力してください。</p>
                 <x-text-input id="tagName" class="block mt-1 w-full" type="text" name="tagName" :value="old('tagName')" required autofocus autocomplete="tagName" />
                 <x-input-error :messages="$errors->get('tagName')" class="mt-2" />
             </div>
@@ -57,7 +61,7 @@
       @endforeach
     </div>
     </div>  
-
+  </div>
 
 
 

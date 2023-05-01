@@ -14,11 +14,13 @@
   
   <x-app-layout>
 
+    {{--
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
        {{$team->team_name}}の{{ __('タグ設定画面') }}
       </h2>
     </x-slot>
+    --}}
   
   <div class="flex items-center justify-center">
     <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
