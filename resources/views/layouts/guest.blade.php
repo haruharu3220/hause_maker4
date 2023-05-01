@@ -9,19 +9,20 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+         <link rel="stylesheet" href="{{ asset('css/background.css') }}">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="main font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0  dark:bg-gray-900">
-            <div>
+            <div class="flex justify-center">
                 <img class="homeny-picture2" src="{{ asset('images//homeny_logo2.png')}}"  width="15%" height="15%">     
-                <h2 class="m-4 text-center">新規アカウント登録</h2>
+                
             </div>
-
-            <div class="w-full h-1/3 sm:max-w-md mt-6 px-6 py-4 bg-white shadow-xl dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <h2 class="m-4 text-center">新規アカウント登録</h2>
+            <div class="w-full h-1/3 sm:max-w-md px-6 py-4 bg-white shadow-xl dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
