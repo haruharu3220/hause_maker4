@@ -80,13 +80,15 @@
                         </table>
                     </div>
                     <div class="w-1/2 flex justify-center items-center">
-                    @if($totalTags > 0)
+                    @if($totalTag){
+                      @if($totalTags > 0)
 
-                    <!--円グラフを表示 circle.jsで処理をしている。canvasのattributeとして値を渡している-->
-                    <canvas id="sushi_circle" width="250" height="250" data-total-tags="{{ $totalTags }}" data-undecided-tags="{{ $undecidedTags }}" data-considering-tags="{{ $consideringTags }}" data-decided-tags="{{ $decidedTags }}"></canvas>
-                    </div>
-                    @else
+                      <!--円グラフを表示 circle.jsで処理をしている。canvasのattributeとして値を渡している-->
+                      <canvas id="sushi_circle" width="250" height="250" data-total-tags="{{ $totalTags }}" data-undecided-tags="{{ $undecidedTags }}" data-considering-tags="{{ $consideringTags }}" data-decided-tags="{{ $decidedTags }}"></canvas>
+                      </div>
+                      @else
                         <p>タグがありません</p>
+                      @endif
                     @endif
                 </div>
             </div>

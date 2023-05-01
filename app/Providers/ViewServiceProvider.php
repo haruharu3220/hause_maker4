@@ -55,7 +55,12 @@ class ViewServiceProvider extends ServiceProvider
                     $types = Type::all();
                     
                     // タグのカウントを計算
-                    $totalTags = $tags->count();
+                    if($tags){
+                        $totalTags = $tags->count();
+                    }else{
+                        $totalTags = 0;
+                    }
+                    
                     $undecidedTags = $tags->where('status', '未決定')->count();
                     $consideringTags = $tags->where('status', '検討中')->count();
                     $decidedTags = $tags->where('status', '決定')->count();
@@ -75,12 +80,14 @@ class ViewServiceProvider extends ServiceProvider
                 }else{
                     $team ="";
                     $tags ="";
+                    $totalTags =0;
                     $family  = "";
                     $view->with([
                         'user' => $user, 
                         'team' => $team, 
                         'tags' => $tags,
-                        'family' => $family
+                        'family' => $family,
+                        'totalTag' => $totalTags,
                     ]);
                 }
                 // dd($user,$team,$tags);

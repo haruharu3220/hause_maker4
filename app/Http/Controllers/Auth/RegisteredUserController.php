@@ -45,6 +45,9 @@ class RegisteredUserController extends Controller
 
         // return redirect(RouteServiceProvider::HOME);
         // return redirect(RouteServiceProvider::TEAM_CREATE);
+        
+        return redirect(RouteServiceProvider::TEAM_OPTION);
+        
         if($request->position == 1){
             return redirect(RouteServiceProvider::TEAM_OPTION);
         }

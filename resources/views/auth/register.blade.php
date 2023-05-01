@@ -60,9 +60,9 @@
                 {{ __('登録済みの方はこちら') }}
             </a>
 
-            <x-secondary-button class="ml-4 button">
+            <x-primary-button class="ml-4 button">
                 {{ __('登録') }}
-            </x-secondary-button>
+            </x-primary-button>
         </div>
     </form>
 </x-guest-layout>
