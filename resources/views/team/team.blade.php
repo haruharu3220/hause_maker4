@@ -18,7 +18,7 @@
         <!-- familyID -->
         <div class="mt-4">
             <x-input-label for="familyID" :value="__('ファミリーID')" />
-            <p>ファミリーIDを決めてください。このIDを共有するとご家族と情報を共有できます。</p>
+            <p>ファミリーIDを決めてください。このIDを共有することで、ご家族と情報を共有できます。</p>
             <x-text-input id="familyID" class="block mt-1 w-full" type="text" name="familyID" :value="old('familyID')" required autocomplete="familyID" />
             <x-input-error :messages="$errors->get('familyID')" class="mt-2" />
         </div>

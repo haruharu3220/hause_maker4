@@ -80,7 +80,6 @@
                         </table>
                     </div>
                     <div class="w-1/2 flex justify-center items-center">
-                    @if($totalTag){
                       @if($totalTags > 0)
 
                       <!--円グラフを表示 circle.jsで処理をしている。canvasのattributeとして値を渡している-->
@@ -89,7 +88,6 @@
                       @else
                         <p>タグがありません</p>
                       @endif
-                    @endif
                 </div>
             </div>
             

@@ -35,10 +35,8 @@ class TagController extends Controller
                 $tag->name = $tagNames;
                 $tag->save();
         }
-
         return redirect()->route('tag.store');
     }
-    
     
     
     public function destroy($id){

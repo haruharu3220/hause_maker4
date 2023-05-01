@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Tag;
 
 class TeamController extends Controller
 {
@@ -52,7 +53,7 @@ class TeamController extends Controller
     public function register(Request $request){
     
         $request->validate([
-            'familyName' => 'required|string|max:255',
+            // 'familyName' => 'required|string|max:255',
             'familyID' => 'required|string|min:4|max:8|unique:teams,original_id',
         ]);
 
@@ -65,8 +66,54 @@ class TeamController extends Controller
         $user->team_id = $team->id;
         $user->save();
         
+        
+        
+        
         // dd($team,$user);
-        return redirect()->route('tag.create');
+        
+        
+        
+        
+        $tag1 = new Tag();
+        $tag1->team_id = $team->id;
+        $tag1->name = "リビング";
+        $tag1->save();
+        
+        $tag2 = new Tag();
+        $tag2->team_id = $team->id;
+        $tag2->name = "キッチン";
+        $tag2->save();
+        
+        $tag3 = new Tag();
+        $tag3->team_id = $team->id;
+        $tag3->name = "寝室";
+        $tag3->save();
+        
+        $tag3 = new Tag();
+        $tag3->team_id = $team->id;
+        $tag3->name = "バスルーム";
+        $tag3->save();
+        
+        $tag4 = new Tag();
+        $tag4->team_id = $team->id;
+        $tag4->name = "洗面";
+        $tag4->save();
+        
+        $tag5 = new Tag();
+        $tag5->team_id = $team->id;
+        $tag5->name = "子供部屋";
+        $tag5->save();
+        
+        $tag6 = new Tag();
+        $tag6->team_id = $team->id;
+        $tag6->name = "玄関";
+        $tag6->save();
+        
+        
+
+        
+        return redirect()->route('tag.index');
+        
         // return view('tag.create');
     }
 }
