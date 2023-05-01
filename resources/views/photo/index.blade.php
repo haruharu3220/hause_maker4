@@ -131,7 +131,7 @@
                   </div>
             
                   <!--タグ表示     -->
-                  <div class="flex justify-center flex-wrap w-3/5 ">
+                  <div class="flex justify-center items-center flex-wrap ">
                     <!--タグを表示-->
                     @foreach ($photo->tag_names as $tag_name)
                     {{--<span class="h-5 mr-2 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-blue-100 text-blue-800">#{{$tag_name}}</span>--}}
