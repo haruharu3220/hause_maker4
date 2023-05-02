@@ -182,12 +182,6 @@
                 <!--item-content終了-->
                 </div>    
                   
-                
-                
-                
-                
-                
-                
                   <!--共有ボタン-->
                   {{--
                   @if($photo->share_flag==false)
@@ -221,6 +215,7 @@
                 'resizeDuration': 500,
                 'wrapAround': true,
                 'alwaysShowNavOnTouchDevices':true,
+                
               })
           </script>
         @else
