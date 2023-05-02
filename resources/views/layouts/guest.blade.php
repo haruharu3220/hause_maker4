@@ -17,11 +17,10 @@
     </head>
     <body class="main font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0  dark:bg-gray-900">
-            <div class="flex justify-center">
+            <div class="flex justify-center mb-8">
                 <img class="homeny-picture2" src="{{ asset('images//homeny_logo2.png')}}"  width="15%" height="15%">     
                 
             </div>
-            <h2 class="m-4 text-center">新規アカウント登録</h2>
             <div class="w-full h-1/3 sm:max-w-md px-6 py-4 bg-white shadow-xl dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>

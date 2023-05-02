@@ -2,6 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <h1 class="flex justify-center mb-4 pb-2 border-b-4 border-teal-200 text-xl tracking-wide">ログイン</h1>
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
