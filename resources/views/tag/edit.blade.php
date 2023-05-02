@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
         <script src="{{ asset('js/test.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+        <link rel="stylesheet" href="{{ asset('css/background.css') }}">
     </head>
     <body>
       <x-app-layout>
@@ -19,8 +19,7 @@
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('編集画面') }}
           </h2>
         </x-slot>
-          </ul>
-
+      <div class="main">
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -71,14 +70,14 @@
             </div>
             
             <x-input-label for="importance" :value="__('締切')"/>
-            <div class="my-2"><input type="date" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
+            <div class="my-2"><input type="date" class="border-gray-300 rounded-md" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
 
 
             
           
           <div class="flex flex-col mb-4">
             <x-input-label for="memo" :value="__('メモ')" />
-            <textarea id="memo" class="block mt-1 w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
+            <textarea id="memo" class="block mt-1 border-gray-300 rounded-md bg-slate-200 w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
             <x-input-error :messages="$errors->get('tag')" class="mt-2" />
           </div>
 
@@ -99,6 +98,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
