@@ -39,7 +39,7 @@
     <div class="main">
     <div class="py-12">
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
-            <div class="my-info my-4 p-4 border">
+            <div class="my-info my-4 p-4">
                 <h2 class="mx-4 mt-4 text-xl">私の情報</h2>
                 <div class="flex w-full">
                     <!--<div class="mx-4 w-1/2 flex-shrink-0 max-w-[300px]"> -->

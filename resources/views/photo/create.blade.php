@@ -8,6 +8,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
       <link rel="stylesheet" href="{{ asset('css/background.css') }}">
       <link rel="stylesheet" href="{{ asset('css/input_file.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/neumorphism.css') }}">
   </head>
     
   <x-app-layout>
@@ -21,8 +22,8 @@
   <div class="main">
     <div class="py-12">
       <div class="max-w-xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-        <div class="bg-white mx-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 ">
+        <div class="mx-4 dark:bg-gray-800 overflow-hidden sm:rounded-lg neumorphism">
+          <div class="p-6 dark:bg-gray-800 dark:border-gray-800 ">
             @include('common.errors')
             <h1 class="flex justify-center mb-4 pb-2 border-b-4 border-teal-200 text-xl tracking-wide">投稿</h1>
             
