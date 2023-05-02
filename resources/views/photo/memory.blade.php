@@ -11,24 +11,27 @@
 
 </head>
 
+
+
+
 @php
     use Illuminate\Support\Facades\File;
     $fileNames = [];
     foreach($photos as $photo){        
-        if($photo->share_flag==1){
+        if($photo->iine==1){
             array_push($fileNames, $photo->image);
         }
     }
     
 @endphp
-
+<x-app-layout>
 <body>
 <div class="wrapper">
 <div id="slider">
 <!--/slider--></div>
 <!--/wrapper--></div>
 <div class="container"></div>
-
+  </x-app-layout> 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.4.4/vegas.min.js"></script>
