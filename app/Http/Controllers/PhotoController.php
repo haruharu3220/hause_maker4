@@ -217,33 +217,29 @@ class PhotoController extends Controller
         $query = Photo::query()
             ->where('team_id', $team_id)
             ->orderBy('created_at', 'asc');
-
+        
+        //自分のチーム(家族)が投稿した画像を全て取得
         $photos = $query->get();
         
-        // dd($photos);
+        //写真についているタグ情報を追加
         foreach($photos as $photo){
             $type = Type::where('id', $photo->type_id)->first()->name;
-            // $tags = Tag::where('team_id', $team)->get();
             $results = Photo::with("tags")->where('id', $photo->id)->get();
-            // dd($results);
-            // dd($results->$tags);
+
             $classname ="";
             $tagnames = [];
             foreach($results as $result){
                 foreach($result->tags as $tag) {
-                    $classname .= "tag_no_";
                     $classname .= $tag->id." ";
                     array_push($tagnames,$tag->name);
                 }
             }
-            // dd($classname);
             $photo ->type_name = $type;
             $photo ->tag_no = $classname;
             $photo ->tag_names = $tagnames;
-            // dd($photo);
-            
-        }
 
+        }
+        //dd($photos);
         
         return response()->view('photo.memory',compact('photos'));
     }
