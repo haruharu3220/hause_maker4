@@ -38,7 +38,7 @@
         </div>
         
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('memory')" :active="request()->routeIs('photo.memory')">
+          <x-nav-link :href="route('photo.memory')" :active="request()->routeIs('photo.memory')">
             {{ __('これまでの過程') }}
           </x-nav-link>
         </div>
