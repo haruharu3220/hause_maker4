@@ -26,9 +26,9 @@
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
         <div class=" dark:bg-gray-800 sm:rounded-lg neumorphism">
-        <div class="p-6 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 ">
+        <div class="p-6 dark:bg-gray-800  dark:border-gray-800 ">
           @include('common.errors')
-          
+          <h1 class="flex justify-center mb-4 pb-2 border-b-4 border-teal-500 text-xl tracking-wide">タグ詳細</h1>
           <!--フォーム開始-->
           <form class="mb-6" action="{{ route('tag.update',$tag->id) }}" method="POST">
             @method('put')
@@ -80,7 +80,7 @@
           
           <div class="flex flex-col mb-4">
             <x-input-label for="memo" :value="__('メモ')" />
-            <textarea id="memo" class="block mt-1 border-gray-300 rounded-md bg-teal-50 w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
+            <textarea id="memo" class="block mt-1 focus:border-teal-500 focus:ring-teal-500 border-gray-300 rounded-md w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
             <x-input-error :messages="$errors->get('tag')" class="mt-2" />
           </div>
 

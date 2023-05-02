@@ -25,7 +25,7 @@
         <div class="mx-4 dark:bg-gray-800 overflow-hidden sm:rounded-lg neumorphism">
           <div class="p-6 dark:bg-gray-800 dark:border-gray-800 ">
             @include('common.errors')
-            <h1 class="flex justify-center mb-4 pb-2 border-b-4 border-teal-200 text-xl tracking-wide">投稿</h1>
+            <h1 class="flex justify-center mb-4 pb-2 border-b-4 border-teal-500 text-xl tracking-wide">投稿</h1>
             
             <form class="mb-6" action="{{ route('photo.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
