@@ -16,6 +16,11 @@ Route::middleware('auth')->group(function () {
     Route::post('photo/{photo}/share', [PhotoController::class, 'share'])->name('share');
     
     Route::get('photo/memory', [PhotoController::class, 'memoryindex'])->name('photo.memory');
+
+    
+    Route::get('memorycreate', [PhotoController::class, 'memorycreate'])->name('photo.memorycreate');
+    
+    
     Route::resource('photo', PhotoController::class);
     
     Route::resource('tag', TagController::class);
