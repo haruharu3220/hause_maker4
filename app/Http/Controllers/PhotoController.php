@@ -125,7 +125,8 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         $result = Photo::find($id)->delete();
-        return redirect()->route('photo.index');
+        // return redirect()->route('photo.index');
+        return redirect()->back();
     }
     
     
@@ -145,6 +146,7 @@ class PhotoController extends Controller
         // dd($photo);
         // dd($photo->tag_names);
         return response()->view('photo.edit', compact('photo'));
+        
     }
 
 

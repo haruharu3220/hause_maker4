@@ -33,12 +33,10 @@
     <div class="main">
     <div class="flex">
       <div id="sidebar" class="sidebar">
-    
         <nav id="global-nav">
           <ul class="sort-btn">
             <div class="serch">
               <form action="{{ route('photo.index') }}" method="GET">
-
                 <dt class="my-4 text-xl">検索範囲指定</dt>
                 <p>開始日</p>
                 <div class="my-2"><input type="date" name="start" value="{{$startDate}}"></div>
@@ -49,7 +47,7 @@
                 <x-secondary-button class="ml-3">
                   {{ __('検索') }}
                 </x-secondary-button>
-              </form>        
+              </form>
             </div>
         
             <li>
