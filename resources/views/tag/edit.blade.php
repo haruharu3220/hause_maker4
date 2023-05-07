@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/background.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card2.css') }}">
     
     
