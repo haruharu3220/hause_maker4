@@ -195,14 +195,18 @@ class PhotoController extends Controller
         $photo =Photo::find($id);
         $photo->iine = true;
         $photo->save();
-        return redirect()->route('photo.index');
+        // return redirect()->route('photo.index');
+        return redirect()->back();
+
     }
+    
     public function unfavorite($id)
     {
         $photo =Photo::find($id);
         $photo->iine = false;
         $photo->save();
-        return redirect()->route('photo.index');
+        // return redirect()->route('photo.index');
+        return redirect()->back();
     }
     
     
