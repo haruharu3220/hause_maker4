@@ -27,18 +27,13 @@
 
 <x-app-layout>
     
-    {{--
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            @if($team !="")
-                {{$team->team_name}}の{{ __('ページ') }}
-            @endif
-        </h2>
-    </x-slot>
-    --}}
+    
     <div class="main">
     <div class="py-12">
+    
         <div class="max-w-7xl h-full mx-auto sm:px-6 lg:px-8">
+    
+    {{--
             <div class="my-info my-4 p-4">
                 <h2 class="mx-4 mt-4 text-xl">私の情報</h2>
                 <div class="flex w-full">
@@ -90,6 +85,7 @@
                     @endif
                 </div>
             </div>
+            --}}
             
             <!-- liを昇順で並び替えるボタン作成 -->
             

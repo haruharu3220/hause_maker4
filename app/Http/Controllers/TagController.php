@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\Models\Tag;
-
+use App\Models\Photo;
+use App\Models\Type;
 class TagController extends Controller
 {
     //
@@ -46,8 +47,50 @@ class TagController extends Controller
     }
     
     public function memoedit($id){
+        // dd($id);
         $tag = Tag::find($id);
-        return response()->view('tag.edit', compact('tag'));
+        $team_id = Auth::user()->team_id;
+
+        $query = Photo::query()
+            ->where('team_id', $team_id)
+            ->orderBy('created_at', 'desc');
+
+        $photos = $query->paginate(25);
+
+        // dd($photos);
+        foreach($photos as $photo){
+            $photo_id = $photo->id;
+            $type = Type::where('id', $photo->type_id)->first()->name;
+            $results = Photo::with("tags")->where('id', $photo->id)->get();
+            
+            $classname ="";
+            $tagnames = [];
+            
+            $selectedTagFlag = false;
+            
+            foreach($results as $result){
+                foreach($result->tags as $tag) {
+                    if($tag->id == $id)  $selectedTagFlag = true;
+                }
+            }
+            
+            if($selectedTagFlag){
+                foreach($results as $result){
+                    foreach($result->tags as $tag) {
+                        $classname .= $tag->id." ";
+                        array_push($tagnames,$tag->name);
+                    }
+                }
+            }
+            $photo ->type_name = $type;
+            $photo ->tag_no = $classname;
+            $photo ->tag_names = $tagnames;
+            $photo ->selected_tag = $selectedTagFlag; 
+        }
+        
+        // dd($photos);
+        
+        return response()->view('tag.edit', compact('photos','tag'));
     }
     
     public function create(){
