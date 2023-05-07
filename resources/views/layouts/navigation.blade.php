@@ -18,18 +18,20 @@
       </div>
 　@else
 
-        <!-- Navigation Links -->
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('マイページ') }}
-          </x-nav-link>
-        </div>
         <!-- 一覧ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
             {{ __('一覧') }}
           </x-nav-link>
         </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            {{ __('ダッシュボード') }}
+          </x-nav-link>
+        </div>
+
         <!-- 作成ページへのリンクを追加 -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('photo.create')" :active="request()->routeIs('photo.create')">
