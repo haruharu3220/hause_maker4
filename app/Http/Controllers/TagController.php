@@ -112,7 +112,8 @@ class TagController extends Controller
         // dd($request);
         $result = Tag::find($id)->update($request->all());
         // dd($result);
-        return redirect()->route('dashboard');
+        // return redirect()->route('dashboard');
+        return redirect()->back();
     }
     
 }
