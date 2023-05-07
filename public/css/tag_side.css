@@ -5,13 +5,6 @@
   /*width: 100%;*/
 }
 
-#sidebar {
-    font-size: 15px;
-    width: 20%;
-    /*height: 100vh;*/
-    /*position: fixed;*/
-    text-align: center;
-}
 
 #tag_sidebar {
     font-size: 15px;
@@ -25,6 +18,27 @@
     padding-left: 10px;
     height: 100%;
 }
+
+
+/*チェックリストボタン*/
+.tag_contener{
+	position: relative;
+	cursor: pointer;
+	padding:0 0 0 30px;
+	margin:0 0px 10px 0;
+	padding: 10px;
+	background: #f5f6f7;
+	box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
+	border-radius: 7px;
+}
+
+
+.tag_contener_title{
+	font-weight: bold;
+}
+
+
+
 
 
 @media screen and (max-width: 768px) {

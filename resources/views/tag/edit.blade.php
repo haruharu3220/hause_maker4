@@ -8,7 +8,7 @@
 
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/side.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tag_side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/background.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card2.css') }}">
@@ -32,65 +32,67 @@
     <!--★★★★★★★★★★★★★★★★★★★★★★★★★★ここから★★★★★★★★★★★★★★★★★★★★★★★-->
     <div class="main">
     <div class="flex">
-      <div id="sidebar" class="sidebar">
+      <div id="tag_sidebar" class="sidebar">
         <nav id="global-nav">
           <!--フォーム開始-->
           <form class="mb-6" action="{{ route('tag.update',$tag->id) }}" method="POST">
             @method('put')
             @csrf
             
-            <div class="flex flex-col my-4">
-              <x-input-label for="tag" :value="__('タグ')" />
-              <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$tag->name}}" required autofocus />
-              <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+            <div class="m-4 tag_contener">
+              <div class="flex flex-col m-4">
+                <x-input-label for="tag" :value="__('タグ') " />
+                <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$tag->name}}" required autofocus />
+                <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+              </div>
             </div>
             
-            <div class="my-4">
+            <div class="m-4 tag_contener">
+              <div class="flex flex-col mb-4 mx-4">
+                <x-input-label for="memo" :value="__('メモ')" />
+                <textarea id="memo" class="block mt-1 focus:border-teal-500 focus:ring-teal-500 border-gray-300 rounded-md w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
+                <x-input-error :messages="$errors->get('tag')" class="mt-2" />
+              </div>
+            </div>
+            
+            <div class="m-4 tag_contener">
               <x-input-label for="status" :value="__('ステータス')"/>
-              <div class="flex mb-4">
+              <div class="flex mb-4 flex justify-center">
               <input type="radio" name="status" id="type-1" value="未決定" @if($tag->status == "未決定") checked @endif>    
-                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
               </div>
-              <div class="flex mb-4">
+              <div class="flex mb-4  flex justify-center">
               <input type="radio" name="status" id="type-2" value="検討中" @if($tag->status == '検討中') checked @endif>    
-                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">検討中</div>
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">検討中</div>
               </div>
-              <div class="flex mb-4">
+              <div class="flex mb-4  flex justify-center">
               <input type="radio" name="status" id="type-1" value="決定" @if($tag->status == '決定') checked @endif>    
-                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">決定</div>
+                <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">決定</div>
               </div>
             </div>
             
-            <div class="my-4">
+            <div class="m-4 tag_contener">
               <x-input-label for="importance" :value="__('こだわり度')"/>
-              <div class="flex mb-4">
+              <div class="flex mb-4 flex justify-center">
                 <input type="radio" name="importance" id="importance-1" value=1 @if($tag->importance == 1) checked @endif>
-                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div>
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div>
               </div>
-              <div class="flex mb-4">
+              <div class="flex mb-4 flex justify-center">
                 <input type="radio" name="importance" id="importance-2" value=2 @if($tag->importance == 2) checked @endif>    
-                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div>
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div>
               </div>
-              <div class="flex mb-4">
+              <div class="flex mb-4 flex justify-center">
                 <input type="radio" name="importance" id="importance-1" value=3 @if($tag->status == 3) checked @endif>    
-                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-1/6 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div>
+                  <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div>
               </div>
             </div>
             
-            <x-input-label for="importance" :value="__('締切')"/>
-            <div class="my-2"><input type="date" class="border-gray-300 rounded-md" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
+            <div class="m-4 tag_contener">
+              <x-input-label for="importance" :value="__('締切')"/>
+              <div class="my-2"><input type="date" class="border-gray-300 rounded-md" name="deadline" value="{{ date('Y-m-d', strtotime($tag->deadline)) }}"></div>
+            </div>
           
-          
-            
-          
-          <div class="flex flex-col mb-4">
-            <x-input-label for="memo" :value="__('メモ')" />
-            <textarea id="memo" class="block mt-1 focus:border-teal-500 focus:ring-teal-500 border-gray-300 rounded-md w-full" name="memo" rows="4">{{$tag->memo}}</textarea>
-            <x-input-error :messages="$errors->get('tag')" class="mt-2" />
-          </div>
-          
-          
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-center m-4">
               <!--前画面に戻るボタン-->
               <a href="{{ url()->previous() }}">
                 <x-secondary-button class="ml-3">
