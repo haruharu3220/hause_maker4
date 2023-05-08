@@ -42,8 +42,9 @@
                 <x-input-label for="type" :value="__('タイプ')" />
                   <input type="radio" name="type" value="1" checked> 写真
                   <input type="radio" name="type" value="2"> 図面
-                  <input type="radio" name="type" value="3"> 書類・メモ
-                  <input type="radio" name="type" value="4"> その他
+                  <input type="radio" name="type" value="3"> チャット
+                  <input type="radio" name="type" value="4"> 書類・メモ
+                  <input type="radio" name="type" value="5"> その他
               </div>
               
               <!--Tags-->

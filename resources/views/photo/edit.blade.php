@@ -33,17 +33,16 @@
           <form class="mb-6" action="{{ route('photo.update',$photo->id) }}" method="POST">
             @method('put')
             @csrf
-        
-            <!--画像-->
-            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" style="height:300px;">
-            
+
             <x-input-label for="type" :value="__('タイプ')" />
               <input type="radio" name="type" id="type-1" value="1" @if($photo->type_id == "1") checked @endif> 写真
               <input type="radio" name="type" id="type-2" value="2" @if($photo->type_id == "2") checked @endif> 図面
-              <input type="radio" name="type" id="type-3" value="3" @if($photo->type_id == "3") checked @endif> 書類・メモ
-              <input type="radio" name="type" id="type-4" value="4" @if($photo->type_id == "4") checked @endif> その他
+              <input type="radio" name="type" id="type-2" value="3" @if($photo->type_id == "3") checked @endif> チャット
+              <input type="radio" name="type" id="type-3" value="4" @if($photo->type_id == "4") checked @endif> 書類・メモ
+              <input type="radio" name="type" id="type-4" value="5" @if($photo->type_id == "5") checked @endif> その他
             
-            <select class="select2 html block mt-1 w-full" name="tags[]" multiple>
+            <div class="my-4">
+            <select class="select2 html block w-full" name="tags[]" multiple>
               @foreach($tags as $tag)
                   <option value="{{$tag->id}}" {{ in_array($tag->name, $photo->tag_names ?? []) ? 'selected' : '' }}>{{$tag->name}}</option>
               @endforeach
@@ -53,6 +52,12 @@
                 placeholder: "タグを選択"
               });
             </script>
+            </div>
+            
+            <!--画像-->
+            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto m-4" style="height:100%;">
+            
+            
             <div class="flex items-center justify-end mt-4">
               <!--前画面に戻るボタン-->
               <a href="{{ url()->previous() }}">

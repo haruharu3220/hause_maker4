@@ -48,9 +48,11 @@ class TagController extends Controller
     
     public function memoedit($id){
         // dd($id);
-        $tag = Tag::find($id);
+        $selected_tag = Tag::find($id);
+        // dd($tag);
+        
         $team_id = Auth::user()->team_id;
-
+        
         $query = Photo::query()
             ->where('team_id', $team_id)
             ->orderBy('created_at', 'desc');
@@ -78,7 +80,7 @@ class TagController extends Controller
                 foreach($results as $result){
                     foreach($result->tags as $tag) {
                         $classname .= $tag->id." ";
-                        array_push($tagnames,$tag->name);
+                        array_push($tagnames,$selected_tag->name);
                     }
                 }
             }
@@ -89,8 +91,8 @@ class TagController extends Controller
         }
         
         // dd($photos);
-        
-        return response()->view('tag.edit', compact('photos','tag'));
+        // dd($tag);
+        return response()->view('tag.edit', compact('photos','selected_tag'));
     }
     
     public function create(){
