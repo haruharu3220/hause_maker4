@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Team;
+use Auth;
 
 class Photo extends Model
 {
@@ -39,4 +40,27 @@ class Photo extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
+    public static function uploadAndCreate($data)
+    {
+        $photo = new Photo();
+
+        if (request('image')) {
+            $original = request()->file('image')->getClientOriginalName();
+            $name = date('Ymd_His') . '_' . $original;
+            request()->file('image')->move('storage/image', $name);
+            $photo->image = $name;
+        }
+
+        $photo->user_id = Auth::user()->id;
+        $photo->team_id = Auth::user()->team_id;
+        $photo->type_id = request('type');
+        $photo->save();
+
+        return $photo;
+    }
+
+    public function attachTags($tags)
+    {
+        $this->tags()->attach($tags);
+    }
 }

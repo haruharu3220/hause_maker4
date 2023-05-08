@@ -82,43 +82,21 @@ class PhotoController extends Controller
     //store
     public function store(Request $request)
     {
-        
-        $photo = new photo();
-        // バリデーション 今回は特に不要
-        // バリデーション:エラー
-        // if ($validator->fails()) {
-        //   return redirect()
-        //     ->route('tweet.create')
-        //     ->withInput()
-        //     ->withErrors($validator);
-        // }
-        // dd($request->image,$request->tags);
-        // dd($request->file("image"));
-        if(request('image')){
-            $original = $request->file("image")->getClientOriginalName();
-            $name = date("Ymd_His")."_".$original;
-            request() ->file("image")->move("storage/image",$name);
-            $photo -> image = $name;
-        }
-        
+        // バリデーション処理（今回は特に不要）
+    
         // 編集 フォームから送信されてきたデータとユーザIDをマージし，DBにinsertする
         $data = $request->merge(['user_id' => Auth::user()->id])->all();
-        // $result = Photo::create($data);
-
-        $photo -> user_id = Auth::user() -> id;
-        $photo -> team_id = Auth::user() -> team_id;
         
-        // dd($request->type);
-        $photo -> type_id = $request->type;
-        $photo -> save();
+        // 画像のアップロード処理とDBへの保存
+        $photo = Photo::uploadAndCreate($data);
     
-        //photoに紐づくtagを中間テーブルに登録
-        $photo -> tags()->attach($request->tags);
-        
-        // dd($request);
+        // photoに紐づくtagを中間テーブルに登録
+        $photo->attachTags($request->tags);
+    
         // photo.index」にリクエスト送信（一覧ページに移動）
         return redirect()->route('photo.index');
     }
+
     
     
     
@@ -215,9 +193,11 @@ class PhotoController extends Controller
     public function memory(){
         return response()->view('photo.memory' );
     }
+    
     public function memorycreate(){
         return response()->view('photo.memorycreate' );
     }
+    
     public function memoryindex(){
         
         $team_id = Auth::user()->team_id;
