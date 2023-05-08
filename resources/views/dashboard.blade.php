@@ -105,7 +105,7 @@
 </table>
 --}}
                   <div id="users">
-                    <section class="flex">
+                    <section class="flex my-4">
                         <div class="w-1/4 flex"><button class="sort" data-sort="name">部屋名</button></div>
                         <div class="w-1/4 flex"><button class="sort" data-sort="status">ステータス</button></div>
                         <div class="w-1/4 flex"><button class="sort" data-sort="importance">こだわり度</button></div>
@@ -136,8 +136,15 @@
                           <td class="status w-1/4"><div class="w-3/5 text-xs bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div></td>
                           @endif
                           
-                          <td class="importance w-1/4">{{$tag->importance}}</td>
-                          
+                          @if($tag->importance == "1")
+                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div></td>
+                          @elseif($tag->importance == "2")
+                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div></td>
+                          @elseif($tag->importance == "3")
+                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div></td>
+                          @else
+                          <td class="importance w-1/4"></td>
+                          @endif
                   
                           <td class="deadline datetime w-1/8 my-1 items-center justify-center items-center text-gray-600">
                             @if($tag->deadline)

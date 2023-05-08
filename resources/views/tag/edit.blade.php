@@ -92,7 +92,7 @@
               <div class="my-2"><input type="date" class="border-gray-300 rounded-md" name="deadline" value="{{ date('Y-m-d', strtotime($selected_tag->deadline)) }}"></div>
             </div>
           
-            <div class="flex items-center justify-center m-4">
+            <div class="flex items-center justify-center my-4 mb-4">
               <!--前画面に戻るボタン-->
               <a href="{{ url()->previous() }}">
                 <x-secondary-button class="ml-3">
@@ -104,6 +104,10 @@
                 {{ __('更新') }}
               </x-primary-button>
             </div>
+            
+            <!-- buttonタグの場合 -->
+            <button type="button" onclick="window.print();" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">PDF出力</button>
+
           </form>
           
         </nav>
