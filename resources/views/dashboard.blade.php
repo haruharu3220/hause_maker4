@@ -11,15 +11,15 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">
+    {{--<link rel="stylesheet" type="text/css" href="{{ asset('css/accordion.css') }}">--}}
 
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
     <link rel="stylesheet" href="{{ asset('css/side.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    
+    {{--<link rel="stylesheet" href="{{ asset('css/table.css') }}">--}}
     
     <link rel="stylesheet" href="{{ asset('css/background.css') }}">
 </head>
@@ -94,53 +94,57 @@
                 <h2 class="text-xl">タグ一覧</h2>
                 
                 <!--ソート付きテーブル-->
+{{--
+<table class="w-3/4 custom-table">
+  <tr>
+      <td class="w-1/4"><button class="sort" data-sort="name">部屋名</button></td>
+      <td class="w-1/4"><button class="sort" data-sort="status">ステータス</button></td>
+      <td class="w-1/4"><button class="sort" data-sort="importance">こだわり度</button></td>
+      <td class="w-1/4"><button class="sort" data-sort="deadline">締切</button></td>
+  </tr>
+</table>
+--}}
                   <div id="users">
-                  
                     <section class="flex">
-                        <div class="w-1/3 flex items-center justify-center"><button class="sort" data-sort="name">部屋名</button></div>
-                        <div class="w-1/6 flex items-start justify-start">    <button class="sort" data-sort="status">
-                            ステータス</button></div>
-                        <div class="w-1/6 flex items-start justify-start">  <button class="sort" data-sort="importance">こだわり度</button></div>
-                        <div class="flex items-center justify-center">  <button class="sort" data-sort="deadline">締切
+                        <div class="w-1/4 flex"><button class="sort" data-sort="name">部屋名</button></div>
+                        <div class="w-1/4 flex"><button class="sort" data-sort="status">ステータス</button></div>
+                        <div class="w-1/4 flex"><button class="sort" data-sort="importance">こだわり度</button></div>
+                        <div class="w-1/4 flex"><button class="sort" data-sort="deadline">締切
                           </button>
                         </div>
                     </section>
-
-                    <table class="w-3/4 custom-table">
+                    
+                    <table class="table-fixed w-full">
                       <tbody class="list">
-      
+
                         @foreach ($tags as $tag)
-                        <tr>
-                          <td class="name w-1/5">
+                        <tr class="border-b border-gray-200 dark:border-gray-700 w-full">
+                          <th class="name w-1/4">
                             <form action="{{ route('memoedit', $tag->id) }}" method="GET" class="text-left">
                             @csrf
                               <button>{{$tag->name}}</button>
                             </form>
-                          </td>
-      
-
+                          </th>
+  
                           @if($tag->status =="未決定")
-                          <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                            class="status text-xs px-3 bg-red-200 text-red-800 rounded-full status">{{$tag->status}}</td>
-
+                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-red-200 text-red-800 rounded-full">{{$tag->status}}</td>
+  
                           @elseif($tag->status =="検討中")
-                          <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                            class="status text-xs px-3 bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</td>
+                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div></td>
                   
                           @else($tag->status =="決定")
-                          <td style="padding-top: 0.1em; padding-bottom: 0.1rem"
-                            class="status text-xs px-3 bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</td>
+                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div></td>
                           @endif
-
-                          <td class="importance w-1/5">{{$tag->importance}}</td>
-
-                          <td class="deadline datetime w-1/5 my-1 mr-4 items-center justify-center items-center text-gray-600">
+                          
+                          <td class="importance w-1/4">{{$tag->importance}}</td>
+                          
+                  
+                          <td class="deadline datetime w-1/8 my-1 items-center justify-center items-center text-gray-600">
                             @if($tag->deadline)
                               {{ date('Y.m.d', strtotime($tag->deadline)) }}
                             @endif
                           </td>
-                          
-                          <td class="datetime my-1 mr-4 w-1/5 items-center justify-center items-center text-red-600">
+                          <td class="datetime w-1/8 my-1 items-center justify-center items-center text-red-600">
                             @if($tag->status != "決定")
                               @if($tag->deadline)
                                 @php
@@ -166,9 +170,7 @@
                               @endif
                             @endif
                           </td>
-                          <td> 
-
-                          </td>
+                          </div>
                         </tr>
                         @endforeach
                       </tbody>
@@ -191,7 +193,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="{{ asset('js/accordion.js') }}"></script>
+{{--<script src="{{ asset('js/accordion.js') }}"></script>--}}
 <script src="{{ asset('js/circle.js') }}"></script>
 <script>
   var options = {
