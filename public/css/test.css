@@ -169,7 +169,7 @@
 
 }
 
-/*横幅が600px以下になった際の指定→スマホ対応*/
+/*横幅が690px以下になった際の指定→スマホ対応*/
 @media only screen and (max-width: 690px) {
 .item {
   width: 95.0%;/*横並びで2つ表示*/
@@ -177,6 +177,9 @@
 }
 .datetime{
 	font-family: 'Sacramento', cursive;
+}
+.main-content {
+	width: 80%;
 }
 	
 }
