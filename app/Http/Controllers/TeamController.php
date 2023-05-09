@@ -54,7 +54,7 @@ class TeamController extends Controller
     
         $request->validate([
             // 'familyName' => 'required|string|max:255',
-            'familyID' => 'required|string|min:4|max:8|unique:teams,original_id',
+            'familyID' => 'required|string|min:4|max:15|unique:teams,original_id',
         ]);
 
         $team = Team::create([
