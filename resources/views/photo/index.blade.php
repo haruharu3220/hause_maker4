@@ -96,7 +96,7 @@
                       <form action="{{ route('favorite', $photo->id) }}" method="POST">
                           @csrf
                         <button>
-                          <i class="fa-regular fa-star fa-2xl star"></i>
+                          <i class="fa-regular fa-star fa-2xl star no_star" style="color: #58535E"></i>
                         </button>
                       </form>
                     @else
