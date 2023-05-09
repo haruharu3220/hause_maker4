@@ -23,7 +23,7 @@
     --}}
   
   <div class="flex items-center justify-center">
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+    <div class="sm:max-w-md mt-6 mx-2 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
         <form method="POST" action="{{ route('tag.store') }}">
             @csrf
            <div>

@@ -25,7 +25,7 @@
     --}}
   <div class="main">
     <div class="flex justify-center">
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        <div class="sm:max-w-md mt-6 mx-4 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
         
         <form method="POST" action="{{ route('tag.store') }}">
             @csrf
@@ -53,7 +53,8 @@
               @method('delete')
               @csrf
               <button class="text-right destroy" type="submit">
-                <i class="fas fa-trash"></i>
+                {{--<i class="fas fa-trash"></i>--}}
+                <i class="fa-regular fa-trash-can" style="color: #77787B;"></i>
               </button>
             </form>
           </li>
