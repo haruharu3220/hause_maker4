@@ -42,7 +42,7 @@
             
             <div class="m-4 tag_contener">
               <div class="flex flex-col m-4">
-                <x-input-label for="tag" :value="__('タグ') " />
+                <x-input-label for="tag"  class="mb-2" :value="__('タグ') " />
                 <x-text-input id="tag" class="block mt-1 w-full" type="text" name="name" value="{{$selected_tag->name}}" required autofocus />
                 <x-input-error :messages="$errors->get('tag')" class="mt-2" />
               </div>
@@ -50,42 +50,54 @@
             
             <div class="m-4 tag_contener">
               <div class="flex flex-col mb-4 mx-4">
-                <x-input-label for="memo" :value="__('メモ')" />
+                <x-input-label for="memo" class="mb-2" :value="__('メモ')" />
                 <textarea id="memo" class="block mt-1 focus:border-teal-500 focus:ring-teal-500 border-gray-300 rounded-md w-full" name="memo" rows="4">{{$selected_tag->memo}}</textarea>
                 <x-input-error :messages="$errors->get('tag')" class="mt-2" />
               </div>
             </div>
             
             <div class="m-4 tag_contener">
-              <x-input-label for="status" :value="__('ステータス')"/>
+              <x-input-label for="status" class="mb-2" :value="__('ステータス')"/>
+              <label>
               <div class="flex mb-4 flex justify-center">
-              <input type="radio" name="status" id="type-1" value="未決定" @if($selected_tag->status == "未決定") checked @endif>    
+              <input type="radio" name="status" id="type-1" value="未決定" @if($selected_tag->status == "未決定") checked @endif>
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">未決定</div>
               </div>
+              </label>
+              <label>
               <div class="flex mb-4  flex justify-center">
               <input type="radio" name="status" id="type-2" value="検討中" @if($selected_tag->status == '検討中') checked @endif>    
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">検討中</div>
               </div>
+              </label>
+              <label>
               <div class="flex mb-4  flex justify-center">
               <input type="radio" name="status" id="type-1" value="決定" @if($selected_tag->status == '決定') checked @endif>    
                 <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">決定</div>
               </div>
+              </label>
             </div>
             
             <div class="m-4 tag_contener">
-              <x-input-label for="importance" :value="__('こだわり度')"/>
+              <x-input-label for="importance" class="mb-2" :value="__('こだわり度')"/>
+              <label>
               <div class="flex mb-4 flex justify-center @if($selected_tag->importance == 1) aaa @endif">
                 <input type="radio" name="importance" id="importance-1" value=1 @if($selected_tag->importance == 1) checked @endif>
                   <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div>
               </div>
+              </label>
+              <label>
               <div class="flex mb-4 flex justify-center">
                 <input type="radio" name="importance" id="importance-2" value=2 @if($selected_tag->importance == 2) checked @endif>    
                   <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div>
               </div>
+              </label>
+              <label>
               <div class="flex mb-4 flex justify-center">
                 <input type="radio" name="importance" id="importance-1" value=3 @if($selected_tag->status == 3) checked @endif>    
                   <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div>
               </div>
+              </label>
             </div>
             
             <div class="m-4 tag_contener">
