@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/background.css') }}">
     <link rel="stylesheet" href="{{ asset('css/card2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/print.css') }}" media="print">
     
     
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -73,7 +74,7 @@
             
             <div class="m-4 tag_contener">
               <x-input-label for="importance" :value="__('こだわり度')"/>
-              <div class="flex mb-4 flex justify-center">
+              <div class="flex mb-4 flex justify-center @if($selected_tag->importance == 1) aaa @endif">
                 <input type="radio" name="importance" id="importance-1" value=1 @if($selected_tag->importance == 1) checked @endif>
                   <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div>
               </div>
@@ -91,7 +92,7 @@
               <x-input-label for="importance" :value="__('締切')"/>
               <div class="my-2"><input type="date" class="border-gray-300 rounded-md" name="deadline" value="{{ date('Y-m-d', strtotime($selected_tag->deadline)) }}"></div>
             </div>
-          
+            <div class="no_printer">
             <div class="flex items-center justify-center my-4 mb-4">
               <!--前画面に戻るボタン-->
               <a href="{{ url()->previous() }}">
@@ -104,7 +105,7 @@
                 {{ __('更新') }}
               </x-primary-button>
             </div>
-            
+            </div>
             <!-- buttonタグの場合 -->
             <button type="button" onclick="window.print();" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">PDF出力</button>
 
@@ -119,9 +120,11 @@
         <ul class="grid">
           @foreach ($photos as $photo)
            @if($photo->selected_tag)
-            <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} mb-2">
+
+              <li class="item {{$photo->tag_no}} type_no_{{$photo->type_id}} mb-2">
+
               <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
-              <div class="item-content">
+              <div class="item-content @if($photo->iine == false) no_printer @else iine @endif">
                 <!--写真エリア-->
                 <div class="photo_area">
                   <!--スターボタン-->
@@ -130,7 +133,7 @@
                       <form action="{{ route('favorite', $photo->id) }}" method="POST">
                           @csrf
                         <button>
-                          <i class="fa-regular fa-star fa-2xl star"></i>
+                           <i class="fa-regular fa-star fa-2xl star no_star" style="color: #58535E"></i>
                         </button>
                       </form>
                     @else
@@ -171,7 +174,7 @@
                     @endforeach
                   </div>
             
-                  <div class="flex justify-center">
+                  <div class="editbutton flex justify-center ">
                     <!--更新ボタン-->
                     <form action="{{ route('photo.edit',$photo->id) }}" method="GET">
                       @csrf
@@ -199,40 +202,11 @@
                         <span class="material-symbols-outlined">
                           delete
                         </span>
-                        <style>
-                        .material-symbols-outlined {
-                          font-variation-settings:
-                          'FILL' 0,
-                          'wght' 300,
-                          'GRAD' 0,
-                          'opsz' 48
-                        }
-                        </style>
                       </button>
                     </form>
                   </div>
                 <!--item-content終了-->
                 </div>    
-                  
-                  <!--共有ボタン-->
-                  {{--
-                  @if($photo->share_flag==false)
-                  <form action="{{ route('share',$photo->id) }}" method="POST" class="text-right">
-                    @csrf
-                    <button class="share" type="submit">
-                      共有する
-                    </button>
-                  </form>
-                  @else
-                  <form action="{{ route('share',$photo->id) }}" method="POST" class="text-right">
-                    @csrf
-                    <button class="share" type="submit">
-                      共有済
-                    </button>
-                  </form>
-                  @endif
-                --}}
-                  
 
               </div>
             </li>
@@ -241,16 +215,6 @@
             </ul>
             {{$photos->links()}}
         
-      
-  
-            <script>
-              lightbox.option({
-                'resizeDuration': 500,
-                'wrapAround': true,
-                'alwaysShowNavOnTouchDevices':true,
-                
-              })
-          </script>
         @else
           <h1>この期間に投稿された画像はありません。</h1>
         
