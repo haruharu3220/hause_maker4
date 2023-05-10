@@ -80,7 +80,7 @@ class TagController extends Controller
                 foreach($results as $result){
                     foreach($result->tags as $tag) {
                         $classname .= $tag->id." ";
-                        array_push($tagnames,$selected_tag->name);
+                        array_push($tagnames,$tag->name);
                     }
                 }
             }
@@ -90,7 +90,7 @@ class TagController extends Controller
             $photo ->selected_tag = $selectedTagFlag; 
         }
         
-        // dd($photos);
+        //  dd($photos);
         // dd($tag);
         return response()->view('tag.edit', compact('photos','selected_tag'));
     }
