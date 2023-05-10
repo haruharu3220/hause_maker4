@@ -127,23 +127,23 @@
                           </th>
   
                           @if($tag->status =="未決定")
-                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-red-200 text-red-800 rounded-full">{{$tag->status}}</td>
+                          <td class="status w-1/4" data-status="0"><div class="w-3/5 text-xs bg-red-200 text-red-800 rounded-full">{{$tag->status}}</td>
   
                           @elseif($tag->status =="検討中")
-                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div></td>
+                          <td class="status w-1/4"  data-status="1"><div class="w-3/5 text-xs bg-blue-200 text-blue-800 rounded-full">{{$tag->status}}</div></td>
                   
                           @else($tag->status =="決定")
-                          <td class="status w-1/4"><div class="w-3/5 text-xs bg-teal-200 text-teal-800 rounded-full">{{$tag->status}}</div></td>
+                          <td class="status w-1/4" data-status="2"><div class="w-3/5 text-xs bg-teal-200 text-teal-800 rounded-full" >{{$tag->status}}</div></td>
                           @endif
                           
                           @if($tag->importance == "1")
-                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div></td>
+                          <td class="importance w-1/4"  data-importance='3'><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-red-200 text-red-800 rounded-full status">↗︎</div></td>
                           @elseif($tag->importance == "2")
-                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div></td>
+                          <td class="importance w-1/4" data-importance='2'><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-blue-200 text-blue-800 rounded-full status">→</div></td>
                           @elseif($tag->importance == "3")
-                          <td class="importance w-1/4"><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div></td>
+                          <td class="importance w-1/4" data-importance='1'><div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="w-3/5 text-xs px-3 bg-teal-200 text-teal-800 rounded-full status">↘︎</div></td>
                           @else
-                          <td class="importance w-1/4"></td>
+                          <td class="importance w-1/4"  data-importance='0'></td>
                           @endif
                   
                           <td class="deadline datetime w-1/8 my-1 items-center justify-center items-center text-gray-600">
@@ -204,7 +204,10 @@
 <script src="{{ asset('js/circle.js') }}"></script>
 <script>
   var options = {
-    valueNames: [ 'name', 'status','importance','deadline' ]
+    valueNames: [ 'name', 'deadline',
+    {name: 'status', attr:'data-status'},
+    {name: 'importance', attr:'data-importance'},
+    ]
   };
 
   var userList = new List('users', options);
