@@ -31,6 +31,9 @@
 <!--/slider--></div>
 <!--/wrapper--></div>
 <div class="container"></div>
+<audio controls autoplay>
+    <source src="{{ asset('images//hirahirari_165.mp3')}}"  type="audio/mpeg" />
+</audio>
   </x-app-layout> 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
