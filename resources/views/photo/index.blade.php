@@ -60,7 +60,7 @@
             
  
             <li class="sub-menu">
-              <a href="#" class="flex items-center justify-center "><dt class="text-xl">部屋 <i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></dt></a>
+              <a href="#" class="flex items-center justify-center "><dt class="text-xl">タグ <i class="indicator glyphicon glyphicon-chevron-down-custom  pull-right"><span class="sp-1"></span><span class="sp-2"></span></i></dt></a>
                 <ul class="sub-menu-nav w-full">
                   @foreach($tags as $tag)
                     <li class="tag_no_{{$tag->id}} tag"><a href="#">{{$tag->name}}</a></li>
